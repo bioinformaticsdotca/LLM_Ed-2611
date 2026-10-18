@@ -1,0 +1,18 @@
+# Module 6: AI-Assisted Coding for Bioinformatics
+
+- Introduction to AI agents and their architecture.
+- Applications of AI agents in bioinformatics workflows, including tools like GitHub Copilot.
+
+**Presenter:** To be announced.
+
+## Lecture
+
+Slides: To be announced.
+
+<!--<iframe src="GOOGLE SLIDES LINK/preview" width="640" height="480" allow="autoplay"></iframe>-->
+
+## Lab
+
+**Lab practical:** Practical examples of using AI agents for bioinformatics tasks.
+
+Lab materials: To be announced.

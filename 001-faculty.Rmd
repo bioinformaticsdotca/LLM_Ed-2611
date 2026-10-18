@@ -1,8 +1,41 @@
 # Meet Your Faculty
 
-<!--#### NAME
+The assignment of faculty to individual modules is to be announced.
 
-<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+## Instructors
+
+#### Mark Berjanskii
+
+<img src="./img/faculty/MISSINGHEADSHOT.png" width="200" alt="Placeholder photo for Mark Berjanskii">
+
+> University of Alberta <br>
+Edmonton, Alberta
+
+Bio: To be announced.
+
+#### Hosna Jabbari
+
+<img src="./img/faculty/MISSINGHEADSHOT.png" width="200" alt="Placeholder photo for Hosna Jabbari">
+
+> University of Alberta <br>
+Edmonton, Alberta
+
+Bio: To be announced.
+
+## Teaching Assistants
+
+#### Amirali Loghmani
+
+Bio: To be announced.
+
+#### Utkarsh Kalra
+
+Bio: To be announced.
+
+<!--TEMPLATE FOR EACH FACULTY MEMBER:
+#### NAME
+
+<img src="./img/faculty/MISSINGHEADSHOT.png" width="200" alt="Photo of NAME">
 
 >JOB TITLE <br>
 INSTITUTION <br>
@@ -11,4 +44,3 @@ LOCATION
 > --- CONTACT INFO, IF PROVIDED
 
 BIO GOES HERE-->
-

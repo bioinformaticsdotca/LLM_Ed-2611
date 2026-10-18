@@ -1,0 +1,17 @@
+# Module 5: Natural Language Processing & Information Extraction
+
+- Introduction to using LLMs to extract biological knowledge from scientific literature at scale, covering core architectures like RAG, vector databases, ontologies, and knowledge graphs.
+
+**Presenter:** To be announced.
+
+## Lecture
+
+Slides: To be announced.
+
+<!--<iframe src="GOOGLE SLIDES LINK/preview" width="640" height="480" allow="autoplay"></iframe>-->
+
+## Lab
+
+**Lab practical:** Practical examples of using LLMs to extract knowledge from scientific literature at scale.
+
+Lab materials: To be announced.

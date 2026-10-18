@@ -1,19 +1,9 @@
-<!--
-IF YOUR WORKSHOP DOES NOT INCLUDE COMPUTE:
-- REMOVE "AND COMPUTE SETUP" FROM THE TOP-LEVEL HEADER
-- DELETE THE LAST SECTION (COMPUTE SETUP)
-
-IF YOUR WORKSHOP INCLUDES COMPUTE:
-- AFTER THE WORKSHOP, ADD DATA DOWNLOAD LINKS, AWS MACHINE IMAGE INSTRUCTIONS, ETC.
-- IF IT IS MORE APPROPRIATE, YOU CAN INCLUDE THE DATA DOWNLOAD LINKS IN EACH OF THE MODULES.
--->
-
 # Data and Compute Setup
 
+Bring your own laptop. Lab notebooks, data and the computing platform for the hands-on labs are to be announced. Setup instructions will be posted here and emailed to registered participants before the workshop.
+
 #### Course data downloads
-Coming soon!
+To be announced.
 
 #### Compute setup
-Coming soon!
-
-
+To be announced.

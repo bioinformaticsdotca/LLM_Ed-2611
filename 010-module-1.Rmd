@@ -1,13 +1,16 @@
 # (PART) Modules {-}
 
-# Module 1
+# Module 1: Introduction to Machine Learning
+
+- Overview of machine learning concepts and applications in bioinformatics.
+- Introduction to key algorithms used in machine learning for bioinformatics, including neural networks, decision trees, graphical neural networks and transformers.
+- Overview of key architectures of transformers (tokenization, embedding, encoder, decoder).
+
+**Presenter:** To be announced.
 
 ## Lecture
 
-<!--<iframe width="640" height="360" src="YOUTUBE EMBED LINK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
--->
+Slides: To be announced.
 
-<!--<iframe src="GOOGLE SLIDES LINK/preview" width="640" height="480" allow="autoplay"></iframe>  
--->
+<!--<iframe src="GOOGLE SLIDES LINK/preview" width="640" height="480" allow="autoplay"></iframe>-->
 
-## Lab

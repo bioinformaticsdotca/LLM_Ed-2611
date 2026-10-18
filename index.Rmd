@@ -18,17 +18,49 @@ favicon: img/favicon.ico
 
 # Workshop Info
 
-Welcome to the 2026 Large Language Models for Bioinformatics Canadian Bioinformatics Workshop webpage!  
+Welcome to the 2026 Large Language Models for Bioinformatics Canadian Bioinformatics Workshop webpage!
+
+**Workshop code:** LLM_Ed-2611 <br>
+**Dates:** Saturday–Sunday, November 14–15, 2026 <br>
+**Location:** Edmonton, Alberta (in person) <br>
+**Workshop listing:** [bioinformatics.ca](https://bioinformatics.ca/workshops-all/2026-large-language-models-for-bioinformatics-edmonton-ab/)
+
+Travel and venue details are sent by email to registered participants only.
+
+## About the Workshop
+
+This two-day workshop focuses on the applications of large language models (LLMs) in bioinformatics. Participants will first be introduced to foundational machine learning (ML) concepts, followed by an in-depth exploration of LLMs and their growing role in bioinformatics. The program includes lectures and hands-on labs covering LLM applications in genomics, proteomics, and natural language processing (NLP). Participants will learn how to use LLMs, and which LLMs to use, for coding in bioinformatics, gene prediction/annotation, protein structure/function analysis, and large-scale literature analysis in their research.
+
+### Course Objectives
+
+After the course, participants should be able to:
+
+- Explain the key concepts of large language models and their applications in bioinformatics, including genomics, proteomics, and general informatics.
+- Apply LLMs to perform bioinformatics coding tasks.
+- Utilize LLM-based tools for analyzing bioinformatics data in genomics, including gene prediction/annotation, protein structure/function prediction, and large-scale literature analysis.
+- Integrate LLMs into bioinformatics workflows for research and analysis.
+
+### Target Audience
+
+Post-doctoral fellows, graduate students, bioinformaticians, computational biologists, and researchers in the life sciences domain, focused on individuals involved in bioinformatics projects with an interest in applying large language models and artificial intelligence to genomics, proteomics, and NLP research.
+
+### Prerequisites
+
+Participants should have a basic understanding of bioinformatics and molecular biology. Familiarity with Python programming and command-line tools is required. Some prior exposure to LLM concepts and tools would be beneficial, though not mandatory.
 
 ## Pre-work
+
+Pre-work and software setup instructions: To be announced. They will be posted on this page and emailed to registered participants before the workshop.
 
 <!--[You can find your pre-work here.](LINK TO PREWORK)-->
 
 ## Class Photo
 
-Coming soon! 
+Coming soon!
 
 ## Schedule
+
+All times are Mountain Time. Session times and presenters are to be announced; the order of modules below may change.
 
 ```{r schedule-loader, echo=FALSE, message=FALSE, warning=FALSE}
 # --- Self-Contained R-Markdown Schedule Component ---

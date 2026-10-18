@@ -1,6 +1,14 @@
-# Module 2
+# Module 2: Introduction to Large Language Models
+
+- Basics of LLMs: what they are and how they differ from traditional machine learning models.
+- Evolution of LLMs: BERT, GPT, and their relevance to bioinformatics.
+- Fine tuning and prompt engineering for improving LLM performance.
+
+**Presenter:** To be announced.
 
 ## Lecture
 
+Slides: To be announced.
 
-## Lab
+<!--<iframe src="GOOGLE SLIDES LINK/preview" width="640" height="480" allow="autoplay"></iframe>-->
+

@@ -1,6 +1,17 @@
-# Module 4
+# Module 4: LLM Applications in Proteomics
+
+- How LLMs are used in proteomics for tasks like protein structure prediction and protein functional annotation.
+
+**Presenter:** To be announced.
 
 ## Lecture
 
+Slides: To be announced.
+
+<!--<iframe src="GOOGLE SLIDES LINK/preview" width="640" height="480" allow="autoplay"></iframe>-->
 
 ## Lab
+
+**Lab practical:** Using LLMs for structure prediction and functional analysis of proteins.
+
+Lab materials: To be announced.

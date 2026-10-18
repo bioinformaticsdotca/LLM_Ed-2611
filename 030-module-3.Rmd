@@ -1,6 +1,17 @@
-# Module 3
+# Module 3: LLM Applications in Genomics
+
+- Overview of LLM applications in genomics.
+
+**Presenter:** To be announced.
 
 ## Lecture
 
+Slides: To be announced.
+
+<!--<iframe src="GOOGLE SLIDES LINK/preview" width="640" height="480" allow="autoplay"></iframe>-->
 
 ## Lab
+
+**Lab practical:** Fine-tuning LLMs for genomic analysis, including gene prediction, gene annotation and variant identification.
+
+Lab materials: To be announced.
