@@ -1,6 +1,6 @@
 --- 
 title: "Large Language Models for Bioinformatics 2026"
-author: "Faculty: Mark Berjanskii, Hosna Jabbari"
+author: "Faculty: Hosna Jabbari, Mark Berjanskii"
 date: "November 14-15, 2026"
 site: bookdown::bookdown_site
 documentclass: book
