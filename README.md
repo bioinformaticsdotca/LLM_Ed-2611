@@ -10,6 +10,6 @@ Built with the CBW Bookdown template (cbw-dev/bookdown-template). GitHub Pages s
 3. Build: RStudio "Build Book", or `Rscript -e 'bookdown::render_book("index.Rmd", "bookdown::gitbook")'`.
 4. Commit everything (including `docs/`) and push. Pages redeploys in 1–2 minutes.
 
-Do not add travel/venue logistics here; they go to registered participants by email only.
+Travel/venue logistics live in bioinformaticsdotca/travel_logistics (`edmonton/LLM_Ed-2611.md`); link them from index.Rmd rather than duplicating full logistics in this repo.
 
 Content licensed under CC BY-SA 4.0 (see LICENSE.md).
