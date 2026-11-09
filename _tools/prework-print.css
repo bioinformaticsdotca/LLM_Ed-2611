@@ -1,0 +1,18 @@
+@page {
+  size: letter;
+  margin: 0.72in 0.78in 0.72in;
+  @bottom-right { content: "CBW · Pre-work · " counter(page); color: #52636a; font: 9pt sans-serif; }
+}
+
+body { font: 10.5pt/1.48 "Arial", sans-serif; color: #17313a; }
+h1, h2, h3 { font-family: "Georgia", serif; color: #123640; page-break-after: avoid; }
+h1 { font-size: 25pt; margin-top: 0.1in; }
+h2 { font-size: 16pt; margin-top: 0.28in; }
+h3 { font-size: 12pt; }
+a { color: #006f6b; text-decoration: underline; }
+pre { background: #eef3f1; border: 0.5pt solid #d5dfdc; padding: 0.12in; white-space: pre-wrap; font: 9pt "Courier New", monospace; }
+code { font: 9pt "Courier New", monospace; }
+img { display: block; max-width: 100%; max-height: 4.7in; object-fit: contain; margin: 0.12in auto; }
+blockquote { border-left: 3pt solid #007d78; margin-left: 0; padding-left: 0.16in; color: #52636a; }
+li { margin-bottom: 0.06in; }
+p { orphans: 3; widows: 3; }
