@@ -8,9 +8,7 @@
 
 Bring a laptop and charger. Open [Google Colab](https://colab.research.google.com/) and sign in with a Google account you can use in a browser. Use an existing account, or [create a Google Account](https://accounts.google.com/signup) if needed. The workshop's basic access check does not require a paid plan or GPU.
 
-![Current signed-out Colab landing page, captured November 9, 2026.](screenshots/colab-home-2026-11.png)
-
-*The page shown is Colab's signed-out landing page. After signing in, the screen and available controls may differ by account and may change over time.*
+Follow the live Colab page: controls can differ by account and change over time. The nearly empty signed-out landing capture has been omitted because it does not help with setup.
 
 The example below comes from Module 1 of the April 2026 Machine Learning workshop. It shows the parts of a Colab notebook (code cell, output, and notebook controls); it is a historical illustration, not a current screenshot or a required workshop notebook.
 
@@ -83,7 +81,7 @@ See Microsoft's [Python tutorial](https://code.visualstudio.com/docs/python/pyth
 
 ## 4. Protect your data and accounts
 
-- Use only workshop-provided public or synthetic data in Colab and AI tools.
+- Use workshop examples or instructor-approved public/synthetic practice data in Colab and AI tools.
 - Do not upload identifiable, clinical, confidential, unpublished, or restricted data to a personal Drive, Colab, or an AI service.
 - Only mount Google Drive when an instructor-provided notebook explicitly requires it and you have reviewed the code and access request.
 - Never put passwords, API keys, or access tokens in a notebook, slide, or prompt.
@@ -109,6 +107,40 @@ Anthropic's [Claude Team plan for scientists](https://www.anthropic.com/news/exp
 
 For research needing additional API credits, Anthropic separately accepts applications to its [AI for Science program](https://www.anthropic.com/news/expanding-support-for-scientists); that is a project application and is not the same as a Claude subscription. Neither program is required for this workshop. Do not submit sensitive research data during setup or use personal Claude access with restricted data unless your institution has approved it.
 
+## 6. Optional: GitHub and coding assistants
+
+These tools are optional preparation, not requirements for the basic Colab check. Choose one workflow rather than installing everything. Do not buy a plan or add an API key for this pre-work. Instructions and official sources below were checked November 9, 2026; follow live vendor guidance if controls change.
+
+### Create a GitHub account
+
+Reuse your personal account if you already have one. Otherwise visit [GitHub signup](https://github.com/signup), follow the prompts, choose a username, and verify your email. A free account is sufficient. Enable two-factor authentication and keep recovery codes private. Then confirm you can sign in. GitHub Education verification remains a separate application; creating an account does not activate student benefits. See [GitHub's account instructions](https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github).
+
+### Enable the GitHub Copilot extension in VS Code
+
+Update VS Code. Open **View > Extensions**, search for **GitHub Copilot**, and use the official GitHub extension, identifier `GitHub.copilot-chat`, if installation is needed. Current VS Code also offers **Copilot icon > Use AI Features**, which starts setup. Sign in with your GitHub account and confirm the correct account/plan; eligible accounts can use Copilot Free with usage limits, or existing institutional/verified Student access. In a disposable folder containing `hello.py`, ask Copilot to explain the script, then check its answer. Do not enable unrestricted agent execution for this test. See [official VS Code setup](https://code.visualstudio.com/docs/setup/copilot/) and the [official extension listing](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat).
+
+### Install the standalone GitHub Copilot app
+
+This is the **GitHub Copilot app**, not GitHub Desktop or Microsoft Copilot. Install Git first, then use [GitHub's official downloads](https://github.com/github/app) for your operating system and CPU. Run the platform installer, open the app, and sign in. Use existing Copilot access or Free/verified Student access if available. Add a disposable local folder and start an **Interactive** session. Ask for an explanation first, then inspect changes and command approvals before proceeding. Follow the [official app quickstart](https://docs.github.com/en/copilot/get-started/quickstart-copilot-app).
+
+### Install and try Freebuff
+
+**Before installation:** use a separate OS account/environment with no access to personal/research files or secrets, or an appropriately configured container. This does not mean merely creating a different Freebuff login. If you cannot arrange isolation, skip installation and ask a teaching assistant for help.
+
+Read the terms and privacy policy, then download the desktop installer for your OS and CPU from [Freebuff](https://freebuff.com/). Install and complete sign-in/onboarding only in the isolated environment. It is an optional, ad-funded service; check live availability and terms. Its [CLI page](https://freebuff.com/cli) offers a separate terminal workflow, not needed here.
+
+The [privacy policy](https://freebuff.com/privacy-policy), effective November 12, 2026, describes project-data processing, advertising uses, and agent access beyond the selected project. **Selecting a project is not sandboxing.** Do not connect private research repositories for this exercise.
+
+Create a disposable practice folder and make `hello.py` containing `print("Hello, bioinformatics!")`. Open that practice folder and try: **Explain hello.py. Do not edit files or run commands.** This prompt is an instruction, not an enforced security boundary. Inspect proposed edits and commands, check outputs, and keep a backup. A desktop AI app is not necessarily local-only.
+
+## 7. Optional: bring your own data
+
+Workshop example data will be available; bringing your own data is not required. If you wish, prepare a small public or synthetic example you have permission to use and one clear biological or analysis question. Prefer a compact CSV/TSV or a small sequence example rather than a full dataset.
+
+Include a README or data dictionary describing column names, units, identifiers, provenance/licensing, and your expected output. Keep an untouched original and bring a working copy. Have an instructor check suitability before using it in the exercises; not every dataset will fit the workshop activities or compute limits.
+
+Do not upload patient-level, clinical, confidential, restricted, or unpublished research data to Colab, GitHub, Copilot, Freebuff, or another AI service for this exercise. Human genomic data may remain identifying even after names are removed. If your actual data are sensitive, bring only a schema, public surrogate, or synthetic example. A private GitHub repository or local desktop app does not itself authorize cloud/AI processing. Any future use of restricted data needs the appropriate institutional approvals and approved infrastructure, outside this pre-work exercise.
+
 ## If setup does not work
 
 Note your operating system and the step that failed. Bring the exact error message with personal information and secrets removed; a teaching assistant can help. You do not need to install GitHub Copilot or purchase a service for this pre-work.
@@ -123,6 +155,11 @@ Note your operating system and the step that failed. Bring the exact error messa
 - [GitHub Copilot Student setup](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students)
 - [Apply to GitHub Education as a student](https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student)
 - [Anthropic: Claude access for scientists](https://www.anthropic.com/news/expanding-support-for-scientists)
+- [GitHub account creation](https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github)
+- [Copilot in VS Code](https://code.visualstudio.com/docs/setup/copilot/)
+- [GitHub Copilot app quickstart](https://docs.github.com/en/copilot/get-started/quickstart-copilot-app)
+- [Freebuff downloads](https://freebuff.com/)
+- [Freebuff privacy policy](https://freebuff.com/privacy-policy)
 
 *Screenshot note: screenshots in this package were captured November 9, 2026. They illustrate the labeled screens only and are not a guarantee that every account sees the same interface.*
 *The Colab notebook example from the April 2026 MLE Module 1 lecture is explicitly historical; only the signed-out landing page and VS Code tutorial screenshots are November 2026 captures.*
