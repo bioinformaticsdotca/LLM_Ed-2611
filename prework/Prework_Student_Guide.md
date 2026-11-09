@@ -119,17 +119,35 @@ Reuse your personal account if you already have one. Otherwise visit [GitHub sig
 
 Update VS Code. Open **View > Extensions**, search for **GitHub Copilot**, and use the official GitHub extension, identifier `GitHub.copilot-chat`, if installation is needed. Current VS Code also offers **Copilot icon > Use AI Features**, which starts setup. Sign in with your GitHub account and confirm the correct account/plan; eligible accounts can use Copilot Free with usage limits, or existing institutional/verified Student access. In a disposable folder containing `hello.py`, ask Copilot to explain the script, then check its answer. Do not enable unrestricted agent execution for this test. See [official VS Code setup](https://code.visualstudio.com/docs/setup/copilot/) and the [official extension listing](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat).
 
+![Official GitHub Copilot Chat Marketplace listing with GitHub publisher and green Install button.](screenshots/copilot-extension-marketplace-2026-11-09.png)
+
+*Browser capture, November 9, 2026. Verify the GitHub publisher and extension ID, then choose **Install**. From the website, allow the browser to open VS Code and confirm installation there. If it is already installed, VS Code may show **Manage** instead. Installing the extension does not itself activate a paid subscription.*
+
+![Official VS Code documentation example showing the Copilot status menu and Sign in to use Copilot button.](screenshots/copilot-vscode-signin-docs-2026-11-09.png)
+
+*Vendor documentation UI example, captured November 9, 2026 from the [official setup guide](https://code.visualstudio.com/docs/setup/copilot/), not a screenshot of a newly installed local extension. Open the Copilot status/menu, choose **Sign in to use Copilot**, and complete GitHub authorization in the browser. Your menu may differ.*
+
 ### Install the standalone GitHub Copilot app
 
 This is the **GitHub Copilot app**, not GitHub Desktop or Microsoft Copilot. Install Git first, then use [GitHub's official downloads](https://github.com/github/app) for your operating system and CPU. Run the platform installer, open the app, and sign in. Use existing Copilot access or Free/verified Student access if available. Add a disposable local folder and start an **Interactive** session. Ask for an explanation first, then inspect changes and command approvals before proceeding. Follow the [official app quickstart](https://docs.github.com/en/copilot/get-started/quickstart-copilot-app).
 
+![GitHub Copilot app official download list with Windows, macOS, Linux, and processor choices.](screenshots/copilot-app-downloads-2026-11-09.png)
+
+*Browser capture of [github/app](https://github.com/github/app), November 9, 2026. Choose your OS and processor: Apple Silicon versus Intel on Mac, or the appropriate x64/ARM build elsewhere. Run the downloaded installer according to your platform's prompts. No installer was run to create this screenshot; it illustrates download selection, not the local installation wizard.*
+
 ### Install and try Freebuff
+
+> **Privacy warning: do not use sensitive or unpublished research data.** Freebuff's [policy](https://freebuff.com/privacy-policy) allows project/prompt processing by model providers and advertising uses. Models/features explicitly labeled for AI training may also permit data licensing or sale. This is conditional, not a claim that every mode sells all data. Desktop/CLI agents may access files beyond the chosen project. For this workshop, use public/synthetic practice data only; skip Freebuff if unsure. The linked policy was checked November 9 and becomes effective November 12, 2026.
 
 **Before installation:** use a separate OS account/environment with no access to personal/research files or secrets, or an appropriately configured container. This does not mean merely creating a different Freebuff login. If you cannot arrange isolation, skip installation and ask a teaching assistant for help.
 
 Read the terms and privacy policy, then download the desktop installer for your OS and CPU from [Freebuff](https://freebuff.com/). Install and complete sign-in/onboarding only in the isolated environment. It is an optional, ad-funded service; check live availability and terms. Its [CLI page](https://freebuff.com/cli) offers a separate terminal workflow, not needed here.
 
-The [privacy policy](https://freebuff.com/privacy-policy), effective November 12, 2026, describes project-data processing, advertising uses, and agent access beyond the selected project. **Selecting a project is not sandboxing.** Do not connect private research repositories for this exercise.
+![Freebuff official website with Other downloads expanded to show OS and processor choices.](screenshots/freebuff-platform-downloads-2026-11-09.png)
+
+*Browser capture, November 9, 2026. The site suggested **Download for Mac** on this computer. Open **Other downloads** to select the correct OS/CPU if needed. Install and sign in only after reading the warning above and arranging isolation. The app shown behind the menu is the website's marketing demo, not an installed application or a completed setup.*
+
+**Selecting a project is not sandboxing.** Do not connect private research repositories for this exercise.
 
 Create a disposable practice folder and make `hello.py` containing `print("Hello, bioinformatics!")`. Open that practice folder and try: **Explain hello.py. Do not edit files or run commands.** This prompt is an instruction, not an enforced security boundary. Inspect proposed edits and commands, check outputs, and keep a backup. A desktop AI app is not necessarily local-only.
 
@@ -161,5 +179,5 @@ Note your operating system and the step that failed. Bring the exact error messa
 - [Freebuff downloads](https://freebuff.com/)
 - [Freebuff privacy policy](https://freebuff.com/privacy-policy)
 
-*Screenshot note: screenshots in this package were captured November 9, 2026. They illustrate the labeled screens only and are not a guarantee that every account sees the same interface.*
-*The Colab notebook example from the April 2026 MLE Module 1 lecture is explicitly historical; only the signed-out landing page and VS Code tutorial screenshots are November 2026 captures.*
+*Screenshot note: current browser captures and vendor documentation UI examples were accessed November 9, 2026. They illustrate only their labeled screens, not a tested local installation or a guarantee that every account sees the same interface. See `screenshots/README.md` for installation-image provenance.*
+*The Colab notebook example and full source slides from the April 2026 MLE Module 1 lecture are explicitly historical, not November 2026 interface captures.*

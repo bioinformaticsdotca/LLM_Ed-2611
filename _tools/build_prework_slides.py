@@ -53,7 +53,7 @@ def text(slide, content, x, y, w, h, size=24, color='333399', bold=False,
     return shape
 
 
-def bullets(slide, items, x=0.7, y=1.65, w=11.9, h=4.9, size=26):
+def bullets(slide, items, x=0.7, y=1.65, w=11.9, h=4.9, size=26, spacing=22):
     shape = text(slide, '\n'.join(items), x, y, w, h, size=size)
     for paragraph in shape.text_frame.paragraphs:
         props = paragraph._p.get_or_add_pPr()
@@ -67,12 +67,20 @@ def bullets(slide, items, x=0.7, y=1.65, w=11.9, h=4.9, size=26):
         bullet = OxmlElement('a:buChar')
         bullet.set('char', chr(8226))
         props.append(bullet)
-        paragraph.space_after = Pt(22)
+        paragraph.space_after = Pt(spacing)
     return shape
 
 
-def picture(slide, file, x, y, max_w, max_h):
+def picture(slide, file, x, y, max_w, max_h, crop=None):
     shape = slide.shapes.add_picture(str(OUT / 'screenshots' / file), Inches(x), Inches(y))
+    if crop is not None:
+        left, top, right, bottom = crop
+        width, height = shape.width, shape.height
+        shape.crop_left, shape.crop_top = left, top
+        shape.crop_right, shape.crop_bottom = right, bottom
+        # Crop only the PowerPoint view; preserve the unaltered browser capture.
+        shape.width = int(width * (1 - left - right))
+        shape.height = int(height * (1 - top - bottom))
     scale = min(Inches(max_w) / shape.width, Inches(max_h) / shape.height)
     shape.width = int(shape.width * scale)
     shape.height = int(shape.height * scale)
@@ -164,31 +172,71 @@ def build():
               'https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github')
 
     slide = new_slide('GitHub Copilot in VS Code (optional)')
-    bullets(slide, ['Update VS Code. Open Extensions and search for GitHub Copilot.',
-                    'Use the official GitHub extension (GitHub.copilot-chat); install if needed.',
-                    'Recent VS Code: Copilot icon > Use AI Features also starts setup.',
-                    'Sign in with the account that has Copilot access; Free has usage limits.',
-                    'In a scratch folder, ask: Explain this hello.py script. Review the answer.'], size=24)
+    picture(slide, 'copilot-extension-marketplace-2026-11-09.png',
+            0.55, 1.65, 7.7, 3.3, crop=(0, 0.02, 0, 0.35))
+    text(slide, 'Official Marketplace page, captured November 9, 2026. Browser view, not an installed-extension screen.',
+         0.6, 4.35, 7.65, 0.6, size=12, color='555555')
+    text(slide, 'Publisher: GitHub\nExtension ID: GitHub.copilot-chat\nInstallation and Copilot plan activation are separate.',
+         0.7, 5.15, 7.45, 1.2, size=19)
+    bullets(slide, ['1. Update VS Code; open View > Extensions.',
+                    '2. Search GitHub Copilot and verify the publisher / ID.',
+                    '3. Choose Install. From the web page, allow it to open VS Code, then confirm there.',
+                    '4. Sign in as shown next. Existing installs may show Manage instead.'],
+            x=8.6, y=1.7, w=4.0, h=4.7, size=19, spacing=14)
+    reference(slide, 'Official extension listing; setup guide is linked in the student handout',
+              'https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat')
+
+    slide = new_slide('Copilot: sign in after installation')
+    picture(slide, 'copilot-vscode-signin-docs-2026-11-09.png',
+            0.8, 1.65, 6.3, 4.6)
+    text(slide, 'Official VS Code documentation UI example, captured November 9, 2026. Your menu may differ.',
+         0.8, 6.28, 6.6, 0.42, size=11, color='555555')
+    bullets(slide, ['1. In VS Code, open the Copilot status/menu.',
+                    '2. Choose Sign in to use Copilot; finish GitHub authorization in the browser.',
+                    '3. Use your Free, Student, or existing institutional account; verify the plan.',
+                    '4. Test in a scratch folder: Explain hello.py. Review the answer.'],
+            x=7.55, y=1.7, w=5.05, h=4.7, size=21, spacing=14)
     reference(slide, 'Official VS Code Copilot setup and sign-in',
               'https://code.visualstudio.com/docs/setup/copilot/')
 
     slide = new_slide('GitHub Copilot desktop app (optional)')
-    bullets(slide, ['Install Git first. Download from github.com/github/app for your OS and CPU.',
-                    'Run the platform installer, open the app, and sign in to GitHub.',
-                    'Use existing Copilot access, Free, or verified Student access if eligible.',
-                    'Open a disposable local folder; start an Interactive agent session.',
-                    'Ask for an explanation first; review changes and commands before approval.'], size=24)
+    picture(slide, 'copilot-app-downloads-2026-11-09.png',
+            0.55, 1.5, 7.7, 4.8, crop=(0.02, 0.04, 0.27, 0.25))
+    text(slide, 'Official github/app prerequisites and download links. Browser capture: November 9, 2026; no installer was run.',
+         0.6, 6.0, 7.55, 0.5, size=12, color='555555')
+    bullets(slide, ['1. Install Git. Visit github.com/github/app.',
+                    '2. Select your OS and processor (Apple Silicon / Intel or x64 / ARM).',
+                    '3. Run the downloaded platform installer, open Copilot, and sign in to GitHub.',
+                    '4. Use existing/Free/Student access; open a practice folder and start Interactive mode.'],
+            x=8.6, y=1.7, w=4.0, h=4.6, size=19, spacing=14)
     text(slide, 'This is the GitHub Copilot app, not GitHub Desktop or Microsoft Copilot.',
-         0.7, 6.25, 11.9, 0.45, size=18, bold=True)
+         0.7, 6.52, 11.9, 0.24, size=13, bold=True)
     reference(slide, 'GitHub Copilot app: installation and first session',
               'https://docs.github.com/en/copilot/get-started/quickstart-copilot-app')
 
+    slide = new_slide('Freebuff: privacy warning')
+    text(slide, 'Do not use sensitive or unpublished research data.',
+         0.7, 1.4, 11.9, 0.55, size=27, color='CC0000', bold=True)
+    bullets(slide, ['Prompts and project content may be processed by Freebuff and model providers.',
+                    'Project/prompt data may be used to personalize advertising.',
+                    'AI-training-labeled models/features may allow data licensing or sale; this is not a blanket rule for every mode.',
+                    'Desktop/CLI agents can read beyond the project; a local app is not proof of privacy.'],
+            y=2.15, h=4.0, size=23)
+    text(slide, 'Workshop practice: public/synthetic data only. Skip Freebuff if unsure.',
+         0.7, 6.25, 11.9, 0.45, size=19, color='CC0000', bold=True)
+    reference(slide, 'Freebuff policy: updated November 8; effective November 12, 2026',
+              'https://freebuff.com/privacy-policy')
+
     slide = new_slide('Install Freebuff (optional)')
-    bullets(slide, ['Before installation: use a separate, isolated OS account/environment; otherwise skip.',
-                    'Download the official desktop installer for your OS and CPU at freebuff.com.',
-                    'Read current terms/privacy; install only in that isolated environment.',
-                    'Open the app and sign in; do not connect research drives or private repositories.',
-                    'Ad-funded optional tool: verify availability. You do not need every tool.'], size=24)
+    picture(slide, 'freebuff-platform-downloads-2026-11-09.png',
+            0.55, 1.5, 7.7, 4.8, crop=(0.06, 0.34, 0.20, 0.09))
+    text(slide, 'Freebuff website: Other downloads expanded on macOS. Captured November 9, 2026. Background app preview is a vendor demo.',
+         0.6, 6.0, 7.6, 0.6, size=12, color='555555')
+    bullets(slide, ['1. Arrange an isolated OS account/environment first; otherwise skip.',
+                    '2. Visit freebuff.com. Open Other downloads if the suggested OS/CPU is wrong.',
+                    '3. Choose the matching desktop installer. Read live terms/privacy before installing.',
+                    '4. Install and sign in only in the isolated environment; do not connect research data.'],
+            x=8.6, y=1.7, w=4.0, h=4.8, size=19, spacing=14)
     reference(slide, 'Freebuff official desktop downloads', 'https://freebuff.com/')
 
     slide = new_slide('Use Freebuff safely')

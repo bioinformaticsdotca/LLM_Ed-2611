@@ -13,6 +13,14 @@ a { color: #006f6b; text-decoration: underline; }
 pre { background: #eef3f1; border: 0.5pt solid #d5dfdc; padding: 0.12in; white-space: pre-wrap; font: 9pt "Courier New", monospace; }
 code { font: 9pt "Courier New", monospace; }
 img { display: block; max-width: 100%; max-height: 4.7in; object-fit: contain; margin: 0.12in auto; }
-blockquote { border-left: 3pt solid #007d78; margin-left: 0; padding-left: 0.16in; color: #52636a; }
+blockquote {
+  border-left: 3pt solid #a32020 !important;
+  background: #fff5f5;
+  margin-left: 0;
+  padding: 0.1in 0.14in;
+  color: #8f1818 !important;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
 li { margin-bottom: 0.06in; }
 p { orphans: 3; widows: 3; }
