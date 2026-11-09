@@ -7,13 +7,13 @@ This folder contains the student-ready preparation materials for Large Language 
 - `Prework_Student_Guide.md` — accessible, editable guide with current screenshots and links.
 - `Prework_Student_Guide.docx` — Word version of the same guide.
 - `Prework_Student_Guide.pdf` — print-ready PDF version of the same guide.
-- `LLM_Bioinformatics_Prework_Orientation.pptx` — short orientation slide deck.
+- `LLM_Bioinformatics_Prework_Orientation.pptx` — student orientation deck with a historical Colab walkthrough appendix.
 - `LLM_Bioinformatics_Prework_Orientation.pdf` — PDF slide copy for easy viewing.
-- `screenshots/` — current November 2026 Colab/VS Code screenshots plus a historical Colab notebook example from MLE Module 1 (April 2026).
+- `screenshots/` — current November 2026 Colab/VS Code screenshots, a historical Colab notebook example, and seven complete slides from MLE 0426 Module 1 (April 2026).
 
 The guide also explains optional GitHub Copilot Student eligibility and Anthropic's PI-led Claude Team plan for scientists. Neither service is required for the workshop; students should not buy a plan for this pre-work.
 
-The November screenshots show the current signed-out Colab landing page and the official VS Code Python tutorial; they were captured November 9, 2026. The historical Colab notebook screenshot is reused from the April 2026 MLE Module 1 lecture and is labeled as an illustrative, older interface. The Colab landing page is account-dependent, and all products can change their interface; follow the linked official instructions if the screen differs. An attempted capture of Colab's sample notebook showed a temporary runtime-provisioning incident, so that image was intentionally excluded.
+The November screenshots show the current signed-out Colab landing page and the official VS Code Python tutorial; they were captured November 9, 2026. The deck reuses seven full slides from April 2026 MLE 0426 Module 1, covering Colab access, notebook creation, and code-cell execution. Those source slides and their screenshots are historical examples, labeled by module and slide number; the screens and service features may have changed. The Colab landing page is account-dependent, so follow the linked official instructions if your screen differs. An attempted capture of Colab's sample notebook showed a temporary runtime-provisioning incident, so that image was intentionally excluded.
 
 ## Important before distribution
 

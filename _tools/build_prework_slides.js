@@ -178,4 +178,28 @@ function addNumber(slide, n, x, y, color = C.teal) {
   s.addText('Use the current official Colab page and the workshop-provided notebook link.', { x: 1.0, y: 6.72, w: 11.2, h: 0.3, fontFace: 'Calibri', fontSize: 14, bold: true, color: C.teal, align: 'center', margin: 0 });
 }
 
+// Full source slides preserve the historical Colab walkthrough context.
+{
+  const sourceSlides = [
+    ['090', 'Google Colab introduction'],
+    ['097', 'Colab access'],
+    ['108', 'Colab notebook interface'],
+    ['111', 'Creating a notebook'],
+    ['115', 'Hello World example'],
+    ['116', 'Running a code cell'],
+    ['125', 'Running all cells']
+  ];
+
+  for (const [number, description] of sourceSlides) {
+    const s = pptx.addSlide('CONTENT');
+    addTitle(s, description, `Historical MLE Module 1 slide ${number} · April 2026`);
+    card(s, 0.55, 1.55, 9.7, 5.25);
+    s.addImage({ path: path.join(ss, `mle0426-module1-slide-${number}.png`), x: 0.68, y: 1.68, w: 9.44, h: 5.0, sizing: 'contain' });
+    card(s, 10.55, 1.55, 2.25, 5.25, 'E8F1ED');
+    s.addText('Historical example', { x: 10.82, y: 1.95, w: 1.72, h: 0.6, fontFace: 'Cambria', fontSize: 18, bold: true, color: C.ink, margin: 0, fit: 'shrink' });
+    s.addText(`MLE 0426\nModule 1\nSlide ${number}\nApril 2026`, { x: 10.82, y: 2.85, w: 1.72, h: 1.5, fontFace: 'Calibri', fontSize: 14, color: C.ink, margin: 0, breakLine: false, fit: 'shrink' });
+    s.addText('This is a historical interface walkthrough. Colab screens and service features can change; follow current official instructions.', { x: 10.82, y: 4.65, w: 1.72, h: 1.45, fontFace: 'Calibri', fontSize: 12, italic: true, color: C.muted, margin: 0, breakLine: false, fit: 'shrink', valign: 'top' });
+  }
+}
+
 pptx.writeFile({ fileName: path.join(outDir, 'LLM_Bioinformatics_Prework_Orientation.pptx') });
