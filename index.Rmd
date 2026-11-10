@@ -50,9 +50,17 @@ Participants should have a basic understanding of bioinformatics and molecular b
 
 ## Pre-work
 
-Pre-work and software setup instructions: To be announced. They will be posted on this page and emailed to registered participants before the workshop.
+Please complete the two forms below before the workshop. The required pre-work takes about 1.5–2 hours; start early rather than the night before.
 
-<!--[You can find your pre-work here.](LINK TO PREWORK)-->
+- [Pre-work readiness form](https://docs.google.com/forms/d/e/1FAIpQLSfOdUvIAw70vl_HONfoUIqMQtCC4u4-S9zKcDLZq4hds5G6Vw/viewform) (laptop, Python, VS Code, GitHub account, Slack and Google Colab checks)
+- [Dietary preferences form](https://docs.google.com/forms/d/e/1FAIpQLSd_7QhQ_76DWPdM3P1bJZZTKja7J3BnhCLWfuU602_eFNeioA/viewform) (please respond by Wednesday, November 11, 2026, 11:59 p.m. MST)
+
+Step-by-step guides (PDF):
+
+- [Install Python (Mac and Windows)](guides/install-python-guide.pdf)
+- [Install VS Code (Mac and Windows)](guides/install-vscode-guide.pdf)
+- [Google Colab guide](guides/google-colab-guide.pdf)
+- [OpenRouter account and API key (optional; we will provide a key at the workshop)](guides/openrouter-api-key-guide.pdf)
 
 ## Class Photo
 
