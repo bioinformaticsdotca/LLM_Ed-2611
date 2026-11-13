@@ -28,6 +28,8 @@ Bio: To be announced.
 
 #### Amirali Loghmani
 
+<img src="./img/faculty/amirali-loghmani.png" width="200" alt="Portrait of Amirali Loghmani">
+
 Bio: To be announced.
 
 #### Utkarsh Kalra
