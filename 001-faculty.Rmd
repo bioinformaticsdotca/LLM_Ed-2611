@@ -32,6 +32,8 @@ Bio: To be announced.
 
 #### Utkarsh Kalra
 
+<img src="./img/faculty/utkarsh-kalra.jpeg" width="200" alt="Portrait of Utkarsh Kalra">
+
 Bio: To be announced.
 
 <!--TEMPLATE FOR EACH FACULTY MEMBER:
