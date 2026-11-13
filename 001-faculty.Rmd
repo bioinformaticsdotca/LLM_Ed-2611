@@ -6,7 +6,9 @@ The assignment of faculty to individual modules is to be announced.
 
 #### Hosna Jabbari
 
-<img src="./img/faculty/MISSINGHEADSHOT.png" width="200" alt="Placeholder photo for Hosna Jabbari">
+<img src="./img/faculty/hosna-jabbari.jpeg" width="200" alt="Portrait of Hosna Jabbari">
+
+<small>Photo: <a href="https://www.ualberta.ca/en/engineering/about/news/2026/january/u-of-a-teams-with-moderna-to-harness-power-of-mrna-medicines.html">University of Alberta Faculty of Engineering</a>.</small>
 
 > University of Alberta <br>
 Edmonton, Alberta
