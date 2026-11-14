@@ -25,7 +25,7 @@ Day 1, 15:45
 Retrieve data from research publications and prepare it for use in Day 2
 sessions.
 
-**Participant notebook:** <a href="notebooks/05_Data_Retrieval.ipynb" download>Download the publication data retrieval notebook</a>.
+**Participant notebook:** <a href="notebooks/05_Data_Retrieval_participant.ipynb" download>Download the publication data retrieval notebook</a>.
 
 **Instructor notebook (includes solutions):** <a href="notebooks/05_Data_Retrieval_instructor.ipynb" download>Download the instructor edition</a>.
 
