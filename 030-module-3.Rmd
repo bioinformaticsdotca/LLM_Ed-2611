@@ -15,6 +15,8 @@ Introduction to transformers and embeddings.
 
 **Participant notebook:** <a href="notebooks/04_Transformers_participant.ipynb" download>Download the Transformers and embeddings notebook</a>.
 
+**Participant notebook:** <a href="notebooks/05_Data_Retrieval_participant.ipynb" download>Download the publication data retrieval notebook</a>.
+
 **Instructor notebook (includes solutions):** <a href="notebooks/04_Transformers_instructor.ipynb" download>Download the instructor edition</a>.
 
 **Walkthrough:** <a href="notebooks/LLM_Workshop_Notebook_Walkthrough.pdf" download>Download the Transformers notebook walkthrough (PDF)</a>.
