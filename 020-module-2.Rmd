@@ -11,3 +11,5 @@ Day 1, 10:45
 
 Compare supervised and unsupervised learning using sequence examples.
 
+**Workshop notebook:** [Download the machine-learning and RNA data analysis notebook](notebooks/02_basic_ML.ipynb).
+

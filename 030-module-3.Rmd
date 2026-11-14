@@ -11,8 +11,14 @@ Day 1, 13:30
 
 Introduction to transformers and embeddings.
 
+**Workshop notebook:** [Download the Transformers and embeddings notebook](notebooks/04_Transformers.ipynb).
+
+**Walkthrough:** [Read the Transformers notebook walkthrough (PDF)](notebooks/LLM_Workshop_Notebook_Walkthrough.pdf).
+
 ## Lab {#hugging-face}
 
 Day 1, 14:15
 
 Hands-on work with Hugging Face.
+
+**Workshop notebook:** [Download the Transformers and embeddings notebook](notebooks/04_Transformers.ipynb).

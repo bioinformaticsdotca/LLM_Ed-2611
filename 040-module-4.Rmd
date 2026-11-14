@@ -9,3 +9,5 @@ This module introduces AlphaGenome.
 Day 2, 09:15
 
 Introduction to AlphaGenome.
+
+**Workshop notebook:** [Download the AlphaGenome notebook](notebooks/06_AlphaGenome.ipynb). You will need your own AlphaGenome API key; never save it in the notebook.

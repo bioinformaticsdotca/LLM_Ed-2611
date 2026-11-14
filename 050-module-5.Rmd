@@ -11,14 +11,20 @@ Day 2, 10:30
 
 Protein folding with AlphaFold, ColabFold, and ESMFold.
 
+**Workshop notebook:** [Download the protein-folding notebook](notebooks/07_Folding.ipynb).
+
 ## Interpreting Results — Part 1 {#interpret-results-part-1}
 
 Day 2, 11:30
 
 Interpret ColabFold results and cite the paper.
 
+**Workshop notebook:** [Download the results interpretation notebook](notebooks/08_result_sense.ipynb).
+
 ## Interpreting Results — Part 2 {#interpret-results-part-2}
 
 Day 2, 13:30
 
 Continue interpretation and discussion.
+
+**Workshop notebook:** [Continue with the results interpretation notebook](notebooks/08_result_sense.ipynb).
