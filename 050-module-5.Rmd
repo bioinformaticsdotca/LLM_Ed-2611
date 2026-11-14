@@ -5,6 +5,8 @@
 This module covers protein-folding tools and guided interpretation of
 ColabFold results.
 
+**Theme:** [Module 4: LLM Applications in Proteomics](https://hub.bioinformatics.ca/en-ca/workshops/cbw/2026-large-language-models-for-bioinformatics-edmonton-ab-2026); [Module 1: Introduction to Machine Learning](https://hub.bioinformatics.ca/en-ca/workshops/cbw/2026-large-language-models-for-bioinformatics-edmonton-ab-2026) *(partial: results evaluation)*.
+
 ## Protein Folding {#protein-folding}
 
 Day 2, 10:30

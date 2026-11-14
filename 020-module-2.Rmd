@@ -5,6 +5,8 @@
 This module introduces supervised and unsupervised learning through sequence
 examples.
 
+**Theme:** [Module 1: Introduction to Machine Learning](https://hub.bioinformatics.ca/en-ca/workshops/cbw/2026-large-language-models-for-bioinformatics-edmonton-ab-2026).
+
 ## Supervised vs. Unsupervised Learning {#supervised-vs-unsupervised}
 
 Day 1, 10:45
