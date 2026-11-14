@@ -9,4 +9,4 @@
 
 - `git diff --check` passes.
 - Confirmed no PowerPoint download links remain in the module source or rendered HTML pages.
-- Confirmed all six PowerPoint files are removed from the publishing folder; verifying the deployed site after push.
+- Confirmed all six PowerPoint download URLs return HTTP 404 and the six live module pages contain no presentation links.
