@@ -1,28 +1,39 @@
 # Meet Your Faculty
 
-The assignment of faculty to individual modules is to be announced.
+Meet the instructors and teaching assistants for the CBW Large Language Models
+for Bioinformatics workshop. Instructor assignments for individual modules
+will be announced.
 
 ## Instructors
 
 #### Hosna Jabbari
 
-<img src="./img/faculty/hosna-jabbari.jpeg" width="200" alt="Portrait of Hosna Jabbari">
+<img src="./img/faculty/hosna-jabbari.jpeg" width="200" alt="Portrait of Dr. Hosna Jabbari">
 
 <small>Photo: <a href="https://www.ualberta.ca/en/engineering/about/news/2026/january/u-of-a-teams-with-moderna-to-harness-power-of-mrna-medicines.html">University of Alberta Faculty of Engineering</a>.</small>
 
-> University of Alberta <br>
-Edmonton, Alberta
+> Engineering Research Chair in Computational Biology<br>
+> University of Alberta<br>
+> Edmonton, Alberta
 
-Bio: To be announced.
+Dr. Hosna Jabbari is a computational biologist and Engineering Research Chair
+in Computational Biology at the University of Alberta. She leads the COBRA Lab,
+where her group studies RNA structure and function using bioinformatics,
+machine learning, and data science.
 
 #### Mark Berjanskii
 
-<img src="./img/faculty/MISSINGHEADSHOT.png" width="200" alt="Placeholder photo for Mark Berjanskii">
+<img src="./img/faculty/mark-berjanskii.png" width="200" alt="Portrait of Dr. Mark Berjanskii">
 
-> University of Alberta <br>
-Edmonton, Alberta
+> Research Associate<br>
+> University of Alberta<br>
+> Edmonton, Alberta
 
-Bio: To be announced.
+Dr. Mark Berjanskii earned a PhD in Biochemistry from the University of
+Missouri–Columbia in 2002, studying oncoviral protein structure and dynamics
+with NMR. After postdoctoral research in protein structural biology at the
+University of Michigan, he joined David Wishart’s group at the University of
+Alberta to work on metabolomics, NMR, and protein structure.
 
 ## Teaching Assistants
 
@@ -30,23 +41,22 @@ Bio: To be announced.
 
 <img src="./img/faculty/amirali-loghmani.png" width="200" alt="Portrait of Amirali Loghmani">
 
-Bio: To be announced.
+> Teaching Assistant<br>
+> University of Alberta<br>
+> Edmonton, Alberta
+
+Amirali Loghmani is an MSc student in Biomedical Engineering at the University
+of Alberta. His research uses deep learning to study SARS-CoV-2 mutations and
+potential variants of concern.
 
 #### Utkarsh Kalra
 
 <img src="./img/faculty/utkarsh-kalra.jpeg" width="200" alt="Portrait of Utkarsh Kalra">
 
-Bio: To be announced.
+> Teaching Assistant<br>
+> University of Alberta<br>
+> Edmonton, Alberta
 
-<!--TEMPLATE FOR EACH FACULTY MEMBER:
-#### NAME
-
-<img src="./img/faculty/MISSINGHEADSHOT.png" width="200" alt="Photo of NAME">
-
->JOB TITLE <br>
-INSTITUTION <br>
-LOCATION
->
-> --- CONTACT INFO, IF PROVIDED
-
-BIO GOES HERE-->
+Utkarsh Kalra is an MSc student in Biomedical Engineering and a Graduate
+Research Assistant in the COBRA Lab. His work includes machine-learning models
+of protein–RNA binding and analysis of single-cell genomic data.
