@@ -13,7 +13,7 @@ Day 2, 10:30
 
 Protein folding with AlphaFold, ColabFold, and ESMFold.
 
-**Participant notebook:** <a href="notebooks/07_Folding.ipynb" download>Download the protein-folding notebook</a>.
+**Participant notebook:** <a href="notebooks/07_Folding_participant.ipynb" download>Download the protein-folding notebook</a>.
 
 **Instructor notebook (includes solutions):** <a href="notebooks/07_Folding_instructor.ipynb" download>Download the instructor edition</a>.
 
