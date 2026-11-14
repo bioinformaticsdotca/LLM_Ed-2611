@@ -1,0 +1,489 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LLMs in Bioinformatics — Student Tutorial</title><style>
+:root{--purple:#542665;--ink:#25282d;}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:#f6f4f8;font:16px/1.6 system-ui,-apple-system,sans-serif}nav{position:fixed;top:0;left:0;width:260px;height:100vh;overflow:auto;padding:28px 22px;background:#fff;border-right:1px solid #e1d9e7}nav strong{color:var(--purple);font-size:13px;letter-spacing:.08em}nav a{display:block;margin:13px 0;font-size:14px;line-height:1.4;text-decoration:none}main{max-width:980px;margin:0 28px 0 290px;padding:40px 50px 80px;background:#fff}h1,h2,h3{color:var(--purple);line-height:1.2}h1{font-size:30px;border-top:2px solid #e6ddec;padding-top:28px;margin-top:45px}h1:first-child{border:0;margin-top:0;padding-top:0;font-size:38px}h2{font-size:22px;margin-top:30px}h3{font-size:18px}a{color:#66377b}code{background:#f4f0f7;padding:1px 4px;border-radius:3px;font-size:.9em;overflow-wrap:anywhere}pre{background:#f4f4f6;padding:16px;overflow:auto;border-radius:5px;font-size:14px}pre code{padding:0;background:none}blockquote{margin:18px 0;padding:1px 17px;border-left:4px solid #79518a;background:#f5eff8;font-size:15px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:14px}td,th{border:1px solid #e5dfeb;padding:9px 11px;text-align:left;vertical-align:top}th{background:#eae0f0}tr:nth-child(even){background:#faf8fb}strong{font-weight:650}p{margin:12px 0}@media(max-width:1000px){nav{position:static;width:auto;height:auto;border:0;border-bottom:1px solid #ddd}nav a{display:inline-block;margin:5px 13px 5px 0}main{margin:0;padding:25px;max-width:none}}@media print{nav{display:none}main{margin:0;padding:0;max-width:none}body{background:#fff;font-size:11pt}h1{page-break-before:always}h1:first-child{page-break-before:auto}h1,h2,h3{page-break-after:avoid}blockquote,pre,tr{page-break-inside:avoid}}
+</style></head><body><nav><strong>STUDENT TUTORIAL</strong><a href="#llms-in-bioinformatics">LLMs in Bioinformatics</a><a href="#1-retrieve-biological-data">1. Retrieve biological data</a><a href="#2-learn-from-rna-sequence-features">2. Learn from RNA sequence features</a><a href="#3-transformers-representations-and-hugging-face">3. Transformers, representations, and Hugging Face</a><a href="#4-retrieve-data-from-publications-with-a-text-model">4. Retrieve data from publications with a text model</a><a href="#5-alphagenome-predict-effects-of-genomic-changes">5. AlphaGenome: predict effects of genomic changes</a><a href="#6-esmfold-from-a-protein-sequence-to-predicted-coordinates">6. ESMFold: from a protein sequence to predicted coordinates</a><a href="#7-make-sense-of-confidence-and-disagreement">7. Make sense of confidence and disagreement</a><a href="#finish-what-to-keep-and-how-to-use-this-in-your-research">Finish: what to keep and how to use this in your research</a><a href="#source-map-and-scope">Source map and scope</a></nav><main><h1 id="llms-in-bioinformatics">LLMs in Bioinformatics</h1>
+<h2 id="a-student-s-step-by-step-workshop-companion">A student’s step-by-step workshop companion</h2>
+<p><strong>Start with no machine-learning background. Read the explanation, try the exercise, check the output, then state what it means.</strong></p>
+<p>Use this guide beside the seven workshop notebooks and the accompanying <em>Hugging Face 101</em> slides. It explains their exercises without modifying their code. File names below omit the extra <code>(1)</code> added during upload; both names identify the same supplied copy.</p>
+<p>The workshop’s question is: <strong>How can we turn biological data into useful predictions without confusing a model’s output with biological evidence?</strong></p>
+<p>You will retrieve records, train small RNA classifiers, explore a protein language model, extract publication data, and examine predictions. These are related activities, not one matched experiment. Publication data connect to Day 2; the final small-protein example is a separate interpretation test.</p>
+<p><strong>How to read this guide.</strong> Read the background immediately before each exercise. In a step, <strong>Do</strong> tells you what to run or complete; <strong>Check</strong> identifies what to inspect; <strong>Explain</strong> asks you to interpret it. You do not need to memorize definitions or reproduce whole programs. Notebook answers and hints are available when needed.</p>
+<p><strong>Finding a step.</strong> “Cells 15–20” counts all text and code cells from 1, not execution counters. Locate the named notebook part first, then use the cell range. [N1–N7]</p>
+<p><strong>Solutions.</strong> Several files already contain instructor solutions. Predict what the completed code will do before running it. Replace only actual <code>___</code> or unfinished <code>...</code> placeholders using the hints; a “TODO” comment may already accompany completed code.</p>
+<p><strong>Cautions.</strong> A <strong>Notebook caveat</strong> identifies a source issue without changing the code. Ask the instructor before modifying the affected analysis.</p>
+<h2 id="your-route-through-the-workshop">Your route through the workshop</h2>
+<table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th>Open this file</th>
+<th>The question you will answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>01_APIs.ipynb</code></td>
+<td>Did I retrieve the biological information I intended?</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>02_basic_ML.ipynb</code></td>
+<td>Can sequence measurements predict an existing RNA label?</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>04_Transformers.ipynb</code></td>
+<td>How does a pretrained model represent and score a sequence?</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>05_Data_Retrieval.ipynb</code></td>
+<td>Can AI-written code extract correct, traceable publication data?</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>06_AlphaGenome.ipynb</code></td>
+<td>What does the model predict for a genomic change?</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>07_Folding.ipynb</code></td>
+<td>What changes in a predicted protein structure, and what does not?</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>08_result_sense.ipynb</code></td>
+<td>Does a confidence score answer my biological question?</td>
+</tr>
+</tbody>
+</table>
+<p>Use <code>04_slides.pdf</code>, the Hugging Face introduction, with Chapter 3. [H1]</p>
+<h2 id="before-you-begin-the-minimum-vocabulary">Before you begin: the minimum vocabulary</h2>
+<p>In the biological examples, <strong>DNA</strong> (deoxyribonucleic acid) and <strong>RNA</strong> (ribonucleic acid) are sequences of units called <strong>nucleotides</strong>. A <strong>protein</strong> is a chain of <strong>amino acids</strong>; an amino acid in the chain is a <strong>residue</strong>. The sequence letters specify these units, not their three-dimensional positions.</p>
+<p>A <strong>model</strong> is a mathematical rule that turns an input into an output. Its adjustable numbers are <strong>parameters</strong>. <strong>Machine learning (ML)</strong> means using examples to determine some of those parameters. <strong>Training</strong>, also called <strong>fitting</strong>, is that adjustment process. <strong>Prediction</strong>, also called <strong>inference</strong>, applies an already fitted model. Downloading data or loading a model is not itself training.</p>
+<p>A <strong>dataset</strong> is a collection of observations. An <strong>observation</strong>, or <strong>sample</strong>, is one item being analyzed. A <strong>feature</strong> is an input measurement describing it. A <strong>target</strong> is the answer a model is meant to predict; a categorical target is often called a <strong>label</strong>. For example, one RNA is a sample, its length is a feature, and its existing coding/noncoding annotation is a label. The annotation is not automatically an independently verified experimental fact.</p>
+<p>In <strong>supervised learning</strong>, training examples include targets. <strong>Classification</strong> predicts categories; <strong>regression</strong> predicts numerical values. <strong>Unsupervised learning</strong> fits patterns without those targets. <strong>Clustering</strong> is an unsupervised task that groups similar inputs. These ideas are worked through in Chapter 2; no model knowledge is assumed beforehand.</p>
+<h2 id="work-safely-in-colab">Work safely in Colab</h2>
+<p>A <strong>notebook</strong> is a document containing text cells, code cells, and possibly saved outputs. A <strong>runtime</strong> is the running computer process that executes the code and remembers variables. <strong>Google Colab</strong> provides a notebook interface connected to such a runtime. A <strong>CPU</strong> is a general-purpose processor; a <strong>GPU</strong> is a processor suited to many parallel numerical operations. Early exercises use a CPU. Folding may require a GPU or a stated saved-results route.</p>
+<p>Save your own notebook copy. Run cells in order with the play button or <strong>Shift+Enter</strong>, reading each instruction first. Save your observations too.</p>
+<p><strong>Installing</strong> a package makes software available to the runtime; <strong>importing</strong> makes its names available to your Python session. A package is a collection of reusable code. The notebooks’ setup cells do both. If you restart, rerun imports and the earlier cells that create the required variables. Old displayed tables may remain visible even though their variables no longer exist.</p>
+<p>Data files created in a temporary runtime are not automatically preserved just because the notebook is saved. Download the required output files or follow the instructor’s storage instructions before leaving a session. Never put an access key or confidential research data in a shared notebook.</p>
+<h3 id="read-the-small-amount-of-python-you-need">Read the small amount of Python you need</h3>
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name = value</code></td>
+<td>Store a value under a variable name. <code>==</code> instead tests equality.</td>
+</tr>
+<tr>
+<td><code>&quot;text&quot;</code>, <code>[a, b]</code>, <code>(a, b)</code></td>
+<td>A text string; a list; a tuple (a fixed ordered group of values).</td>
+</tr>
+<tr>
+<td><code>{&quot;name&quot;: value}</code></td>
+<td>A dictionary: values stored under named keys.</td>
+</tr>
+<tr>
+<td><code>items[0]</code>, <code>seq[1:4]</code></td>
+<td>The first item; a slice starting at index 1 and stopping before index 4. Python indices start at 0.</td>
+</tr>
+<tr>
+<td><code>len(x)</code>, <code>str(x)</code>, <code>float(x)</code></td>
+<td>Count items; convert to text; convert to a decimal number.</td>
+</tr>
+<tr>
+<td><code>def f(x):</code> / <code>f(value)</code></td>
+<td>Define a named function; call it with an input. Its returned value is the result.</td>
+</tr>
+<tr>
+<td><code>for item in items:</code></td>
+<td>Repeat the indented instructions for each item.</td>
+</tr>
+<tr>
+<td><code>assert condition</code></td>
+<td>Stop with an error if a specified check is false.</td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>DataFrame</strong> is a pandas table: rows with named columns. <strong>pandas</strong> is the package used to work with these tables. <strong>NumPy</strong> works with numerical arrays; an <strong>array</strong> is an organized collection of values. Its <strong>shape</strong> lists the sizes of its dimensions, such as <code>(100, 3)</code> for 100 rows and three columns. <code>np</code> and <code>pd</code> are short names created by importing NumPy and pandas.</p>
+<h3 id="record-which-kind-of-result-you-obtained">Record which kind of result you obtained</h3>
+<p>A <strong>live result</strong> was obtained by your current database or model request. A <strong>cache</strong> is a previously saved result reused instead of running the request again. A <strong>recorded demonstration</strong> is a result supplied in the notebook. <strong>Synthetic data</strong> are deliberately constructed examples, not downloaded biological observations. Record the mode: these routes are useful, but they establish different things.</p>
+<p>For each session, write three short lines: <strong>What I ran. What I observed. What I cannot conclude.</strong></p>
+<h1 id="1-retrieve-biological-data">1. Retrieve biological data</h1>
+<p><strong>Notebook:</strong> <code>01_APIs.ipynb</code> · Follow Setup and Parts 1–4, 6. Parts 5 and 7 are optional. [N1]</p>
+<h2 id="understand-the-request-before-running-it">Understand the request before running it</h2>
+<p>A <strong>database</strong> stores records: individual entries with <strong>identifiers</strong>, often called <strong>accessions</strong>. A <strong>sequence</strong> is an ordered nucleotide or amino-acid string. An <strong>annotation</strong> describes a record, such as its organism. A gene summary and a fetched sequence are different objects.</p>
+<p>An <strong>application programming interface (API)</strong> lets programs communicate. An <strong>endpoint</strong> is the address for an operation. Your code sends a <strong>request</strong> with <strong>parameters</strong> describing the desired records and receives a <strong>response</strong>. These are request settings, not learned model parameters. <strong>HTTP</strong> is the communication protocol: status 200 usually indicates success, 429 a request-rate limit, and 5xx a server error. None establishes biological correctness.</p>
+<p><strong>GET</strong> requests information; <strong>POST</strong> supplies a request body for processing. Either can support a search. <strong>JSON</strong>, JavaScript Object Notation, is structured text with named values and lists. <code>response.json()</code> converts it to Python objects; this is inappropriate for non-JSON responses.</p>
+<p>The recurring pattern is <strong>request → inspect → parse → validate → save</strong>. To <strong>parse</strong> is to separate structured text into usable components. <strong>Provenance</strong> is the record of where the data came from and what was done to them.</p>
+<h2 id="step-1-1-open-the-notebook-and-read-the-supplied-sequences">Step 1.1 — Open the notebook and read the supplied sequences</h2>
+<p><strong>Do — Setup; Part 1; cells 4–12.</strong> Run setup. Run the cell writing <code>sample_mirna.fasta</code>. <strong>FASTA</strong> is a text sequence format: <code>&gt;</code> starts a header, followed by sequence lines. A new <code>&gt;</code> begins the next record. The supplied examples are precursor RNA strings, not fresh database downloads.</p>
+<p>Fill the parser’s filename blank with <code>&quot;sample_mirna.fasta&quot;</code>. Biopython’s <code>SeqIO.parse</code> reads records; <code>rec.id</code>, <code>rec.description</code>, and <code>rec.seq</code> refer to their identifier, full header, and sequence. In the table-building cell, use <code>str(rec.seq)</code> for the sequence and <code>len(rec.seq)</code> for its length. A list of dictionaries becomes a DataFrame: one dictionary per row.</p>
+<p><strong>Check.</strong> You should obtain three records with lengths 80, 72, and 65, and a table containing identifiers, descriptions, sequences, and lengths. These numbers check the supplied strings; they do not verify their current database annotations.</p>
+<p><strong>Explain.</strong> Which part was stored in the file, which part was parsed, and did any database request occur?</p>
+<h2 id="step-1-2-search-ncbi-then-retrieve-a-gene-summary">Step 1.2 — Search NCBI, then retrieve a gene summary</h2>
+<p><strong>Do — Part 2.1; cells 15–23.</strong> NCBI is the US National Center for Biotechnology Information. The notebook uses its Gene database. <code>esearch</code> finds identifiers matching <code>MIR21[gene] AND human[orgn]</code>; <code>esummary</code> returns details for an identifier.</p>
+<p>Complete the first request using <code>search_params</code>. A <strong>timeout</strong> limits how long the request waits. <code>raise_for_status()</code> raises an error for an unsuccessful HTTP status; it does not check the gene name. Inspect <code>gene_ids</code> before using <code>gene_ids[0]</code>, the first returned item. If the list is empty, stop rather than continuing with <code>[0]</code>.</p>
+<p>Complete the summary step using <code>summary_resp.json()</code>. Read the nested keys from the outside in: <code>summary_json[&quot;result&quot;][gene_ids[0]]</code> selects the returned result and then the chosen gene record.</p>
+<p><strong>Check.</strong> Verify human MIR21, its chromosome and description. Do not select an unrelated first hit merely to obtain a nonempty result.</p>
+<p><strong>Explain.</strong> You have a gene summary, not the mature RNA sequence and not a protein sequence.</p>
+<h2 id="step-1-3-retrieve-a-uniprot-protein-record">Step 1.3 — Retrieve a UniProt protein record</h2>
+<p><strong>Do — Part 2.2; cells 25–27.</strong> UniProt is a protein sequence and annotation resource. Use <code>uniprot_url</code> in the request. The example accession is <code>P05067</code>, for human amyloid-beta precursor protein, APP. The code prints nested fields for the protein name, gene names, and sequence length.</p>
+<p><strong>Check.</strong> Verify APP before checking the expected 770-residue length. Investigate differences rather than editing the result. This cell prints metadata, not the full sequence.</p>
+<p><strong>Explain.</strong> APP is an independent example. It is not the protein product of the MIR21 gene queried earlier. For the optional accession change, predict which identifying fields should change before rerunning.</p>
+<h2 id="step-1-4-turn-an-api-response-into-a-table">Step 1.4 — Turn an API response into a table</h2>
+<p><strong>Do — Part 2.3; cells 29–36.</strong> RNAcentral brings together noncoding RNA records. The response’s <code>results</code> is a list; each <code>r</code> is one record dictionary. Complete the two table fields with <code>r.get(&quot;length&quot;)</code> and <code>r.get(&quot;rna_type&quot;)</code>. <code>.get()</code> returns <code>None</code> when the key is absent, rather than raising the missing-key error produced by <code>r[&quot;key&quot;]</code>.</p>
+<p><strong>Check.</strong> Examine descriptions, RNA types, identifiers, and any available organism fields. Are they consistent with the requested human let-7 query? A row count alone is not an adequate check.</p>
+<blockquote>
+<p><strong>Notebook caveat — query validation.</strong> This request supplies <code>query</code> to a record-list endpoint; do not assume it applied the filter. RNAcentral documents text searching separately. If unrelated RNAs appear, report an unvalidated retrieval and ask for the approved route. [N1, cells 29–36; B2]</p>
+</blockquote>
+<p>Save the file only with an accompanying note about what was actually retrieved. <strong>CSV</strong> means comma-separated values: a plain-text table. <code>index=False</code> avoids exporting pandas’ row counter as an additional column.</p>
+<h2 id="step-1-5-decode-and-send-a-structured-search">Step 1.5 — Decode and send a structured search</h2>
+<p><strong>Do — Part 3; cells 37–45.</strong> RCSB PDB is a portal to the Protein Data Bank, a structure resource. Follow the browser demonstration if directed. Browser developer tools show requests a page makes; the Console executes JavaScript. Only run inspected commands that you understand and that the instructor approves.</p>
+<p>Back in Python, the long page address contains a search in its <code>request=</code> parameter. <strong>URL encoding</strong> represents special characters with codes such as <code>%7B</code> for <code>{</code>. Complete <code>parse_qs(urlparse(page_url).query)</code>, then <code>json.loads(query_params[&quot;request&quot;][0])</code>. The first extracts and decodes parameters; the second parses the JSON search specification.</p>
+<p>POST <code>decoded_request</code> to the search endpoint. <strong>Check</strong> the status and returned identifiers. The example requests entry <code>1B23</code>. A returned error dictionary is not a successful result merely because <code>.json()</code> can parse it. If the endpoint rejects a field, ask the instructor rather than randomly deleting fields.</p>
+<h2 id="step-1-6-read-a-web-table-and-export-a-reusable-result">Step 1.6 — Read a web table and export a reusable result</h2>
+<p><strong>Do — Part 4; cells 47–53.</strong> <strong>HTML</strong> is the tagged text used to structure a web page. <code>&lt;table&gt;</code> marks a table, <code>&lt;tr&gt;</code> a row, <code>&lt;th&gt;</code> a header cell, and <code>&lt;td&gt;</code> a data cell. <strong>Web scraping</strong> extracts content from the page itself. BeautifulSoup is the parser used to find these tags.</p>
+<p>Complete the table-tag blank with <code>&quot;table&quot;</code> and the DataFrame input with <code>rows</code>. A <strong>codon</strong> is a three-nucleotide unit used in translation. Inspect the headings before accepting the selected codon table. A changed page can alter the number and order of tables. The supplied cleanup removes reference markers and writes <code>scraped_table.csv</code>; inspect whether a meaningful value was accidentally changed.</p>
+<p><strong>Do — Part 6; cells 61–65.</strong> A <strong>pipeline</strong> is a sequence of processing steps. Complete the same two dictionary lookups inside <code>build_rna_dataset</code>, then call the function and inspect its result before export. Defining a function makes the recipe available; calling it performs the work.</p>
+<blockquote>
+<p><strong>Notebook caveat — this is a metadata table.</strong> <code>session1_rna_dataset.csv</code> contains identifiers, descriptions, lengths, and RNA types, not a sequence column or verified classifier targets. It is not loaded as the training dataset by <code>02_basic_ML.ipynb</code>, which performs its own retrieval. The RNAcentral query caution also applies here.</p>
+</blockquote>
+<h3 id="optional-routes-and-exit-check">Optional routes and exit check</h3>
+<p>Optional Part 5 uses <strong>Selenium</strong>, a browser-automation package; <strong>headless</strong> means no visible browser window. Part 7 uses <strong>Docling</strong> to extract PDF text and tables. A <strong>PDF</strong> is a document format. Compare extraction with the original: layout, units, or table contents can be lost.</p>
+<p><strong>Before leaving:</strong> identify a saved file, explain its rows, and state how you checked the request. Preserve it beyond the runtime.</p>
+<h1 id="2-learn-from-rna-sequence-features">2. Learn from RNA sequence features</h1>
+<p><strong>Notebook:</strong> <code>02_basic_ML.ipynb</code> · Setup; Parts 1–6; optional clustering. [N2]</p>
+<h2 id="understand-the-model-s-inputs-and-answers">Understand the model’s inputs and answers</h2>
+<p>Here a row represents one RNA sequence, and the intended label is coding or noncoding. Coding RNA carries instructions used to make a protein; a <strong>long noncoding RNA (lncRNA)</strong> is an RNA annotated as noncoding and longer than short noncoding-RNA classes. The word “lncRNA” in a query does not prove every returned record belongs to that class.</p>
+<p><strong>Feature engineering</strong> means choosing and calculating numerical descriptions of the inputs. This notebook uses nucleotide length, GC percentage, and a simple open-reading-frame length. <strong>GC percentage</strong> is 100 times the fraction of G or C letters. An <strong>open reading frame (ORF)</strong> is a candidate run of codons read without an intervening in-frame stop. A <strong>reading frame</strong> specifies where those three-letter codons begin. The supplied helper looks for AUG-started runs in three frames and reports a length in nucleotides.</p>
+<p><strong><code>X</code> is the input table. <code>y</code> is the corresponding target list.</strong> With 200 observations and three features, <code>X.shape</code> is <code>(200, 3)</code> and <code>y.shape</code> is <code>(200,)</code>. The first entry in <code>y</code> belongs to the first row of <code>X</code>. Keep that pairing when splitting or reordering.</p>
+<p>Illustrative input only: a row <code>[600, 48.0, 300]</code> means length 600 nucleotides, GC 48%, and the helper’s ORF-length value 300. Those are not three observations; they describe one observation. The label is stored separately and must not be included as an input feature. [N2, Part 2; B1]</p>
+<h2 id="step-2-1-decide-which-question-each-toy-dataset-asks">Step 2.1 — Decide which question each toy dataset asks</h2>
+<p><strong>Do — Part 1; cells 7–13.</strong> Run the three small, invented datasets. A supplies category labels: classification. B supplies numerical targets: regression. C withholds targets: clustering. These plots illustrate task types, not biological findings.</p>
+<p>For optional <strong>k-means clustering</strong>, choose the requested number of clusters, <code>n_clusters=2</code>. A <strong>vector</strong> is an ordered list of numbers. A <strong>cluster centre</strong> is the average feature vector of the points assigned to a group. K-means alternates between assigning points to nearby centres and updating those centres. For an illustrative one-feature group containing 1 and 3, the centre is 2. The group numbers are arbitrary names, not coding/noncoding labels.</p>
+<p><code>random_state</code> fixes a random seed, the initial state used to reproduce randomized choices. <code>n_init=10</code> tries multiple starting arrangements. Neither setting guarantees biologically meaningful groups.</p>
+<p><strong>Check.</strong> Which plots used known answers? Could a clustering algorithm produce a grouping unrelated to the biological distinction you care about?</p>
+<h2 id="step-2-2-inspect-the-real-data-or-synthetic-data-route">Step 2.2 — Inspect the real-data or synthetic-data route</h2>
+<p><strong>Do — Part 2.1–2.3; cells 15–20.</strong> Run retrieval and read its message. It requests noncoding sequences from RNAcentral and coding sequences from NCBI. If requests fail or too few records are obtained, it generates synthetic sequences. Record which route you used before interpreting scores.</p>
+<p>Complete <code>raw_df[&quot;label&quot;].value_counts()</code> to count each class. <code>.shape</code> reports rows and columns; <code>.isna().sum()</code> counts missing entries. A <strong>missing value</strong> is an unavailable value, not a measured zero. Inspect both classes before continuing.</p>
+<p>Remove duplicates using the <code>&quot;sequence&quot;</code> column and inspect the row counts before and after. Normalization changes letters to uppercase and T to U for this RNA exercise. It does not establish that the sequence is biologically valid.</p>
+<blockquote>
+<p><strong>Notebook caveat — labels and duplicates.</strong> The RNAcentral fetch assigns “non-coding” without retaining enough metadata to validate the requested subtype. The same search issue as Chapter 1 remains. Also, duplicates are removed before case and T/U normalization, so equivalent normalized strings can survive. Ask the instructor to resolve questionable records. Synthetic examples must be reported as synthetic; their scores are not evidence about RNA biology.</p>
+</blockquote>
+<h2 id="step-2-3-calculate-features-and-encode-labels">Step 2.3 — Calculate features and encode labels</h2>
+<p><strong>Do — Part 2.4–2.5; cells 23–28.</strong> Fill <code>.apply(longest_orf_length)</code>: <code>.apply</code> calls the function once for each sequence. Examine the new columns. On the illustrative string <code>ACGUAC</code>, length is 6 and GC percentage is 50, because three of its six letters are G or C.</p>
+<p>A <strong>histogram</strong> groups numerical values into intervals and shows how many observations fall in each interval. Compare the two class histograms, but do not assume the printed statement about overlap matches your run.</p>
+<p><code>LabelEncoder</code> maps names to integers. Here the intended mapping is coding = 0 and noncoding = 1. Inspect the printed mapping. These numbers are category codes, not a claim that one class is “more” than the other.</p>
+<p><strong>Check.</strong> <code>X</code> will contain the three feature columns, not sequence identifiers or the label. The ORF helper is deliberately simplified and can count a run to the sequence end without finding a stop; its number is not a validated gene prediction.</p>
+<h2 id="step-2-4-understand-scaling-and-data-splitting">Step 2.4 — Understand scaling and data splitting</h2>
+<p><strong>Scaling</strong> changes numerical representation. Standardization subtracts a feature’s mean and divides by its standard deviation, a measure of spread. For an illustrative training mean of 500 and standard deviation of 100, a length of 600 becomes <code>(600 − 500)/100 = 1</code>. This is not a probability.</p>
+<p>A <strong>training set</strong> supplies examples used to fit model parameters. A <strong>test set</strong> is held aside for a final performance check. A <strong>validation set</strong>, or validation folds, helps choose settings before that final check. <strong>Generalization</strong> means performing usefully on relevant new observations, not merely reproducing training answers.</p>
+<p><strong>Do — Part 2.6–2.7; cells 31–34.</strong> Read the scaling code and the split. The required <code>test_size</code> is <code>0.2</code>, meaning 20% is assigned to testing. <code>stratify=y</code> aims to preserve class proportions. The resulting variables pair training inputs with training labels and test inputs with test labels.</p>
+<blockquote>
+<p><strong>Notebook caveat — preprocessing leakage.</strong> <strong>Data leakage</strong> is using information during development that should be unavailable for the evaluation claim. Cell 31 fits the scaler on all records before the split. For a valid held-out workflow, split first, fit preprocessing only on training data, and apply that same transformation to test data. The supplied exercise can demonstrate the commands, but its evaluation needs this correction before a research claim. Do not describe its test set as untouched by preprocessing. Ask the instructor for the approved correction rather than silently changing the exercise. [B3]</p>
+</blockquote>
+<h2 id="step-2-5-fit-three-kinds-of-classifier">Step 2.5 — Fit three kinds of classifier</h2>
+<p>A <strong>classifier</strong> predicts a category. A <strong>decision tree</strong> learns a sequence of questions about features, such as whether an ORF-length feature exceeds a threshold. A <strong>random forest</strong> combines many trees trained with random variation in examples and candidate features. The combined prediction can be more stable than that of a single tree, but this must be checked.</p>
+<p><strong>Logistic regression</strong> is also a classifier here, despite its name. It learns a weighted score from the features and converts it into estimated class probabilities: numbers between 0 and 1 assigned to the possible categories. With three features, the score has the form <code>w1 × feature1 + w2 × feature2 + w3 × feature3 + b</code>. The fitted weights <code>w1</code>, <code>w2</code>, <code>w3</code> and offset <code>b</code> are parameters. You need not derive the probability formula to use it.</p>
+<p><strong>Do — Part 3; cells 36–40.</strong> Fit the tree with <code>X_train, y_train</code>. Then run logistic regression and the forest with the requested 200 trees. The pattern is:</p>
+<pre><code class="language-python"># Variables and model type are defined in the notebook.
+model.fit(X_train, y_train)   # learn parameters using known answers
+prediction = model.predict(X_test)  # apply the fitted rule; do not fit again
+</code></pre>
+<p><code>.predict()</code> does not need the correct test labels. Those are used afterward for evaluation. <strong>Accuracy</strong> is the fraction of predictions matching the labels. A <strong>baseline</strong> is a simple reference method, such as always predicting the commonest training class, against which a model can be compared.</p>
+<p><strong>Check.</strong> Compare training and test accuracy. A large gap can indicate <strong>overfitting</strong>: the fitted rule captures details that do not transfer well to new data. It is a warning, not a complete diagnosis. No particular model is guaranteed to win.</p>
+<h2 id="step-2-6-compare-settings-without-reusing-the-final-answers">Step 2.6 — Compare settings without reusing the final answers</h2>
+<p><strong>Cross-validation</strong> repeatedly fits a model on subsets and evaluates on a withheld subset. Five-fold cross-validation uses five such partitions. Each observation serves as a validation example once. A <strong>hyperparameter</strong> is a setting chosen outside fitting, such as tree depth or number of trees. <strong>Grid search</strong> tries combinations of these settings and compares their validation results.</p>
+<p><strong>Do — Part 4; cells 42–46.</strong> Fill <code>cv=5</code>. Read all five scores and their spread, not just the mean. Optional <code>GridSearchCV</code> tries the notebook’s settings on <code>X_train, y_train</code> and selects a fitted model. If you skip it, the following cell uses the default forest.</p>
+<blockquote>
+<p><strong>Notebook caveat — what was evaluated?</strong> Cell 42 runs cross-validation on all of <code>X, y</code>, including rows used as the earlier test set. This is a different evaluation design, not five new independent tests. A research workflow would keep final test data outside model selection and fit preprocessing inside each training fold. A <strong>software pipeline</strong> can bundle preprocessing and fitting to enforce that order. [N2, cells 31, 42, 45; B3]</p>
+</blockquote>
+<h2 id="step-2-7-read-the-errors-not-only-one-score">Step 2.7 — Read the errors, not only one score</h2>
+<p>Before running evaluation, define <strong>positive</strong> as the class coded 1: <strong>noncoding</strong> in this notebook. A <strong>true positive</strong> is a noncoding RNA predicted noncoding. A <strong>false positive</strong> is a coding RNA predicted noncoding. A <strong>false negative</strong> is a noncoding RNA predicted coding. A <strong>true negative</strong> is a coding RNA predicted coding.</p>
+<p><strong>Precision</strong> asks: among positive predictions, how many are correct? <strong>Recall</strong> asks: among truly positive examples, how many were found? <strong>F1</strong> combines precision and recall as <code>2 × precision × recall / (precision + recall)</code> when that denominator is nonzero.</p>
+<p><strong>Do — Part 5; cells 48–55.</strong> Complete the F1 function name with <code>f1_score</code>. A <strong>confusion matrix</strong> tabulates actual versus predicted labels; in this notebook rows are actual labels and columns predictions. Read the axis labels before interpreting a cell.</p>
+<p>Illustrative arithmetic, not a workshop result: 18 correct coding predictions, 2 coding-to-noncoding mistakes, 4 noncoding-to-coding mistakes, and 6 correct noncoding predictions give accuracy <code>24/30 = 0.80</code>, noncoding precision <code>6/8 = 0.75</code>, recall <code>6/10 = 0.60</code>, and F1 about 0.67.</p>
+<p><code>predict_proba</code> returns estimated class probabilities. Its second column corresponds to class 1 here. A <strong>threshold</strong> converts a probability to a category. The <strong>true-positive rate</strong> is recall. The <strong>false-positive rate</strong> is the fraction of truly negative examples incorrectly predicted positive. The <strong>receiver operating characteristic (ROC) curve</strong> plots these two rates while changing the threshold. <strong>Area under the curve (AUC)</strong> summarizes ranking: 1 means perfect positive-over-negative ranking; 0.5 is chance-level ranking. It is not a measure of whether a probability such as 0.8 is well calibrated. <strong>Calibration</strong> concerns agreement between stated probabilities and observed frequencies.</p>
+<p><strong>Check.</strong> Use <code>y_proba</code> in the AUC calculation. The later discussion text reverses the positive-class interpretation: follow the printed 0/1 mapping and the definitions above, not that sentence. If the output is undefined because a class is absent, investigate the class counts.</p>
+<h2 id="step-2-8-interpret-save-and-optionally-cluster">Step 2.8 — Interpret, save, and optionally cluster</h2>
+<p><strong>Do — Part 6 and Save; cells 58–62.</strong> Attach <code>feature_cols</code> to forest importances. <strong>Feature importance</strong> here summarizes how features contributed to the trees’ training splits. It is not proof of a causal biological mechanism. Save <code>session2_rna_dataset_clean.csv</code> and <code>session2_model_results.csv</code>, together with your data-source and evaluation cautions.</p>
+<p><strong>Optional — cells 64–69.</strong> Cluster <code>X</code> without passing <code>y</code>. After fitting, compare clusters with labels. The <strong>adjusted Rand index (ARI)</strong> compares group assignments while adjusting for chance: 1 indicates identical grouping, 0 chance-level agreement, and negative values can occur. Cluster 0 is not automatically class 0.</p>
+<p><strong>Exit check.</strong> Explain what <code>X_train</code> and <code>y_train</code> contain, why <code>.predict()</code> needs only new inputs, and one reason a high score would not yet demonstrate reliable biological annotation. The next notebook uses ubiquitin, not this dataset; it is not a direct benchmark of these classifiers against embeddings.</p>
+<h1 id="3-transformers-representations-and-hugging-face">3. Transformers, representations, and Hugging Face</h1>
+<p><strong>Notebook:</strong> <code>04_Transformers.ipynb</code> · Parts 0–4; Part 5 is optional. Companion: <code>04_slides.pdf</code>. [N3; H1]</p>
+<h2 id="what-happens-between-a-sequence-and-a-prediction">What happens between a sequence and a prediction?</h2>
+<p>A <strong>language model</strong> learns patterns in sequences of symbols. For this exercise the symbols describe amino acids, not prose. A <strong>pretrained model</strong> has already had its parameters learned from a training collection. You will use those parameters for inference, not retrain them.</p>
+<p>A <strong>token</strong> is one unit processed by the model. A <strong>tokenizer</strong> splits an input into tokens and assigns integer <strong>token IDs</strong> from a <strong>vocabulary</strong>, the set of recognized tokens. An ID is a lookup index, not a meaningful numerical measurement: ID 20 is not “twice” ID 10 biologically.</p>
+<p>An <strong>embedding</strong> is a numerical vector representing a token or input; recall that a vector is an ordered list of numbers. A learned lookup converts token IDs to initial embeddings. A <strong>contextual representation</strong> changes according to the surrounding input. A <strong>neural network</strong> is a model that processes inputs through layers of learned numerical transformations. A <strong>transformer</strong> is a neural-network architecture that builds contextual representations using a mechanism called <strong>attention</strong>.</p>
+<p>Attention computes weighted combinations of representations; these input-dependent weights differ from the fixed model parameters learned in training. Its learned <strong>query</strong>, <strong>key</strong>, and <strong>value</strong> vectors are numerical projections: queries are compared with keys to calculate weights, which combine values. These are not database queries. One <strong>attention head</strong> performs one such calculation; several heads operate within a layer.</p>
+<p>Tiny illustrative example: weights <code>0.2, 0.3, 0.5</code> on vectors <code>[1,0]</code>, <code>[0,1]</code>, <code>[1,1]</code> yield <code>[0.7,0.8]</code>. The weights determine the mixture. They do not, by themselves, establish which biological interaction caused a prediction.</p>
+<p>A <strong>model head</strong> is the output component for a task. A masked-language-model head outputs a <strong>logit</strong>, an unnormalized numerical score, for each possible token at a hidden position. <strong>Softmax</strong> transforms those logits into nonnegative probabilities that sum to 1 over the vocabulary. The probability is conditional on the input and model; it is not a measurement of protein function.</p>
+<h2 id="step-3-1-load-the-matched-tokenizer-and-model">Step 3.1 — Load the matched tokenizer and model</h2>
+<p><strong>Do — Part 0; cells 4–7.</strong> <strong>Hugging Face</strong> hosts model repositories and provides software to use them. A repository is a versioned collection of files. Its <strong>model card</strong> describes intended use, training data, limitations, and license. The <code>transformers</code> Python package loads models; PyTorch is the numerical framework executing the network. Read the model name rather than choosing by popularity. Public availability does not remove license conditions. [H1, pp. 4–5, 11]</p>
+<p>Load <code>facebook/esm2_t6_8M_UR50D</code>. <strong>ESM-2</strong> is the protein language model used here. This small configuration has six layers and twenty attention heads per layer. <code>.eval()</code> selects inference behavior; <code>torch.no_grad()</code> avoids recording information needed to calculate training <strong>gradients</strong>, which describe how a training-error measure changes as parameters change. Neither call fits parameters to ubiquitin.</p>
+<p>The supplied <code>ubq</code> string is the 76-residue ubiquitin sequence. Confirm its length before continuing. The notebook requests an attention implementation that returns attention weights; if it cannot return them, ask the instructor before the attention exercise.</p>
+<p><strong>Check.</strong> Record the model name and device. Unexpected missing model weights deserve investigation; do not treat every loading warning as harmless.</p>
+<h2 id="step-3-2-compare-tokenization">Step 3.2 — Compare tokenization</h2>
+<p><strong>Do — Part 1; cells 9–16.</strong> Compare the English text tokenizer, protein tokenizer, and DNA chunking helper. A <strong>k-mer</strong> is a consecutive sequence of k letters. Overlapping 6-mers advance one base; nonoverlapping ones advance six.</p>
+<p>For 30 bases, overlapping 6-mers yield <code>30 − 6 + 1 = 25</code> chunks, and nonoverlapping 6-mers yield 5. For ubiquitin, count <code>len(enc[&quot;input_ids&quot;])</code>: 76 residues plus start and end tokens gives 78. <strong>Special tokens</strong> are markers such as <code>&lt;cls&gt;</code>, <code>&lt;eos&gt;</code>, and <code>&lt;mask&gt;</code> rather than amino acids. Obtain the mask ID through <code>tok.mask_token_id</code>.</p>
+<p>A <strong>context window</strong> limits how many tokens the model can process at once. Token count and biological sequence length are therefore different quantities.</p>
+<p><strong>Do — Part 1b; cells 18–24.</strong> <strong>Byte-pair encoding (BPE)</strong> learns a vocabulary of variable-length pieces. Inspect DNABERT-2’s DNA tokenizer and GPT-2’s text tokenizer on the supplied biological names. Only tokenizers are being used for those comparisons, not the corresponding prediction models. Count tokens per character and identify the most fragmented string.</p>
+<p><strong>Check.</strong> An <code>rs</code> identifier names a variant record; a transcript accession identifies a particular sequence record; <code>p.Cys61Gly</code> is a protein-change description. The tokenizer need not preserve each as one token. Fragmentation does not prove that a model cannot represent the name’s meaning, and it does not perform a database lookup.</p>
+<blockquote>
+<p><strong>Notebook caveat — discarded remainder.</strong> The nonoverlapping helper keeps only complete chunks. The 64-base DNA example produces ten complete 6-mers and leaves four bases out. Dividing 64 by 10 prints 6.4, but each retained chunk still contains six bases; the extra bases were not encoded. Inspect <strong>coverage</strong>, the fraction of the original input actually retained, as well as token count.</p>
+</blockquote>
+<h2 id="step-3-3-hide-one-residue-and-inspect-the-answer-distribution">Step 3.3 — Hide one residue and inspect the answer distribution</h2>
+<p><strong>Self-supervised learning</strong> creates a training target from the data itself, such as hiding an existing residue and predicting it. That is how the exercise motivates pretraining. Today, however, masking a residue is an inference experiment using fixed weights. <strong>Fine-tuning</strong> would update pretrained weights using additional training data; this notebook does not do that.</p>
+<p><strong>Do — Part 2; cells 26–30.</strong> Read <code>masked_predictions</code>. Python sequence positions are 0-based: residue number 46 is <code>my_pos=45</code>. The model token position is <code>pos + 1</code> because <code>&lt;cls&gt;</code> comes first. Select a position, write your guess, and inspect the top predictions and probability assigned to the actual residue.</p>
+<p>A <strong>tensor</strong> is a multidimensional numerical array. Here <code>logits</code> has dimensions for batch, token position, and vocabulary. A <strong>batch</strong> is a group of inputs processed together. For one ubiquitin input, the first two dimensions are 1 and 78; the third has one entry per vocabulary token. <code>logits[0, pos+1]</code> selects a vector, and softmax converts it to probabilities.</p>
+<p>Use the actual residue’s token ID to read <code>probs[true_id]</code>. Top predictions are alternatives, not experimentally observed mutations. The vocabulary includes special tokens, so the code’s full probability vector is not restricted to exactly twenty entries.</p>
+<p><strong>Check.</strong> A valid probability lies between 0 and 1. Do not expect the true residue to rank first at every position.</p>
+<h2 id="step-3-4-repeat-masking-over-the-protein">Step 3.4 — Repeat masking over the protein</h2>
+<p><strong>Do — Exercise 2b; cells 32–35.</strong> Hide one residue at a time, leaving the others visible, and record the probability of the correct residue. <code>p_true</code> should contain 76 numbers. The plotted horizontal mean averages those probabilities.</p>
+<p>The color grouping marks residues selected as hydrophobic, meaning they tend to favor non-water environments. A difference between colors does not establish that hydrophobicity caused the probabilities.</p>
+<p><strong>Explain.</strong> A low probability means the observed residue was not strongly favored by this model under this masking experiment. It does not by itself mean the protein is dysfunctional or the database sequence is wrong.</p>
+<h2 id="step-3-5-inspect-attention-without-treating-it-as-an-explanation">Step 3.5 — Inspect attention without treating it as an explanation</h2>
+<p><strong>Do — Part 3; cells 37–46.</strong> Inspect <code>A.shape</code>: after removing special-token rows and columns, the supplied model produces <code>(6, 20, 76, 76)</code>. An <strong>axis</strong> is one dimension of an array. These axes are layer, head, receiving residue, and contributing residue. A <strong>heatmap</strong> uses color to show the entries of a matrix, a two-dimensional array.</p>
+<p>The notebook renormalizes rows after removing special tokens. A bright diagonal means nearby sequence positions receive much weight. A distant bright spot means a large separation in sequence index—not necessarily a physical contact in three-dimensional space.</p>
+<p>For average attention distance, <code>dist[i,j] = |i-j|</code> is the separation along the sequence. Multiplying by weights, summing over <code>j</code>, and averaging over <code>i</code> gives one number per layer/head, hence shape <code>(6,20)</code>. Illustratively, weights 0.8 and 0.2 at distances 1 and 6 give weighted distance 2.</p>
+<p><strong>Check.</strong> The largest and smallest values identify different attention patterns. Code indices start at 0; printed layer/head labels add 1. You are not measuring physical distance here. An <strong>angstrom</strong> (Å), used later for atomic coordinates, is one ten-billionth of a metre. The optional interactive viewer can be skipped.</p>
+<h2 id="step-3-6-use-a-scrambled-sequence-control">Step 3.6 — Use a scrambled-sequence control</h2>
+<p>A <strong>control</strong> is a comparison designed to help interpret a result. Here a <strong>scrambled sequence</strong> preserves the amino-acid counts but changes their order. That tests sensitivity to order beyond composition, not foldability directly.</p>
+<p><strong>Do — Part 4; cells 50–55.</strong> Read the batched helper: it creates one masked copy for each position, rather than hiding all residues in one input. Check that its probabilities agree with the slower loop within numerical tolerance. Then shuffle the letters using the supplied seed and compare native and scrambled scores.</p>
+<p><strong>Check.</strong> Length and letter counts must match; order must differ. Record your actual mean probabilities. A lower scrambled score is consistent with order-sensitive sequence learning in this example. One scramble of one familiar protein does not demonstrate universal function prediction or an independent benchmark against unseen proteins.</p>
+<p><strong>Exit check.</strong> Explain the difference between a token ID, an embedding, an attention weight, and a masked-residue probability. No RNA-classifier comparison or separate embedding-based classifier is implemented in this notebook; the Hugging Face slides provide additional background, not evidence that those exercises were run.</p>
+<h1 id="4-retrieve-data-from-publications-with-a-text-model">4. Retrieve data from publications with a text model</h1>
+<p><strong>Notebook:</strong> <code>05_Data_Retrieval.ipynb</code> · Parts 0–5. Skip the instructor-preparation section at the end. [N4]</p>
+<h2 id="know-the-sources-and-the-output">Know the sources and the output</h2>
+<p>A <strong>text large language model (text LLM)</strong> generates text or code from input context. A <strong>prompt</strong> supplies instructions and context. Here <strong>vibe coding</strong> means requesting code, then inspecting and testing it. Generated code is a proposal, not a verified analysis.</p>
+<p>A <strong>cell line</strong> is a population of cells maintained for research. <strong>CCLE</strong>, the Cancer Cell Line Encyclopedia, supplies molecular data for cancer cell lines. <strong>Multi-omics</strong> combines molecular layers: DNA mutations and <strong>copy number</strong> (quantity of a genomic region), RNA abundance, and <strong>proteomics</strong> (protein measurements).</p>
+<p>Keep the two papers distinct: Jarnuczak et al. 2021 supplies text through Europe PMC; Nusinow et al. 2020 supplies protein tables through the authors’ site. A <strong>PubMed Central identifier (PMCID)</strong> names an article; here the text example is <code>PMC8065022</code>.</p>
+<p><strong>XML</strong>, Extensible Markup Language, is tagged structured text used for the article. A <strong>supplementary table</strong> accompanies a paper. A <strong>schema</strong> specifies required columns or fields. The target table has one row per <code>(cell_line, gene)</code>, not per patient or mutation.</p>
+<h2 id="step-4-1-set-up-and-state-a-precise-code-contract">Step 4.1 — Set up and state a precise code contract</h2>
+<p><strong>Do — Part 0; cells 3–6.</strong> Check that <code>ccle_panel.csv</code> downloaded. It is instructor-prepared RNA, copy-number and mutation data, not extracted article text. Parts 1–3 can proceed without it; the final handoff cannot.</p>
+<p>Before asking for code, specify the source, function name, inputs, returned fields, error behavior, and independent checks. An <strong>edge case</strong> is an unusual input, such as an invalid identifier or missing file, that the function must handle intentionally. The notebook’s prompt checker searches for words or patterns. A high checker score does not prove the prompt is clear or its generated code is correct.</p>
+<p>The <strong>safety net</strong> contains reference functions used when a participant’s function fails. Record when it was used. Read generated code before running it; do not approve arbitrary deletion, installation, shell commands, or transmission of private data.</p>
+<h2 id="step-4-2-retrieve-the-article-without-losing-its-contents">Step 4.2 — Retrieve the article without losing its contents</h2>
+<p><strong>Do — Part 1; cells 8–16.</strong> Write your prompt for <code>get_paper(pmcid)</code>. The output must include <code>title</code>, <code>sections</code>, <code>text</code>, and the retrieval route. Use the notebook’s named routes: structured full text, then PDF-derived text, then an explicitly supplied local text file if needed.</p>
+<p>The file already contains a reference solution; replace it only in your saved copy or record that you used it. <code>verify_part1</code> checks text length, an invalid ID, and strings <code>191</code>, <code>0.58</code>, <code>7,171</code>. These checks are article-specific, not universal rules.</p>
+<p><strong>Check.</strong> Does the title identify the right paper? Are the expected sections present? A PDF fallback may supply its opening text as a provisional title, which needs manual review. Passing a substring check does not establish complete extraction.</p>
+<p>The deliberately flawed function keeps only 5,000 characters with <code>[:5000]</code>. Explain what it might lose. Check invalid-ID behavior too: an accidental exception is not necessarily the informative error required by your contract.</p>
+<h2 id="step-4-3-download-and-inspect-the-supplementary-tables">Step 4.3 — Download and inspect the supplementary tables</h2>
+<p><strong>Do — Part 2; cells 18–29.</strong> Table S1 contains sample information. Table S2 contains protein measurements. An Excel file can have multiple sheets; <code>.csv.gz</code> is a compressed text table. <code>header=None</code> initially treats every row as data, letting you inspect where the actual column headings begin.</p>
+<p>Inspect <code>get_supplements</code> and <code>clean_table</code>. Tables may contain notes, extra headings, mixed values, and missing entries. pandas often represents missing numbers as <strong>NaN</strong>, “not a number.” Do not replace missing with zero or assume every missing protein value means nondetection.</p>
+<p>Inspect the catalogue before accepting <code>S1_KEY</code> and <code>S2_KEY</code>. The code guesses the protein matrix from its width. <strong>Wide format</strong> puts samples in separate columns. Verify gene/sample headings; size alone does not identify a table.</p>
+<p><strong>Check.</strong> Use the dimensions, remaining missing values, and ERBB2 entry as sanity checks. The material gives approximate counts from a published dataset; live versions may differ. A biological expectation, such as high ERBB2 in some lines, is not an identity check on every row.</p>
+<p>Run <code>clean_table_flawed</code> and inspect which rows disappeared. Its unrestricted <code>dropna()</code> removes a protein if any sample entry is missing. That can change the population being analyzed, even though no programming error occurs.</p>
+<h2 id="step-4-4-extract-facts-and-verify-their-supporting-text">Step 4.4 — Extract facts and verify their supporting text</h2>
+<p><strong>Do — Part 3; cells 31–37.</strong> Ask the assistant for the four specified facts as JSON. Each item must contain the fact name, value, and an exact supporting sentence. JSON <code>null</code> means no value is supplied; it is not a zero.</p>
+<blockquote>
+<p><strong>Notebook caveat — supply the whole intended passage.</strong> Cell 31 prints only a 1,500-character preview even though its directions tell you to copy the abstract and results. In your own copy, add <code>print(RESULTS_TEXT)</code> to view that full variable before supplying the text. Check its headings and content. Do not expect the assistant to extract facts from passages it was never given.</p>
+</blockquote>
+<p>Also, cell 34 constructs <code>AI_JSON</code> from reference facts. To test an actual assistant answer, replace that assignment with your own JSON string. Leaving it unchanged tests the reference answer, not a new model response. Keep that distinction in your record.</p>
+<p><strong>Check.</strong> <code>verify_facts</code> tests whether the quoted words occur in the paper, whether the value occurs in the quote, and whether the value matches the notebook’s reference. Read the surrounding paragraph too. A real sentence may concern a different cohort or endpoint. A failed exact-string match may reflect paraphrasing or extraction formatting; it is not automatically evidence of fabrication.</p>
+<p>A <strong>hallucination</strong>, in the text-LLM sense used here, is unsupported or fabricated generated content. A requested <code>null</code> when the passage lacks the answer can be the correct response, even if the notebook’s fixed-answer checker flags it for review. Do not force a value to make a check pass.</p>
+<h2 id="step-4-5-build-the-shared-table-and-check-the-join">Step 4.5 — Build the shared table and check the join</h2>
+<p><strong>Do — Part 4; cells 39–46.</strong> A <strong>join</strong> matches rows from two tables using <strong>keys</strong>, the fields identifying the same observation. Here both <code>cell_line</code> and <code>gene</code> are required. <strong>Long format</strong> gives one row per cell-line/gene pair; <code>melt</code> reshapes sample columns into rows.</p>
+<p>Sample names such as <code>AU565_BREAST_TenPx05</code> contain a cell-line identifier and a measurement-batch suffix. A <strong>batch</strong> here means a group of laboratory measurements, not the model-input batch from Chapter 3. Removing the specified suffix makes the key compatible with the prepared file. Repeated measurements are averaged by the reference code; inspect that grouping.</p>
+<p><code>rna_log2tpm</code> is the prepared RNA-expression column: TPM means transcripts per million, and “log2” indicates a base-2 logarithmic scale. Check the source’s precise transformation and any added constant before making quantitative comparisons. It is not in the same units as <code>protein</code>.</p>
+<blockquote>
+<p><strong>Notebook caveat — requested versus implemented table.</strong> The prompt requests a left join, which keeps every left-hand key, and asks to retain missing measurements. The reference implementation drops missing protein observations and uses an inner join, retaining only keys present on both sides. Report this retained-observation scope. Do not describe the resulting table as containing all missing gene/cell-line combinations.</p>
+</blockquote>
+<p>The validation checks duplicate keys, leftover suffixes, implausible inserted zeros, and agreement between RNA and protein. <strong>Correlation</strong> measures association. The code uses <strong>Spearman correlation</strong>, which compares ranks, ranging from −1 to 1 when defined; constant values can make it undefined. A positive value indicates that higher values tend to occur together. It does not prove correct row matching or causation. The quoted reference correlations also summarize different studies or populations; they are not exact targets for this small panel.</p>
+<p><strong>Save only after inspecting the checks.</strong> Preserve <code>ccle_multiomics_panel.csv</code> with its source, filtering, dimensions and code route. The save cell does not enforce all previous checks; the file may still need correction. <strong>Exit check:</strong> Why are two join keys needed, and why must you read a quote in context?</p>
+<h1 id="5-alphagenome-predict-effects-of-genomic-changes">5. AlphaGenome: predict effects of genomic changes</h1>
+<p><strong>Notebook:</strong> <code>06_AlphaGenome.ipynb</code> · Parts 0–3; Part 4 contains optional extension and troubleshooting. [N5]</p>
+<p><strong>Day 2 files.</strong> AlphaGenome needs the instructor’s approved <code>ccle_mutations.csv</code> and <code>ccle_panel.csv</code>: variant coordinates and RNA measurements. Folding uses your <code>ccle_multiomics_panel.csv</code>. The publication exercise does not create every required file. Download helpers may reuse existing local files; confirm their versions.</p>
+<h2 id="what-is-predicted-and-from-which-input">What is predicted, and from which input?</h2>
+<p><strong>AlphaGenome</strong> predicts molecular signals from DNA. It is not a conversational assistant. Python runs in Colab; the model runs through a hosted API. You request inference, not training on these data.</p>
+<p>A <strong>genome assembly</strong>, or <strong>genome build</strong>, is a particular reference sequence and coordinate system. This notebook uses human GRCh38, also called hg38. A <strong>locus</strong> is a genomic region. A <strong>variant</strong> describes a difference from a reference sequence; its <strong>reference allele</strong> is the reference sequence at the site and its <strong>alternate allele</strong> is the proposed replacement. An <strong>SNV</strong> is a single-nucleotide variant, one base replaced by another.</p>
+<p>Genes have a <strong>strand</strong>, the direction in which their sequence is read. The supplied mutation table uses alleles on the forward genomic strand even when the gene lies on the reverse strand. Genomic positions and protein positions are different coordinate systems.</p>
+<p>A transcript is an RNA copy from a gene. <strong>Exons</strong> are the portions retained in a spliced transcript; <strong>introns</strong> are removed. <strong>Splicing</strong> joins exons, using signals near donor and acceptor boundaries. The notebook groups variants as splice-related, nonsense (creating a premature stop), missense (changing an amino acid), synonymous (not changing the amino acid), or synonymous near a splice region. These annotations describe types of change, not guaranteed effects on RNA abundance.</p>
+<h2 id="step-5-1-connect-without-exposing-the-key">Step 5.1 — Connect without exposing the key</h2>
+<p><strong>Do — Part 0; cells 3–4.</strong> An <strong>API key</strong> is a credential authorizing access. Obtain one through the instructor-approved service process and store it under <code>ALPHA_GENOME_API_KEY</code> in Colab Secrets, with notebook access enabled. Never paste it into a shared code cell or saved output. Read the service’s current terms before sending data.</p>
+<p>Install the notebook’s packages and use the supplied v1 client. A newer tutorial may use another interface; do not mix interfaces by changing individual imports. The test sequence in <code>connect</code> is artificial and checks communication, not biology.</p>
+<p><strong>Check.</strong> The function can print “connected” after a non-authentication test failure. Inspect preceding errors and the first prediction; the banner and historical outputs are not proof of your successful run.</p>
+<h2 id="step-5-2-inspect-the-tp53-region-and-a-predicted-track">Step 5.2 — Inspect the TP53 region and a predicted track</h2>
+<p><strong>Do — Part 1; cells 6–9.</strong> The annotation file describes gene locations and transcripts. GENCODE is the annotation source; MANE Select identifies a representative transcript choice used by the helper. An <strong>interval</strong> is a chromosome segment with start and end coordinates. A <strong>base pair (bp)</strong> is the length unit here; kb and Mb are approximate thousand- and million-base units.</p>
+<p>Read TP53’s interval and strand. The code resizes the requested interval to a supported input length; this changes the surrounding context, not the gene itself. It requests <strong>RNA-seq</strong>, RNA-sequencing-related signal, for the named right-liver-lobe context. An <strong>ontology term</strong> is a standardized identifier for a biological concept, here a tissue.</p>
+<p>A <strong>track</strong> is a sequence of signal values along genomic coordinates, with metadata describing what was predicted. Inspect the exons and strand-specific tracks before describing the pattern. This is one model context, not a measurement of every CCLE cell line.</p>
+<h2 id="step-5-3-construct-and-validate-the-variant-inputs">Step 5.3 — Construct and validate the variant inputs</h2>
+<p><strong>Do — Part 2; cells 11–20.</strong> Check that the two prepared files exist and contain the required fields. Filter TP53 and inspect the class counts. <strong>TODO 1</strong> formats chromosomes once as <code>chr17</code>, converts the position to an integer, and uppercases the alleles.</p>
+<p>A <strong>1-based</strong> system calls the first base position 1. A <strong>0-based, half-open interval</strong> includes its start and excludes its end. For example, a single base at 1-based position 100 corresponds to interval <code>[99,100)</code>. AlphaGenome’s variant position is 1-based; some interval and reference-service operations use other conventions. The supplied helper performs the conversions. [B4]</p>
+<p>The reference lookup compares each stated reference allele with GRCh38. Review every excluded mismatch. The 90% aggregate assertion is a warning threshold, not permission to score mismatches: the code removes individual mismatches afterward.</p>
+<p><strong>Check.</strong> A matching base is necessary but not sufficient to establish correct coordinates, gene, or strand. An accidental match is possible. Do not complement alleles merely because TP53 is on the reverse strand: the supplied variant table is defined on the forward genomic strand.</p>
+<p>Record how many distinct variants and carriers survive. A <strong>carrier</strong> here is a cell line with that recorded variant. The notebook scores each distinct variant once, even if several lines carry it.</p>
+<h2 id="step-5-4-turn-predicted-tracks-into-scores">Step 5.4 — Turn predicted tracks into scores</h2>
+<p><strong>Do — Part 3; cells 24–27.</strong> A <strong>variant scorer</strong> summarizes the difference between reference and alternate predictions. The two selected output types concern splice-site signals and RNA-seq. A <strong>raw score</strong> is a scorer-specific numerical result, not automatically a probability or clinical label.</p>
+<p>Read <code>tidy</code>, the returned table. It can contain many rows for each variant because genes and biological contexts differ. The notebook filters TP53 and summarizes with the maximum absolute splice score and the mean RNA score across tracks. “Absolute” discards the sign, retaining magnitude. The RNA mean retains direction under this scorer’s definition.</p>
+<p><strong>Check.</strong> Confirm the selected output and gene before grouping. One summarized value per variant is not the same as a directly predicted RNA measurement in a particular carrier cell line. Averaging different contexts can conceal opposing effects. Use the notebook’s v1 definitions when interpreting score direction. [B4]</p>
+<h2 id="step-5-5-compare-predictions-with-observations-carefully">Step 5.5 — Compare predictions with observations carefully</h2>
+<p><strong>Do — cells 29–31.</strong> A <strong>z-score</strong> expresses a measurement relative to a reference mean and standard deviation: <code>(value − mean)/standard deviation</code>. The notebook averages the carriers’ RNA, then standardizes it against lines without a recorded TP53 mutation in the supplied table. Negative values indicate lower RNA relative to that reference group.</p>
+<p>This reference is “no mutation recorded in this table,” not proof of an experimentally verified mutation-free genome. Before plotting, inspect how many predictions and observations matched. Identifier-format mismatches can silently remove rows. If the summary unexpectedly becomes empty or much smaller, stop and inspect the join.</p>
+<p><strong>Check.</strong> Read axes and class counts before the rank correlation. A printed <strong>p-value</strong> summarizes how extreme the calculated test quantity is under a specified no-association model and its assumptions; it is not the probability that a biological explanation is true. Small groups, shared carrier lines, tissue differences, other mutations, and copy number limit this comparison.</p>
+<blockquote>
+<p><strong>Interpretation caution.</strong> The notebook’s proposed class ranking is a hypothesis. Premature stops do not always reduce RNA; synonymous and missense changes can affect RNA processing. <strong>Nonsense-mediated decay</strong> is a cellular pathway that can reduce some premature-stop-containing transcripts. This exercise does not prove that a DNA-input model can never learn associations with downstream processes. Nor does a between-cell-line association isolate a variant’s causal effect.</p>
+</blockquote>
+<p><strong>Optional — Part 4.</strong> <strong>Liftover</strong> maps coordinates between genome assemblies. Read whether the mapping succeeds and recheck the reference; a changed build cannot be handled by relabeling the old coordinate.</p>
+<p><strong>Exit check.</strong> State the build, allele convention, selected model output, and one reason the predicted effect and observed RNA comparison are not a controlled experiment.</p>
+<h1 id="6-esmfold-from-a-protein-sequence-to-predicted-coordinates">6. ESMFold: from a protein sequence to predicted coordinates</h1>
+<p><strong>Notebook:</strong> <code>07_Folding.ipynb</code> · Parts 0–4; Part 5 is optional. [N6]</p>
+<h2 id="structure-is-a-different-prediction-target">Structure is a different prediction target</h2>
+<p><strong>Folding stability</strong> concerns a protein’s tendency to retain a folded state under specified conditions. <strong>Protein function</strong> concerns what it does, such as binding another molecule or catalyzing a reaction. Neither is measured merely by drawing predicted coordinates.</p>
+<p><strong>ESMFold</strong> combines a protein language model with a <strong>folding head</strong>, the component that predicts three-dimensional structure. It takes an amino-acid sequence and outputs coordinates and confidence estimates. It does not simulate a molecule physically folding over time. A <strong>wild-type</strong> sequence is the reference sequence for the comparison; a <strong>mutant</strong> differs from it.</p>
+<p>A protein <strong>domain</strong> is a region with a structural or functional role. Selected fragments reduce computing cost. An <strong>isoform</strong> is an alternative protein form, potentially with different numbering. Check reference identity and coordinates before mutation.</p>
+<p>The exercise compares structural summaries with cell-line measurements. A predicted structure is not an assay of activity, stability, or degradation.</p>
+<h2 id="step-6-1-check-the-data-and-choose-the-execution-route">Step 6.1 — Check the data and choose the execution route</h2>
+<p><strong>Do — Part 0; cells 3–4.</strong> Load the approved <code>ccle_multiomics_panel.csv</code>. Verify that it has the RNA, protein, and mutation columns and that it is your validated handoff or an explicitly supplied reference copy.</p>
+<p><code>FOLD_MODE=&quot;api&quot;</code> sends sequences to the hosted service; <code>&quot;local&quot;</code> runs inside Colab on a suitable GPU. Local here is still cloud computation, not your computer. Model downloads and memory demands can be substantial; timing estimates are not guarantees.</p>
+<p>The helper may reuse a structure or fall back to GPU computation. A <strong>hash</strong> is a fingerprint of input bytes, used here to name saved structures by sequence. Record the route: a hash alone does not document the model version, settings, or a fresh run.</p>
+<h2 id="step-6-2-parse-substitutions-and-check-reference-residues">Step 6.2 — Parse substitutions and check reference residues</h2>
+<p><strong>Do — Part 1; cells 6–9.</strong> <code>p.R175H</code> means reference residue R at protein position 175 is replaced by H. A <strong>missense substitution</strong> changes an amino acid. A stop change and a <strong>frameshift</strong>, which changes the translation frame, are different kinds of variation.</p>
+<p>A <strong>regular expression</strong> is a pattern for recognizing text. The supplied parser recognizes <code>p.</code> followed by one letter, digits, and one letter. Its returned tuple contains reference residue, integer position, and new residue. Several changes separated by <code>;</code> can be returned separately.</p>
+<p><strong>Check.</strong> Run the parser checks and verify the reported reference residues against UniProt. Matching position 175 requires <code>sequence[174]</code> because Python starts at 0. Unexpected isoforms or naming conventions need review, not forced substitutions.</p>
+<blockquote>
+<p><strong>Notebook caveat — scope.</strong> The parser deliberately ignores other change types. This does not mean that only missense-derived sequences can ever be submitted to structure predictors; it means other consequences require constructing and validating a different input sequence. A missing record is not proof of no biological variation.</p>
+</blockquote>
+<h2 id="step-6-3-extract-and-fold-the-tp53-fragment">Step 6.3 — Extract and fold the TP53 fragment</h2>
+<p><strong>Do — Part 2; cells 12–13.</strong> The TP53 fragment is residues 94–312 inclusive, giving <code>312 − 94 + 1 = 219</code> residues. Python takes <code>sequence[93:312]</code>: start at index 93 and stop before 312. Other selected genes and fragments are listed in <code>GENES</code>; do not change them mid-comparison without rerunning dependent steps.</p>
+<p>A <strong>PDB file</strong> is a text structure format. In a predicted PDB, atom lines contain coordinates. An <strong>angstrom (Å)</strong> is a length unit equal to one tenth of a nanometre. A <strong>C-alpha atom</strong>, written <code>CA</code>, is a backbone atom used here as one representative coordinate per residue.</p>
+<p><strong>Check.</strong> Confirm length, execution route, and that the response contains a structure rather than an error page. Retrieval is not experimental validation.</p>
+<h2 id="step-6-4-read-confidence-residue-by-residue">Step 6.4 — Read confidence residue by residue</h2>
+<p><strong>pLDDT</strong>, predicted local distance difference test score, estimates local structural accuracy. The workshop displays it on a 0–100 scale. It is not the probability that the protein folds or is functional. A low score may reflect several causes, including flexibility, <strong>disorder</strong> (lack of one stable local conformation), missing context, or model uncertainty; it is not a definitive disorder experiment. [B5]</p>
+<p><strong>Do — TODO 2; cells 15–17.</strong> Parse only <code>ATOM</code> lines whose atom name is <code>CA</code>. Read the fixed coordinate and confidence fields. The coordinate array should have shape <code>(219,3)</code> for this fragment; the confidence array should contain 219 values. The two-residue artificial test validates the parser’s arithmetic only.</p>
+<p>The predicted file stores confidence in a field conventionally called the <strong>B-factor</strong>. In experimentally determined structures, that field has a different meaning; do not interpret an experimental B-factor as pLDDT.</p>
+<p><strong>Check.</strong> The source parser multiplies scores by 100 if the largest value is at most 1. That is a heuristic for different exporter conventions. Confirm the source convention with the instructor rather than assuming any small number needs multiplication. Inspect the profile, not just its mean.</p>
+<h2 id="step-6-5-compare-wild-type-mutants-and-a-scrambled-control">Step 6.5 — Compare wild type, mutants, and a scrambled control</h2>
+<p><strong>Do — Part 3; cells 22–24.</strong> The mutation function replaces one position in a fragment. For full-protein R175H in a fragment starting at residue 94, the fragment’s 1-based position is <code>175 − 94 + 1 = 82</code>, and its Python index is 81. Confirm the reference letter before making the change.</p>
+<p><strong>Structural alignment</strong> rotates and translates corresponding coordinates to make them comparable without deforming either structure. The supplied Kabsch method finds such a fit. <strong>Root-mean-square deviation (RMSD)</strong> summarizes the remaining coordinate distances after alignment: square each distance, average, then take the square root. Report the length unit and which residues were compared. Two already-aligned example distances of 1 Å and 3 Å give RMSD <code>sqrt(5) ≈ 2.24 Å</code>.</p>
+<p>The notebook compares R175H, R248Q, and R273H with the reference fragment and folds a composition-preserving scramble. “Small RMSD” means these predicted backbones are similar under the stated alignment. It does not establish unchanged binding, activity, stability, or abundance.</p>
+<p><strong>Check.</strong> Matching residues matters more than equal array length. Aligning coordinates cannot fix mismatched fragments. Report your run, not a numerical interpretation saved from an earlier run.</p>
+<h2 id="step-6-6-explore-structural-summaries-against-cell-line-measurements">Step 6.6 — Explore structural summaries against cell-line measurements</h2>
+<p><strong>Do — Part 4; cells 27–33.</strong> The notebook’s <strong>burial proxy</strong> counts other C-alpha atoms less than 10 Å away. A <strong>proxy</strong> is an indirect approximation. It is not a calculated solvent-accessible area or a physical energy. In the artificial five-point test, neighbours are <code>[2,3,4,3,2]</code>; subtracting one excludes each point from its own count.</p>
+<p>Candidates must meet the requested carrier and reference counts. Keep <code>MIN_LINES</code>, <code>MIN_REF</code>, and <code>PER_GENE</code> unchanged unless directed. If no candidates survive, ask for help rather than lowering thresholds until a pleasing result appears.</p>
+<p>For each gene, protein and RNA measurements are separately standardized relative to lines with no recorded mutation. The summary <code>protein_minus_rna</code> is the difference between these two z-scores, averaged over selected carriers. A negative value means the standardized protein level is lower than the standardized RNA level in that comparison.</p>
+<blockquote>
+<p><strong>Interpretation caution.</strong> A <strong>residual</strong> is an observed value minus a value predicted by a fitted model. This difference is not such a residual: no model predicting protein from RNA is fitted here. It does not establish degradation. Many biological and measurement factors, including tissue and other alterations, can affect the two measurements.</p>
+</blockquote>
+<p>Read the plots by gene as well as across all points. A pooled association can be driven by differences between genes or by one observation. <code>dpLDDT_site</code> is wild-type minus mutant local confidence; positive values indicate a drop. None of the three summaries has a guaranteed relation to abundance.</p>
+<p><strong>Exit check.</strong> Write one result, one limitation, and one independent check. An experimental structure can test coordinates; an appropriate activity or stability measurement tests a different question. Optional reference comparisons require matching residue identities and coverage, not just coordinate counts.</p>
+<h1 id="7-make-sense-of-confidence-and-disagreement">7. Make sense of confidence and disagreement</h1>
+<p><strong>Notebook:</strong> <code>08_result_sense.ipynb</code> · Parts 0–6; optional extensions follow. [N7]</p>
+<h2 id="define-the-question-before-comparing-the-models">Define the question before comparing the models</h2>
+<p><strong>AlphaFold2</strong> is a protein-structure predictor. <strong>ColabFold</strong> provides a practical workflow for running structure prediction, including AlphaFold2. A <strong>multiple sequence alignment (MSA)</strong> arranges related sequences into corresponding positions, providing evolutionary context. ESMFold instead uses a protein language model at inference without requiring that alignment search. Different inputs and architectures do not imply statistically independent evidence: training sources and biases can overlap.</p>
+<p>You already met pLDDT, which concerns local structural accuracy. <strong>pTM</strong>, predicted template modelling score, estimates overall structural agreement on a 0–1 scale. It is not a measured folding probability. A local score and a global score can differ without logically contradicting one another. [B5]</p>
+<p>This notebook studies <strong>GB1</strong>, the B1 domain of protein G, a small 56-residue domain. Its <strong>hydrophobic core</strong> contains residues that pack away from water. The experiment substitutes selected positions with aspartate, denoted D, and compares the confidence scores. This is a stress test, not a direct measurement of folding stability.</p>
+<blockquote>
+<p><strong>Evidence boundary.</strong> The supplied notebook calls a variant “impossible” and says it “cannot fold.” It does not include an experimental stability measurement for that exact variant. For your report, distinguish the notebook’s biological hypothesis from the observed model scores. Use “strongly perturbed core variant” rather than turning the premise into measured ground truth. Likewise, a shuffled sequence is a comparator, not a universal “no idea” floor.</p>
+</blockquote>
+<h2 id="step-7-1-establish-what-will-be-live-and-what-is-recorded">Step 7.1 — Establish what will be live and what is recorded</h2>
+<p><strong>Do — Part 0; cell 5.</strong> Read the loading outcome. <code>MODEL_OK</code> is a Boolean flag, <code>True</code> or <code>False</code>, indicating whether ESMFold loaded. It does not guarantee every later fold succeeds. If loading fails, the notebook can use recorded summaries but cannot generate a new arbitrary variant or supply missing coordinates.</p>
+<p>In Part 2, the <code>AF2</code> dictionary contains pasted results described by the notebook as an earlier ColabFold run. This file does <strong>not</strong> run AlphaFold2 or ColabFold live. Do not write that you performed such a run.</p>
+<p>The optional precision discussion explains memory settings: <strong>fp16</strong> and <strong>fp32</strong> store floating-point values using different numbers of bits. Less precision can save memory but cause numerical problems. Leave the supplied configuration to the instructor; do not dismiss unexpected missing-weight or NaN warnings.</p>
+<h2 id="step-7-2-inspect-the-variant-series-and-controls">Step 7.2 — Inspect the variant series and controls</h2>
+<p><strong>Do — Part 1; cells 7–10.</strong> <code>WT</code> is the reference sequence; <code>CORE</code> lists the chosen 1-based positions. <code>core_00D</code> has no substitutions, while <code>core_10D</code> changes all ten listed positions. <strong>Sequence identity</strong> here is the percentage of matching positions in two same-length strings; ten changes out of 56 leave about 82.1% unchanged.</p>
+<p>Choose <code>my_n</code>, an integer from 0 to 10, and inspect the resulting sequence. The shuffled and reversed controls retain the same residue composition but change order. Core substitution variants change both identity and composition, so the different comparisons control different things.</p>
+<p><strong>Check.</strong> Count the intended changes and preserve the same input strings for model comparisons. High sequence identity is not a measurement of stability or function.</p>
+<h2 id="step-7-3-read-the-two-metrics-before-thresholding-them">Step 7.3 — Read the two metrics before thresholding them</h2>
+<p><strong>Do — Parts 2–3; cells 12–20.</strong> Look up a variant by its exact name. For <code>core_10D</code>, the supplied recorded values are pLDDT 76.9 and pTM 0.489. These are source values, not a new run or independently verified measurements.</p>
+<p>Use 70 and 0.5 as the thresholds requested by the exercise. The script labels one score above its cutoff and the other below. Explain what each cutoff is being applied to; do not describe “passes pLDDT” as “will fold.” The plot multiplies pTM by 100 only to share an axis. That multiplication does not make the two scores equivalent quantities.</p>
+<p><strong>Check.</strong> The labels “confident,” “fold probably wrong,” and “DISAGREE” are display rules in this exercise. They are not calibrated universal decisions about foldability. Report the actual score and its meaning, not only the printed verdict.</p>
+<h2 id="step-7-4-run-esmfold-and-label-every-fallback">Step 7.4 — Run ESMFold and label every fallback</h2>
+<p><strong>Do — Part 4; cells 25–30.</strong> Write your prediction before the comparison. Run the supplied ESMFold function if the model loaded. Then run the backup cell and note precisely which names it fills. A single results table can mix newly computed and recorded rows. Keep a mode note for each input rather than calling the whole table “live.”</p>
+<p>Try <code>esmfold(my_variant, &quot;my_variant&quot;)</code> only when loading succeeded. A new variant has no automatically valid recorded result merely because a neighbouring variant does.</p>
+<p><strong>Check.</strong> Missing or nonfinite scores are not zero. The notebook’s stored backup contains means, not full per-residue arrays or structure coordinates. The viewer and per-residue comparison may therefore be unavailable. Do not reconstruct those missing data from a mean.</p>
+<h2 id="step-7-5-explain-agreement-and-disagreement-without-overclaiming">Step 7.5 — Explain agreement and disagreement without overclaiming</h2>
+<p><strong>Do — Part 5; cells 32–36.</strong> Read the table before the structure viewer. <code>diff</code> is ESMFold pLDDT minus AlphaFold2 pLDDT: negative means a lower numerical confidence value, not proof of lower true accuracy. Ensure you are comparing the same sequence and note the different settings and modes.</p>
+<p>In the viewer, colors represent the chosen score field. Verify its convention before equating a color with the normalized numbers in the table. A convincing image is still a prediction.</p>
+<p>A supported conclusion might be: <strong>“For the supplied sequences and recorded settings, the models’ confidence summaries respond differently to the substitutions. This does not determine the variants’ measured stability.”</strong> Add your actual result and state which rows were live. There is no requirement to reproduce the notebook’s preferred biological verdict.</p>
+<h2 id="step-7-6-finish-with-a-claim-that-could-be-checked">Step 7.6 — Finish with a claim that could be checked</h2>
+<p><strong>Do — Part 6; cell 37, with the limitations in cell 47.</strong> Separate four items: the input manipulation, the observed model output, the interpretation, and the evidence still missing. The supplied limitations describe one protein and limited prediction settings; do not upgrade that to a general comparison of model quality.</p>
+<p><strong>Out-of-distribution input</strong> means an input unlike the data on which a model was trained or evaluated. It can make familiar confidence conventions less informative. <strong>Miscalibration</strong> means a mismatch between stated probabilities or expected accuracy and observed performance across suitable cases; without measured outcomes, this exercise alone cannot quantify it.</p>
+<p>Recall <strong>data leakage</strong> from Chapter 2. A target previously used for training or model selection is not an independent generalization test. A familiar protein may be useful for a sanity check while still being unsuitable as evidence of performance on unseen proteins. We have not audited the training-set overlap of every example here.</p>
+<p>Text hallucination, a prediction error, and using a correct score to answer the wrong question are different problems. Your main task is to identify which claim the evidence supports—not to label every surprising output a hallucination.</p>
+<p><strong>Optional.</strong> Compare per-residue scores only for genuine full outputs. The alanine challenge requires a new live fold. Saving <code>both_models.pkl</code> writes Python objects in a serialization format; only open pickle files from trusted sources because loading them can execute code. Keep the model settings and live/backup notes beside the saved results.</p>
+<p><strong>Exit check.</strong> State what pLDDT estimates, why two scores can differ, and what independent evidence would be needed to choose a biological explanation.</p>
+<h1 id="finish-what-to-keep-and-how-to-use-this-in-your-research">Finish: what to keep and how to use this in your research</h1>
+<p>Keep your completed notebooks, actual output files, source identifiers, model/settings notes, and a clear record of live versus supplied results. An output screenshot is helpful, but not a substitute for the data and steps that produced it.</p>
+<p>For your own project, complete this short plan: <strong>one observation represents ___; the input is ___; the desired output is ___; a simple comparison is ___; the evaluation data are ___; an acceptable first result would be ___; the analysis must stop if ___.</strong></p>
+<p>An <strong>acceptance test</strong> is a check specified before trusting an output. A useful first project is small enough to produce one inspected result and one meaningful test. You do not need to start by training a large model.</p>
+<h2 id="quick-troubleshooting">Quick troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Message or symptom</th>
+<th>First check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NameError</code></td>
+<td>Was the cell defining the variable or import run in this runtime?</td>
+</tr>
+<tr>
+<td><code>ModuleNotFoundError</code></td>
+<td>Did setup finish successfully in this runtime? Ask the TA about the approved environment.</td>
+</tr>
+<tr>
+<td><code>FileNotFoundError</code></td>
+<td>Is the exact required file in the current runtime, not just another notebook’s session?</td>
+</tr>
+<tr>
+<td><code>KeyError</code> or empty table</td>
+<td>Print the available fields and check that the returned data match the expected schema.</td>
+</tr>
+<tr>
+<td>HTTP 429, timeout, or service error</td>
+<td>Record the failed request, wait as directed, and use only an identified approved fallback.</td>
+</tr>
+<tr>
+<td>Memory error while folding</td>
+<td>Stop repeated runs; ask the TA to clear the runtime or supply genuine saved outputs.</td>
+</tr>
+<tr>
+<td>A failed assertion</td>
+<td>Read what was tested. Do not remove the assertion to make the notebook continue.</td>
+</tr>
+<tr>
+<td>A surprisingly excellent result</td>
+<td>Check labels, duplicates, feature leakage, evaluation design, and whether the result is live.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="short-self-check-answers">Short self-check answers</h2>
+<p><strong>1. Retrieval:</strong> A successful response establishes communication success, not that the requested organism, molecule, or annotation was returned. The supplied FASTA is local input; the API exercises are separate requests.</p>
+<p><strong>2. ML:</strong> Rows of <code>X</code> contain input features. Matching entries of <code>y</code> contain target labels. <code>.fit()</code> uses paired examples; <code>.predict()</code> applies the learned rule to inputs. Evaluation requires separate target information and a defensible data split.</p>
+<p><strong>3. Transformers:</strong> An ID names a token; an embedding is a numerical representation; attention weights mix representations; masked-token probabilities are task-specific outputs. None alone is a measured function.</p>
+<p><strong>4. Publications:</strong> Join on the full biological key. A source sentence must exist, concern the intended population and endpoint, and support the stated value. Exact substring matching checks only part of this.</p>
+<p><strong>5. AlphaGenome:</strong> Build, position convention, reference allele and strand must agree. Model outputs in reference contexts and observations across different cell lines are not paired experimental interventions.</p>
+<p><strong>6. Folding:</strong> A small difference between predicted backbones does not prove unchanged activity or stability. The protein-minus-RNA score is a difference of standardized measurements, not a fitted prediction residual.</p>
+<p><strong>7. Confidence:</strong> Confidence concerns a particular prediction task. Model agreement is not ground truth, and different architectures do not guarantee independent evidence. A claim about stability needs independent stability evidence.</p>
+<h1 id="source-map-and-scope">Source map and scope</h1>
+<p>This companion was written from the exact uploaded copies below. <strong>N</strong> references identify notebook-derived steps; <strong>H</strong> identifies the supplied slides. Added background definitions and explicitly marked methodological cautions are teaching explanations, not claims that the notebooks were changed or their live results reproduced.</p>
+<ul>
+<li><strong>N1:</strong> <code>01_APIs(1).ipynb</code> — 73 cells. Retrieval, file parsing and optional browser/document tools.</li>
+<li><strong>N2:</strong> <code>02_basic_ML(1).ipynb</code> — 70 cells. RNA features, classification, evaluation and optional clustering.</li>
+<li><strong>N3:</strong> <code>04_Transformers(1).ipynb</code> — 58 cells. ESM-2, ubiquitin, tokenization, masking, attention and scrambling.</li>
+<li><strong>N4:</strong> <code>05_Data_Retrieval(1).ipynb</code> — 50 cells. Publication text, supplementary data, evidence checks and CCLE handoff.</li>
+<li><strong>N5:</strong> <code>06_AlphaGenome(1).ipynb</code> — 35 cells. TP53, prepared genomic-variant/RNA files and v1 model scoring.</li>
+<li><strong>N6:</strong> <code>07_Folding(1).ipynb</code> — 36 cells. ESMFold, mutation parsing, fragments and cell-line comparisons.</li>
+<li><strong>N7:</strong> <code>08_result_sense(1).ipynb</code> — 47 cells. GB1 variants, recorded AlphaFold2 scores, ESMFold and interpretation.</li>
+<li><strong>H1:</strong> <code>04_slides(1).pdf</code>, <em>Hugging Face 101</em> — especially pages 7–9 on tokenization/model outputs and page 11 on model selection.</li>
+</ul>
+<p>The original notebooks and their historical outputs are unchanged. Cell numbers and small arithmetic examples were checked for this guide. Database access, model downloads, external API authentication, and GPU inference were not rerun as part of producing this tutorial. Their numerical outcomes must come from your workshop run or be identified as supplied results.</p>
+<h3 id="background-references">Background references</h3>
+<p>These primary documentation sources support the added definitions and cautions. They are not a replacement for the workshop’s named models and versions. Follow the supplied v1 AlphaGenome notebook rather than substituting a newer API.</p>
+<p><strong>B1.</strong> scikit-learn, <em>Getting Started</em> — inputs, targets, fitting and prediction. <a href="https://scikit-learn.org/stable/getting_started.html">scikit-learn: Getting Started</a></p>
+<p><strong>B2.</strong> RNAcentral, <em>Text search</em> and linked API documentation — search syntax and documented routes. <a href="https://rnacentral.org/help/text-search">RNAcentral: Text search</a></p>
+<p><strong>B3.</strong> scikit-learn, <em>Common pitfalls and recommended practices</em> — preprocessing and data leakage. <a href="https://scikit-learn.org/stable/common_pitfalls.html">scikit-learn: Common pitfalls</a></p>
+<p><strong>B4.</strong> AlphaGenome, <em>AlphaGenome 1 quick start</em> and <em>Variant</em> API reference — v1 requests, reference/alternate predictions, positions and scoring. <a href="https://www.alphagenomedocs.com/colabs/v1/quick_start.html">AlphaGenome 1 quick start</a> ; <a href="https://www.alphagenomedocs.com/api/generated/alphagenome.data.genome.Variant.html">AlphaGenome Variant reference</a></p>
+<p><strong>B5.</strong> EMBL-EBI, <em>pLDDT: Understanding local confidence</em> and <em>Confidence scores in AlphaFold-Multimer</em> — local versus global confidence. <a href="https://www.ebi.ac.uk/training/online/courses/alphafold/inputs-and-outputs/evaluating-alphafolds-predicted-structures-using-confidence-scores/plddt-understanding-local-confidence/">EMBL-EBI: Local confidence</a> ; <a href="https://www.ebi.ac.uk/training/online/courses/alphafold/inputs-and-outputs/evaluating-alphafolds-predicted-structures-using-confidence-scores/confidence-scores-in-alphafold-multimer/">EMBL-EBI: Global confidence</a></p>
+<p><strong>B6.</strong> ESM authors’ repository and Hugging Face ESM documentation — the model family and implementation. <a href="https://github.com/facebookresearch/esm">ESM authors’ repository</a> ; <a href="https://huggingface.co/docs/transformers/en/model_doc/esm">Hugging Face ESM documentation</a></p>
+</main></body></html>
