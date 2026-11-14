@@ -14,7 +14,7 @@ Day 1, 09:30
 
 Retrieve DNA, RNA, and protein data using databases and APIs.
 
-**Workshop notebook:** [Download the data mining, APIs, and web scraping notebook](notebooks/01_APIs.ipynb).
+**Workshop notebook:** <a href="notebooks/01_APIs.ipynb" download>Download the data mining, APIs, and web scraping notebook</a>.
 
 ## Data Retrieval from Publications {#publication-data-retrieval}
 
@@ -23,5 +23,5 @@ Day 1, 15:45
 Retrieve data from research publications and prepare it for use in Day 2
 sessions.
 
-**Workshop notebook:** [Download the publication data retrieval notebook](notebooks/05_Data_Retrieval.ipynb).
+**Workshop notebook:** <a href="notebooks/05_Data_Retrieval.ipynb" download>Download the publication data retrieval notebook</a>.
 
