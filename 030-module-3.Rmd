@@ -5,10 +5,14 @@
 This module introduces transformers and embeddings, then applies them in a
 hands-on Hugging Face session.
 
-## Lecture
+## Lecture {#transformers-embeddings}
 
-- Day 1, 13:30: [Transformers + embeddings](index.html#schedule-day1-8)
+Day 1, 13:30
 
-## Lab
+Introduction to transformers and embeddings.
 
-- Day 1, 14:15: [Hugging Face hands-on lab](index.html#schedule-day1-9)
+## Lab {#hugging-face}
+
+Day 1, 14:15
+
+Hands-on work with Hugging Face.

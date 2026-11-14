@@ -5,10 +5,14 @@
 This module combines optional supported project work with an introduction to
 agentic coding.
 
-## Optional Capstone
+## Optional Capstone {#capstone}
 
-- Day 2, 14:30: [Bring your project for supported project work](index.html#schedule-day2-9)
+Day 2, 14:30
 
-## Agentic Coding
+Bring a project for optional supported project work.
 
-- Day 2, 15:45: [Agentic coding](index.html#schedule-day2-11)
+## Agentic Coding {#agentic-coding}
+
+Day 2, 15:45
+
+Agentic coding for bioinformatics.

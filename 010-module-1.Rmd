@@ -8,8 +8,16 @@ This module covers finding and retrieving biological data from databases, APIs,
 and research publications. Publication-derived data will be prepared for use
 in the following day's sessions.
 
-## Scheduled Sessions
+## Basic Data Retrieval {#basic-data-retrieval}
 
-- Day 1, 09:30: [Basic data retrieval — databases + APIs; DNA, RNA, and protein](index.html#schedule-day1-3)
-- Day 1, 15:45: [Data retrieval from publications — prepare data for Day 2](index.html#schedule-day1-11)
+Day 1, 09:30
+
+Retrieve DNA, RNA, and protein data using databases and APIs.
+
+## Data Retrieval from Publications {#publication-data-retrieval}
+
+Day 1, 15:45
+
+Retrieve data from research publications and prepare it for use in Day 2
+sessions.
 

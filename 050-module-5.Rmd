@@ -5,11 +5,20 @@
 This module covers protein-folding tools and guided interpretation of
 ColabFold results.
 
-## Protein Folding
+## Protein Folding {#protein-folding}
 
-- Day 2, 10:30: [AlphaFold, ColabFold, and ESMFold](index.html#schedule-day2-5)
+Day 2, 10:30
 
-## Interpreting Results
+Protein folding with AlphaFold, ColabFold, and ESMFold.
 
-- Day 2, 11:30: [Interpret ColabFold results and cite the paper](index.html#schedule-day2-6)
-- Day 2, 13:30: [Continue interpretation and discussion](index.html#schedule-day2-8)
+## Interpreting Results — Part 1 {#interpret-results-part-1}
+
+Day 2, 11:30
+
+Interpret ColabFold results and cite the paper.
+
+## Interpreting Results — Part 2 {#interpret-results-part-2}
+
+Day 2, 13:30
+
+Continue interpretation and discussion.

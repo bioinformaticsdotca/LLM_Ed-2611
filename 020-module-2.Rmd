@@ -5,7 +5,9 @@
 This module introduces supervised and unsupervised learning through sequence
 examples.
 
-## Scheduled Session
+## Supervised vs. Unsupervised Learning {#supervised-vs-unsupervised}
 
-- Day 1, 10:45: [Supervised vs. unsupervised learning — sequence examples](index.html#schedule-day1-5)
+Day 1, 10:45
+
+Compare supervised and unsupervised learning using sequence examples.
 

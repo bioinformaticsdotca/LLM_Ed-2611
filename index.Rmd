@@ -98,12 +98,18 @@ schedule_table <- function(day_label) {
     row_class <- paste0("is-", day_rows$type[[i]])
     module_number <- day_rows$module[[i]]
     if (!is.na(module_number) && nzchar(module_number)) {
+      session_id <- day_rows$session_id[[i]]
+      session_content <- htmltools::tags$a(
+        href = paste0("module-", module_number, ".html#", session_id),
+        day_rows$activity[[i]]
+      )
       activity_content <- htmltools::tagList(
         htmltools::tags$a(
           href = paste0("module-", module_number, ".html"),
           paste0("Module ", module_number)
         ),
-        paste0(": ", day_rows$activity[[i]])
+        ": ",
+        session_content
       )
     } else {
       activity_content <- day_rows$activity[[i]]

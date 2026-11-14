@@ -4,6 +4,8 @@
 
 This module introduces AlphaGenome.
 
-## Scheduled Session
+## AlphaGenome {#alphagenome}
 
-- Day 2, 09:15: [AlphaGenome](index.html#schedule-day2-3)
+Day 2, 09:15
+
+Introduction to AlphaGenome.
