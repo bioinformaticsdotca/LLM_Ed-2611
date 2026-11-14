@@ -93,9 +93,11 @@ schedule_df <- readr::read_csv(
 schedule_table <- function(day_label) {
   day_rows <- schedule_df[schedule_df$day_label == day_label, , drop = FALSE]
   row_tags <- list()
+  day_slug <- if (day_label == "November 14") "day1" else "day2"
   for (i in seq_len(nrow(day_rows))) {
     row_class <- paste0("is-", day_rows$type[[i]])
     row_tags[[i]] <- htmltools::tags$tr(
+      id = paste0("schedule-", day_slug, "-", i),
       class = row_class,
       htmltools::tags$td(day_rows$time_1[[i]], class = "schedule-time"),
       htmltools::tags$td(day_rows$activity[[i]])
@@ -133,30 +135,29 @@ These modules are a tentative grouping of the sessions in the schedule above.
 
 ### Module 1: Bioinformatics Data Retrieval
 
-Databases and APIs for DNA, RNA, and protein data, followed by retrieval of
-research data from publications. Scheduled on Day 1 at 09:30 and 15:45.
+- Day 1, 09:30: [Basic data retrieval — databases + APIs; DNA, RNA, and protein](#schedule-day1-3)
+- Day 1, 15:45: [Data retrieval from publications — prepare data for Day 2](#schedule-day1-11)
 
 ### Module 2: Machine Learning Foundations
 
-Supervised and unsupervised learning, with sequence examples. Scheduled on
-Day 1 at 10:45.
+- Day 1, 10:45: [Supervised vs. unsupervised learning — sequence examples](#schedule-day1-5)
 
 ### Module 3: Transformers, Embeddings, and Hugging Face
 
-An introduction to transformers and embeddings, followed by a hands-on
-Hugging Face session. Scheduled on Day 1 at 13:30 and 14:15.
+- Day 1, 13:30: [Transformers + embeddings — lecture](#schedule-day1-8)
+- Day 1, 14:15: [Hugging Face — hands-on lab](#schedule-day1-9)
 
 ### Module 4: LLMs for Genomics
 
-An introduction to AlphaGenome. Scheduled on Day 2 at 09:15.
+- Day 2, 09:15: [AlphaGenome](#schedule-day2-3)
 
 ### Module 5: Protein Folding and Interpreting Results
 
-Protein folding with AlphaFold, ColabFold, and ESMFold, followed by guided
-interpretation of ColabFold results and discussion. Scheduled on Day 2 from
-10:30 to 14:30, with lunch at 12:30.
+- Day 2, 10:30: [Protein folding — AlphaFold / ColabFold / ESMFold](#schedule-day2-5)
+- Day 2, 11:30: [Make sense of results — Part 1](#schedule-day2-6)
+- Day 2, 13:30: [Make sense of results — Part 2](#schedule-day2-8)
 
 ### Module 6: Capstone and Agentic Coding
 
-Optional supported project work followed by agentic coding. Scheduled on Day 2
-at 14:30 and 15:45.
+- Day 2, 14:30: [Capstone — optional supported project work](#schedule-day2-9)
+- Day 2, 15:45: [Agentic coding](#schedule-day2-11)
