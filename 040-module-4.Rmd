@@ -4,7 +4,7 @@
 
 This module introduces AlphaGenome.
 
-**Theme:** [Module 3: LLM Applications in Genomics](https://hub.bioinformatics.ca/en-ca/workshops/cbw/2026-large-language-models-for-bioinformatics-edmonton-ab-2026).
+**Theme:** [LLM Applications in Genomics](https://hub.bioinformatics.ca/en-ca/workshops/cbw/2026-large-language-models-for-bioinformatics-edmonton-ab-2026).
 
 ## AlphaGenome {#alphagenome}
 

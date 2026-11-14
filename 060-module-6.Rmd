@@ -5,7 +5,7 @@
 This module combines optional supported project work with an introduction to
 agentic coding.
 
-**Theme:** [Module 6: AI-Assisted Coding for Bioinformatics](https://hub.bioinformatics.ca/en-ca/workshops/cbw/2026-large-language-models-for-bioinformatics-edmonton-ab-2026).
+**Theme:** [AI-Assisted Coding for Bioinformatics](https://hub.bioinformatics.ca/en-ca/workshops/cbw/2026-large-language-models-for-bioinformatics-edmonton-ab-2026).
 
 ## Optional Capstone {#capstone}
 
