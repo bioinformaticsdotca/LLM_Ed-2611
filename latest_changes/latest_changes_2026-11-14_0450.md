@@ -13,4 +13,4 @@
 - Rendered all six presentations to PDF and reviewed final contact sheets; no visible clipping, overlap, or layout problems were found.
 - Confirmed the Module 6 presentation contains no agentic coding content or placeholders.
 - `git diff --check` passes.
-- Confirmed the public module page is reachable; checking the PowerPoint download URLs after deployment.
+- Confirmed the public module page is reachable and all six published PowerPoint download URLs return HTTP 200.
