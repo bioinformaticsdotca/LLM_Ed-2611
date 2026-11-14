@@ -10,4 +10,6 @@ Day 2, 09:15
 
 Introduction to AlphaGenome.
 
-**Workshop notebook:** <a href="notebooks/06_AlphaGenome.ipynb" download>Download the AlphaGenome notebook</a>. You will need your own AlphaGenome API key; never save it in the notebook.
+**Participant notebook:** <a href="notebooks/06_AlphaGenome.ipynb" download>Download the AlphaGenome notebook</a>. You will need your own AlphaGenome API key; never save it in the notebook.
+
+**Instructor notebook (includes solutions):** <a href="notebooks/06_AlphaGenome_instructor.ipynb" download>Download the instructor edition</a>.
