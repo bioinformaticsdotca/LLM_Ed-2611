@@ -10,6 +10,8 @@ in the following day's sessions.
 
 **Theme:** [Natural Language Processing & Information Extraction](https://hub.bioinformatics.ca/en-ca/workshops/cbw/2026-large-language-models-for-bioinformatics-edmonton-ab-2026).
 
+**Module slides (PowerPoint):** [Download the Module 1 presentation](slides/module-1-bioinformatics-data-retrieval.pptx).
+
 ## Basic Data Retrieval {#basic-data-retrieval}
 
 Day 1, 09:30

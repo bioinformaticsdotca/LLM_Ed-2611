@@ -7,6 +7,8 @@ examples.
 
 **Theme:** [Introduction to Machine Learning](https://hub.bioinformatics.ca/en-ca/workshops/cbw/2026-large-language-models-for-bioinformatics-edmonton-ab-2026).
 
+**Module slides (PowerPoint):** [Download the Module 2 presentation](slides/module-2-machine-learning-foundations.pptx).
+
 ## Supervised vs. Unsupervised Learning {#supervised-vs-unsupervised}
 
 Day 1, 10:45
