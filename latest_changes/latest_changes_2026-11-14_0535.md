@@ -9,4 +9,4 @@
 
 - Confirmed both published copies match the supplied files.
 - `git diff --check` passes.
-- Checking the public links after publishing.
+- Confirmed the public workshop page links to both files; both public URLs return HTTP 200.
