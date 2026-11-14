@@ -126,3 +126,37 @@ knitr::asis_output(as.character(schedule_table("November 14")))
 ```{r day2-schedule, echo=FALSE, results='asis'}
 knitr::asis_output(as.character(schedule_table("November 15")))
 ```
+
+## Modules
+
+These modules are a tentative grouping of the sessions in the schedule above.
+
+### Module 1: Bioinformatics Data Retrieval
+
+Databases and APIs for DNA, RNA, and protein data, followed by retrieval of
+research data from publications. Scheduled on Day 1 at 09:30 and 15:45.
+
+### Module 2: Machine Learning Foundations
+
+Supervised and unsupervised learning, with sequence examples. Scheduled on
+Day 1 at 10:45.
+
+### Module 3: Transformers, Embeddings, and Hugging Face
+
+An introduction to transformers and embeddings, followed by a hands-on
+Hugging Face session. Scheduled on Day 1 at 13:30 and 14:15.
+
+### Module 4: LLMs for Genomics
+
+An introduction to AlphaGenome. Scheduled on Day 2 at 09:15.
+
+### Module 5: Protein Folding and Interpreting Results
+
+Protein folding with AlphaFold, ColabFold, and ESMFold, followed by guided
+interpretation of ColabFold results and discussion. Scheduled on Day 2 from
+10:30 to 14:30, with lunch at 12:30.
+
+### Module 6: Capstone and Agentic Coding
+
+Optional supported project work followed by agentic coding. Scheduled on Day 2
+at 14:30 and 15:45.
