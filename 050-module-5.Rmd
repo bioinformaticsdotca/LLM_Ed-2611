@@ -7,8 +7,6 @@ ColabFold results.
 
 **Theme:** [LLM Applications in Proteomics](https://hub.bioinformatics.ca/en-ca/workshops/cbw/2026-large-language-models-for-bioinformatics-edmonton-ab-2026); [Introduction to Machine Learning](https://hub.bioinformatics.ca/en-ca/workshops/cbw/2026-large-language-models-for-bioinformatics-edmonton-ab-2026).
 
-**Module slides (PowerPoint):** [Download the Module 5 presentation](slides/module-5-protein-folding-interpreting-results.pptx).
-
 ## Protein Folding {#protein-folding}
 
 Day 2, 10:30
