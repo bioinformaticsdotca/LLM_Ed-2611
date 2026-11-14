@@ -39,7 +39,7 @@ Alberta to work on metabolomics, NMR, and protein structure.
 
 #### Amirali Loghmani
 
-<img src="./img/faculty/amirali-loghmani.png" width="200" alt="Portrait of Amirali Loghmani">
+<img src="./img/faculty/amirali-loghmani.jpg" width="200" alt="Portrait of Amirali Loghmani">
 
 > Teaching Assistant<br>
 > University of Alberta<br>
