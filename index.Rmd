@@ -96,11 +96,23 @@ schedule_table <- function(day_label) {
   day_slug <- if (day_label == "November 14") "day1" else "day2"
   for (i in seq_len(nrow(day_rows))) {
     row_class <- paste0("is-", day_rows$type[[i]])
+    module_number <- day_rows$module[[i]]
+    if (!is.na(module_number) && nzchar(module_number)) {
+      activity_content <- htmltools::tagList(
+        htmltools::tags$a(
+          href = paste0("module-", module_number, ".html"),
+          paste0("Module ", module_number)
+        ),
+        paste0(": ", day_rows$activity[[i]])
+      )
+    } else {
+      activity_content <- day_rows$activity[[i]]
+    }
     row_tags[[i]] <- htmltools::tags$tr(
       id = paste0("schedule-", day_slug, "-", i),
       class = row_class,
       htmltools::tags$td(day_rows$time_1[[i]], class = "schedule-time"),
-      htmltools::tags$td(day_rows$activity[[i]])
+      htmltools::tags$td(activity_content)
     )
   }
   htmltools::tags$div(
@@ -128,36 +140,3 @@ knitr::asis_output(as.character(schedule_table("November 14")))
 ```{r day2-schedule, echo=FALSE, results='asis'}
 knitr::asis_output(as.character(schedule_table("November 15")))
 ```
-
-## Modules
-
-These modules are a tentative grouping of the sessions in the schedule above.
-
-### Module 1: Bioinformatics Data Retrieval
-
-- Day 1, 09:30: [Basic data retrieval — databases + APIs; DNA, RNA, and protein](#schedule-day1-3)
-- Day 1, 15:45: [Data retrieval from publications — prepare data for Day 2](#schedule-day1-11)
-
-### Module 2: Machine Learning Foundations
-
-- Day 1, 10:45: [Supervised vs. unsupervised learning — sequence examples](#schedule-day1-5)
-
-### Module 3: Transformers, Embeddings, and Hugging Face
-
-- Day 1, 13:30: [Transformers + embeddings — lecture](#schedule-day1-8)
-- Day 1, 14:15: [Hugging Face — hands-on lab](#schedule-day1-9)
-
-### Module 4: LLMs for Genomics
-
-- Day 2, 09:15: [AlphaGenome](#schedule-day2-3)
-
-### Module 5: Protein Folding and Interpreting Results
-
-- Day 2, 10:30: [Protein folding — AlphaFold / ColabFold / ESMFold](#schedule-day2-5)
-- Day 2, 11:30: [Make sense of results — Part 1](#schedule-day2-6)
-- Day 2, 13:30: [Make sense of results — Part 2](#schedule-day2-8)
-
-### Module 6: Capstone and Agentic Coding
-
-- Day 2, 14:30: [Capstone — optional supported project work](#schedule-day2-9)
-- Day 2, 15:45: [Agentic coding](#schedule-day2-11)

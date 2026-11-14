@@ -1,17 +1,15 @@
-# Module 5: Natural Language Processing & Information Extraction
+# Module 5
 
-- Introduction to using LLMs to extract biological knowledge from scientific literature at scale, covering core architectures like RAG, vector databases, ontologies, and knowledge graphs.
+**Protein Folding and Interpreting Results**
 
-**Presenter:** To be announced.
+This module covers protein-folding tools and guided interpretation of
+ColabFold results.
 
-## Lecture
+## Protein Folding
 
-Slides: To be announced.
+- Day 2, 10:30: [AlphaFold, ColabFold, and ESMFold](index.html#schedule-day2-5)
 
-<!--<iframe src="GOOGLE SLIDES LINK/preview" width="640" height="480" allow="autoplay"></iframe>-->
+## Interpreting Results
 
-## Lab
-
-**Lab practical:** Practical examples of using LLMs to extract knowledge from scientific literature at scale.
-
-Lab materials: To be announced.
+- Day 2, 11:30: [Interpret ColabFold results and cite the paper](index.html#schedule-day2-6)
+- Day 2, 13:30: [Continue interpretation and discussion](index.html#schedule-day2-8)

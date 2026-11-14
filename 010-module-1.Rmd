@@ -1,16 +1,15 @@
 # (PART) Modules {-}
 
-# Module 1: Introduction to Machine Learning
+# Module 1
 
-- Overview of machine learning concepts and applications in bioinformatics.
-- Introduction to key algorithms used in machine learning for bioinformatics, including neural networks, decision trees, graphical neural networks and transformers.
-- Overview of key architectures of transformers (tokenization, embedding, encoder, decoder).
+**Bioinformatics Data Retrieval**
 
-**Presenter:** To be announced.
+This module covers finding and retrieving biological data from databases, APIs,
+and research publications. Publication-derived data will be prepared for use
+in the following day's sessions.
 
-## Lecture
+## Scheduled Sessions
 
-Slides: To be announced.
-
-<!--<iframe src="GOOGLE SLIDES LINK/preview" width="640" height="480" allow="autoplay"></iframe>-->
+- Day 1, 09:30: [Basic data retrieval — databases + APIs; DNA, RNA, and protein](index.html#schedule-day1-3)
+- Day 1, 15:45: [Data retrieval from publications — prepare data for Day 2](index.html#schedule-day1-11)
 

@@ -3,6 +3,12 @@ rmd_files:
   - index.Rmd
   - 001-faculty.Rmd
   - 002-computing.Rmd
+  - 010-module-1.Rmd
+  - 020-module-2.Rmd
+  - 030-module-3.Rmd
+  - 040-module-4.Rmd
+  - 050-module-5.Rmd
+  - 060-module-6.Rmd
 language:
   ui:
     chapter_name: ""

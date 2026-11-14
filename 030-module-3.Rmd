@@ -1,17 +1,14 @@
-# Module 3: LLM Applications in Genomics
+# Module 3
 
-- Overview of LLM applications in genomics.
+**Transformers, Embeddings, and Hugging Face**
 
-**Presenter:** To be announced.
+This module introduces transformers and embeddings, then applies them in a
+hands-on Hugging Face session.
 
 ## Lecture
 
-Slides: To be announced.
-
-<!--<iframe src="GOOGLE SLIDES LINK/preview" width="640" height="480" allow="autoplay"></iframe>-->
+- Day 1, 13:30: [Transformers + embeddings](index.html#schedule-day1-8)
 
 ## Lab
 
-**Lab practical:** Fine-tuning LLMs for genomic analysis, including gene prediction, gene annotation and variant identification.
-
-Lab materials: To be announced.
+- Day 1, 14:15: [Hugging Face hands-on lab](index.html#schedule-day1-9)
