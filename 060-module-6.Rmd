@@ -40,3 +40,7 @@ keep your key private.
 - [Miyuru Edirisinghe Arachchige](https://docs.google.com/document/d/1e3TsEEVry-iCeabJDajd5vEfu3jP57W0FDRD3rXSes0/edit?usp=drivesdk)
 - [Eóin O’Hara](https://docs.google.com/document/d/17UPszSqitMppUrHNq9yPM2U7d4GGATHX0NwBPCnWLM4/edit?usp=drivesdk)
 - [Dhinesh Periyasamy](https://docs.google.com/document/d/1ECfjfxJDG7c79piPRf3EqT4UYW6h6hlAiYQf3LHfnFw/edit?usp=drivesdk)
+
+### Steering {#steering}
+
+[Download the coding-agent steering guide](guides/steering/coding-agent-steering.md).
