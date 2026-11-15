@@ -18,3 +18,25 @@ Bring a project for optional supported project work.
 Day 2, 15:45
 
 Agentic coding for bioinformatics.
+
+### Participant OpenRouter API keys {#participant-openrouter-api-keys}
+
+Each participant has an individual OpenRouter API key with a $10 spending
+limit. These documents are currently accessible only to the workshop
+organizer. Ask the organizer to share your assigned document with you, and
+keep your key private.
+
+- [Mohamed Abdelnabi](https://docs.google.com/document/d/1SSTztefFepNWzVx3LWNSIxOr-L9OWQ_TtEXosUYovOo/edit)
+- [Zhong Hua](https://docs.google.com/document/d/1OFoyk7v_tD7tA69VDTX9grwpe5YGo33kO5oy94pUXkk/edit?usp=drivesdk)
+- [Aren Boulet](https://docs.google.com/document/d/1eVjC-QzvLSngCmwBP_0wI4QEzozFcJYCYm2WDYd4zn0/edit?usp=drivesdk)
+- [Emily Smenderovac](https://docs.google.com/document/d/1RZHc22MTULN8SOou3-UbG8cd1UP1IbE8vq-qUowIquw/edit?usp=drivesdk)
+- [Nicholas Di Paola](https://docs.google.com/document/d/1SKUv_SDTdlQGjmJdZ-VEV40vMzIHFQhGaAl88uwVrlY/edit?usp=drivesdk)
+- [Sima Abbasi-Habashi](https://docs.google.com/document/d/1Y4zcLUb_JJAAahj2F-o-47pkndkBaktahIWvAf7BGtA/edit?usp=drivesdk)
+- [Shaelyn Xu](https://docs.google.com/document/d/1qr79yjrhv4l07-yYAzhamdURcQDUBK6ReOUo_iThR08/edit?usp=drivesdk)
+- [Grace Ennema](https://docs.google.com/document/d/128lvVRYyIronxLeHaRj51pS8jMuER-zzBRbUXH7NpZo/edit?usp=drivesdk)
+- [Arthur Nery Finatto](https://docs.google.com/document/d/1KVDQo-XsYpcGSJC-Z9pM1nqQ6Ump4sRV2mgLddNHtZM/edit?usp=drivesdk)
+- [Oshani Warnapurage](https://docs.google.com/document/d/1dVSKjELFmuxmapudgylg1L18yY__dP1VE5g0ALkcrhk/edit?usp=drivesdk)
+- [Osama Zahid](https://docs.google.com/document/d/1QKLaOYy7vg7A9GYFHojqGAE3sKRFqCMbyltWGA9NIO0/edit?usp=drivesdk)
+- [Miyuru Edirisinghe Arachchige](https://docs.google.com/document/d/1e3TsEEVry-iCeabJDajd5vEfu3jP57W0FDRD3rXSes0/edit?usp=drivesdk)
+- [Eóin O’Hara](https://docs.google.com/document/d/17UPszSqitMppUrHNq9yPM2U7d4GGATHX0NwBPCnWLM4/edit?usp=drivesdk)
+- [Dhinesh Periyasamy](https://docs.google.com/document/d/1ECfjfxJDG7c79piPRf3EqT4UYW6h6hlAiYQf3LHfnFw/edit?usp=drivesdk)
