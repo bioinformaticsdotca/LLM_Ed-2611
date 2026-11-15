@@ -7,6 +7,8 @@ agentic coding.
 
 **Theme:** [AI-Assisted Coding for Bioinformatics](https://hub.bioinformatics.ca/en-ca/workshops/cbw/2026-large-language-models-for-bioinformatics-edmonton-ab-2026).
 
+**Lecture slides:** <a href="slides/Module6_AI-assisted_coding_v33.pptx" download>Download Module 6: AI-assisted Coding slides (PowerPoint, v33)</a>.
+
 ## Optional Capstone {#capstone}
 
 Day 2, 14:30
