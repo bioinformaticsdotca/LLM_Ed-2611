@@ -19,6 +19,10 @@ Day 2, 15:45
 
 Agentic coding for bioinformatics.
 
+### PubMed MCP with Copilot {#pubmed-mcp-with-copilot}
+
+[Download the PubMed MCP Copilot guide](guides/PubMed-MCP-Copilot-Guide.md) for connecting the PubMed MCP server and searching for papers and available full text.
+
 ### Participant OpenRouter API keys {#participant-openrouter-api-keys}
 
 Each participant has an individual OpenRouter API key with a $10 spending
