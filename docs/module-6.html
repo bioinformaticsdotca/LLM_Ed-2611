@@ -157,9 +157,10 @@
 <li class="chapter" data-level="" data-path="module-6.html"><a href="module-6.html#capstone"><i class="fa fa-check"></i>Optional Capstone</a></li>
 <li class="chapter" data-level="" data-path="module-6.html"><a href="module-6.html#agentic-coding"><i class="fa fa-check"></i>Agentic Coding</a>
 <ul>
-<li class="chapter" data-level="" data-path="module-6.html"><a href="module-6.html#pubmed-mcp-with-copilot"><i class="fa fa-check"></i>PubMed MCP with Copilot</a></li>
-<li class="chapter" data-level="" data-path="module-6.html"><a href="module-6.html#participant-openrouter-api-keys"><i class="fa fa-check"></i>Participant OpenRouter API keys</a></li>
-<li class="chapter" data-level="" data-path="module-6.html"><a href="module-6.html#steering"><i class="fa fa-check"></i>Steering</a></li>
+<li class="chapter" data-level="" data-path="module-6.html"><a href="module-6.html#hello-world-with-copilot"><i class="fa fa-check"></i>Exercise 1: Hello World with Copilot</a></li>
+<li class="chapter" data-level="" data-path="module-6.html"><a href="module-6.html#pubmed-mcp-with-copilot"><i class="fa fa-check"></i>Exercise 2: PubMed MCP with Copilot</a></li>
+<li class="chapter" data-level="" data-path="module-6.html"><a href="module-6.html#openrouter-exercise"><i class="fa fa-check"></i>Exercise 3: Add your OpenRouter key</a></li>
+<li class="chapter" data-level="" data-path="module-6.html"><a href="module-6.html#steering"><i class="fa fa-check"></i>Exercise 4: Steering files for Hello World</a></li>
 <li class="chapter" data-level="" data-path="module-6.html"><a href="module-6.html#adversarial-prompts"><i class="fa fa-check"></i>Adversarial coding and debate prompts</a></li>
 </ul></li>
 </ul></li>
@@ -206,16 +207,63 @@ agentic coding.</p>
 <h2>Agentic Coding<a href="module-6.html#agentic-coding" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Day 2, 15:45</p>
 <p>Agentic coding for bioinformatics.</p>
+<p>Work through Exercises 1–4 in order. Exercises 5–6 are optional extensions.</p>
+<div id="hello-world-with-copilot" class="section level3 hasAnchor">
+<h3>Exercise 1: Hello World with Copilot<a href="module-6.html#hello-world-with-copilot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Goal:</strong> create, run and test a small program with Copilot.</p>
+<ol style="list-style-type: decimal">
+<li>Open a new, empty project folder in VS Code and open Copilot Chat.</li>
+<li>Select the interactive agent mode and keep approval prompts enabled. Read each proposed file change and command before approving it.</li>
+<li>Paste the prompt below. Ask Copilot to create a local Python virtual environment and install pytest there if needed.</li>
+<li>Run the program and tests yourself in the VS Code terminal, using that environment.</li>
+<li>Ask Copilot to explain one line you do not understand. Save a copy of the finished project as your baseline for Exercise 4.</li>
+</ol>
+<pre class="text"><code>Create hello.py that prints &quot;Hello, world!&quot;.
+Add a --name option so that
+  python hello.py --name Ana
+prints &quot;Hello, Ana!&quot;.
+Add a pytest test for it.
+Run the program and the test and show me the output.</code></pre>
+<p><strong>Check:</strong> <code>python hello.py</code> prints <code>Hello, world!</code>, <code>python hello.py --name Ana</code> prints <code>Hello, Ana!</code>, and <code>python -m pytest -q</code> passes. Confirm the tests cover both greetings.</p>
+</div>
 <div id="pubmed-mcp-with-copilot" class="section level3 hasAnchor">
-<h3>PubMed MCP with Copilot<a href="module-6.html#pubmed-mcp-with-copilot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Exercise 2: PubMed MCP with Copilot<a href="module-6.html#pubmed-mcp-with-copilot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Goal:</strong> connect a database tool and verify its answers.</p>
+<ol style="list-style-type: decimal">
+<li>Open <strong>Chat: Open Customizations → MCP Servers → Add Server → HTTP</strong>.</li>
+<li>Enter <code>https://pubmed.mcp.claude.com/mcp</code>, use the server ID <code>pubmed</code>, and choose the global scope offered by your Copilot interface.</li>
+<li>Review the trust prompt, then reload the session if needed.</li>
+<li>Open <strong>Configure Tools</strong> and confirm that PubMed tools are listed and enabled.</li>
+<li>Replace <code>[author name]</code> below, run the prompt, and open the returned links to verify the papers and author identity.</li>
+</ol>
+<pre class="text"><code>Using PubMed, find the 3 most recent papers by [author name] with the author
+search field, sorted by date. Return title, date, journal, PMID, PMCID,
+PubMed link and DOI link. Flag possible name collisions.
+Do not download full text.</code></pre>
+<p><strong>Check:</strong> three matching papers are returned, or the agent explains why fewer were found. Confirm the dates, identifiers and author matches against PubMed.</p>
 <p><a href="guides/PubMed-MCP-Copilot-Guide.md">Download the PubMed MCP Copilot guide</a> for connecting the PubMed MCP server and searching for papers and available full text.</p>
 </div>
-<div id="participant-openrouter-api-keys" class="section level3 hasAnchor">
-<h3>Participant OpenRouter API keys<a href="module-6.html#participant-openrouter-api-keys" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="openrouter-exercise" class="section level3 hasAnchor">
+<h3>Exercise 3: Add your OpenRouter key<a href="module-6.html#openrouter-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Goal:</strong> use a second model on the same project and compare quality, speed and cost.</p>
+<ol style="list-style-type: decimal">
+<li>Open your assigned key document below.</li>
+<li>In Copilot Chat, open the model picker, then <strong>Manage Language Models → Add Models → OpenRouter</strong>.</li>
+<li>Accept the default group name and paste your key into the masked key prompt. Enter it only there, rather than in chat or project files.</li>
+<li>Enable and select the workshop model, <code>openai/gpt-6-luna</code>, if it is available. If it is unavailable, ask the instructor which available model to use.</li>
+<li>In your Exercise 1 working project, run the prompt below. Review the changes and run the tests yourself.</li>
+<li>Compare the answer and elapsed time with your first run. Check the request’s usage and cost in OpenRouter activity if available to your account; otherwise ask the organizer to show the usage for your assigned key.</li>
+</ol>
+<pre class="text"><code>Add a --shout option to hello.py that prints the greeting in capitals,
+and extend the test.
+Run the program with --name Ana --shout and run the tests.
+Show me the output.</code></pre>
+<p><strong>Check:</strong> <code>python hello.py --name Ana --shout</code> prints <code>HELLO, ANA!</code>, the original greetings still work, and the tests pass. Record a short comparison of quality, speed and cost. Each assigned key has a $10 spending limit. If you cannot connect OpenRouter, complete the code change with a Copilot model and note which model you used.</p>
+<div id="participant-openrouter-api-keys" class="section level4 hasAnchor">
+<h4>Participant OpenRouter API keys<a href="module-6.html#participant-openrouter-api-keys" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Each participant has an individual OpenRouter API key with a $10 spending
-limit. These documents are currently accessible only to the workshop
-organizer. Ask the organizer to share your assigned document with you, and
-keep your key private.</p>
+limit. The documents can be viewed by anyone with their link. Open the document
+with your name and use your assigned key.</p>
 <ul>
 <li><a href="https://docs.google.com/document/d/1SSTztefFepNWzVx3LWNSIxOr-L9OWQ_TtEXosUYovOo/edit">Mohamed Abdelnabi</a></li>
 <li><a href="https://docs.google.com/document/d/1OFoyk7v_tD7tA69VDTX9grwpe5YGo33kO5oy94pUXkk/edit?usp=drivesdk">Zhong Hua</a></li>
@@ -233,8 +281,25 @@ keep your key private.</p>
 <li><a href="https://docs.google.com/document/d/1ECfjfxJDG7c79piPRf3EqT4UYW6h6hlAiYQf3LHfnFw/edit?usp=drivesdk">Dhinesh Periyasamy</a></li>
 </ul>
 </div>
+</div>
 <div id="steering" class="section level3 hasAnchor">
-<h3>Steering<a href="module-6.html#steering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Exercise 4: Steering files for Hello World<a href="module-6.html#steering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Goal:</strong> see how project instructions change the agent’s plan and output.</p>
+<ol style="list-style-type: decimal">
+<li>Start from your saved Exercise 1 baseline, before <code>--shout</code> was added. Make two identical project copies, one for each comparison run.</li>
+<li>In the first copy, create <code>AGENTS.md</code> at the project root with the contents below. The application uses the standard library; pytest is a separate test dependency in your virtual environment.</li>
+<li>Open a fresh Copilot chat in that folder, choose <strong>Plan</strong> mode and paste the prompt below. Read the plan and check whether it includes the greeting suffix, help text and tests.</li>
+<li>Approve the plan, switch to implementation when ready, and review the proposed actions. Run the program, <code>--help</code> and the tests yourself.</li>
+<li>Open the second baseline copy without <code>AGENTS.md</code> in a fresh chat, using the same model and prompt. Compare the two plans and results. Keep the two runs separate so earlier edits and chat history do not supply the missing instructions.</li>
+</ol>
+<pre class="text"><code># AGENTS.md
+- Python 3.11; use only the standard library in the application.
+- Every script has a docstring and --help.
+- Add a pytest test for every function; pytest is allowed as a test dependency.
+- Every greeting ends with &quot; - CBW 2026&quot;; preserve this suffix with --shout.
+- Never edit files outside this project folder.</code></pre>
+<pre class="text"><code>/plan Add a --shout option to hello.py.</code></pre>
+<p><strong>Check:</strong> in the steered run, <code>python hello.py --name Ana --shout</code> prints <code>HELLO, ANA! - CBW 2026</code>, <code>--help</code> describes the options, and tests pass. Explain which rules appeared in the plan and output. If a rule was ignored, revise it and retry; one successful run alone does not guarantee the agent will always follow it.</p>
 <p><a href="guides/steering/coding-agent-steering.md">Download the coding-agent steering guide</a>.</p>
 <p>Planning prompts:</p>
 <ul>
@@ -245,11 +310,19 @@ keep your key private.</p>
 </div>
 <div id="adversarial-prompts" class="section level3 hasAnchor">
 <h3>Adversarial coding and debate prompts<a href="module-6.html#adversarial-prompts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><a href="guides/prompts/adversarial_coding_review_cycle.md">Download the adversarial coding review cycle prompts</a></li>
-<li><a href="guides/prompts/adversarial_debate.md">Download the adversarial debate prompts</a></li>
-</ul>
+<div id="adversarial-coding-exercise" class="section level4 hasAnchor">
+<h4>Exercise 5: Adversarial coding review (optional)<a href="module-6.html#adversarial-coding-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Use your Hello World project as the task for a builder and a fresh critic, preferably using different models. Have the builder implement a small change and record how to test it in <code>BUILD.md</code>. Give the critic the task and diff, ask for findings in <code>REVIEW.md</code>, then have the builder address them and rerun the tests. Stop at approval or after three rounds and review the result yourself.</p>
+<p><a href="guides/prompts/adversarial_coding_review_cycle.md">Download the adversarial coding review cycle prompts</a>.</p>
+<p><strong>Check:</strong> retain the diff, test results, <code>BUILD.md</code> and the review findings or approval. The critic reviews the code without editing it; the human makes the final decision.</p>
+</div>
+<div id="adversarial-debate-exercise" class="section level4 hasAnchor">
+<h4>Exercise 6: Adversarial debate (optional)<a href="module-6.html#adversarial-debate-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Choose one question with competing options, such as whether a small command-line analysis tool should use only the standard library or add a third-party dependency. Replace the placeholders in the downloaded prompts. Run separate defender, critic and moderator sessions for three rounds, sharing the transcript between turns, then ask a fresh session for a synthesis.</p>
+<p><a href="guides/prompts/adversarial_debate.md">Download the adversarial debate prompts</a>.</p>
+<p><strong>Check:</strong> keep the transcript and a synthesis stating the best-supported answer, remaining disagreements, confidence and evidence that would change the answer. Verify the key factual claims yourself.</p>
 
+</div>
 </div>
 </div>
 </div>

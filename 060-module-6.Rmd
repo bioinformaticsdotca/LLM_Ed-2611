@@ -19,16 +19,75 @@ Day 2, 15:45
 
 Agentic coding for bioinformatics.
 
-### PubMed MCP with Copilot {#pubmed-mcp-with-copilot}
+Work through Exercises 1–4 in order. Exercises 5–6 are optional extensions.
+
+### Exercise 1: Hello World with Copilot {#hello-world-with-copilot}
+
+**Goal:** create, run and test a small program with Copilot.
+
+1. Open a new, empty project folder in VS Code and open Copilot Chat.
+2. Select the interactive agent mode and keep approval prompts enabled. Read each proposed file change and command before approving it.
+3. Paste the prompt below. Ask Copilot to create a local Python virtual environment and install pytest there if needed.
+4. Run the program and tests yourself in the VS Code terminal, using that environment.
+5. Ask Copilot to explain one line you do not understand. Save a copy of the finished project as your baseline for Exercise 4.
+
+```text
+Create hello.py that prints "Hello, world!".
+Add a --name option so that
+  python hello.py --name Ana
+prints "Hello, Ana!".
+Add a pytest test for it.
+Run the program and the test and show me the output.
+```
+
+**Check:** `python hello.py` prints `Hello, world!`, `python hello.py --name Ana` prints `Hello, Ana!`, and `python -m pytest -q` passes. Confirm the tests cover both greetings.
+
+### Exercise 2: PubMed MCP with Copilot {#pubmed-mcp-with-copilot}
+
+**Goal:** connect a database tool and verify its answers.
+
+1. Open **Chat: Open Customizations → MCP Servers → Add Server → HTTP**.
+2. Enter `https://pubmed.mcp.claude.com/mcp`, use the server ID `pubmed`, and choose the global scope offered by your Copilot interface.
+3. Review the trust prompt, then reload the session if needed.
+4. Open **Configure Tools** and confirm that PubMed tools are listed and enabled.
+5. Replace `[author name]` below, run the prompt, and open the returned links to verify the papers and author identity.
+
+```text
+Using PubMed, find the 3 most recent papers by [author name] with the author
+search field, sorted by date. Return title, date, journal, PMID, PMCID,
+PubMed link and DOI link. Flag possible name collisions.
+Do not download full text.
+```
+
+**Check:** three matching papers are returned, or the agent explains why fewer were found. Confirm the dates, identifiers and author matches against PubMed.
 
 [Download the PubMed MCP Copilot guide](guides/PubMed-MCP-Copilot-Guide.md) for connecting the PubMed MCP server and searching for papers and available full text.
 
-### Participant OpenRouter API keys {#participant-openrouter-api-keys}
+### Exercise 3: Add your OpenRouter key {#openrouter-exercise}
+
+**Goal:** use a second model on the same project and compare quality, speed and cost.
+
+1. Open your assigned key document below.
+2. In Copilot Chat, open the model picker, then **Manage Language Models → Add Models → OpenRouter**.
+3. Accept the default group name and paste your key into the masked key prompt. Enter it only there, rather than in chat or project files.
+4. Enable and select the workshop model, `openai/gpt-6-luna`, if it is available. If it is unavailable, ask the instructor which available model to use.
+5. In your Exercise 1 working project, run the prompt below. Review the changes and run the tests yourself.
+6. Compare the answer and elapsed time with your first run. Check the request's usage and cost in OpenRouter activity if available to your account; otherwise ask the organizer to show the usage for your assigned key.
+
+```text
+Add a --shout option to hello.py that prints the greeting in capitals,
+and extend the test.
+Run the program with --name Ana --shout and run the tests.
+Show me the output.
+```
+
+**Check:** `python hello.py --name Ana --shout` prints `HELLO, ANA!`, the original greetings still work, and the tests pass. Record a short comparison of quality, speed and cost. Each assigned key has a $10 spending limit. If you cannot connect OpenRouter, complete the code change with a Copilot model and note which model you used.
+
+#### Participant OpenRouter API keys {#participant-openrouter-api-keys}
 
 Each participant has an individual OpenRouter API key with a $10 spending
-limit. These documents are currently accessible only to the workshop
-organizer. Ask the organizer to share your assigned document with you, and
-keep your key private.
+limit. The documents can be viewed by anyone with their link. Open the document
+with your name and use your assigned key.
 
 - [Mohamed Abdelnabi](https://docs.google.com/document/d/1SSTztefFepNWzVx3LWNSIxOr-L9OWQ_TtEXosUYovOo/edit)
 - [Zhong Hua](https://docs.google.com/document/d/1OFoyk7v_tD7tA69VDTX9grwpe5YGo33kO5oy94pUXkk/edit?usp=drivesdk)
@@ -45,7 +104,30 @@ keep your key private.
 - [Eóin O’Hara](https://docs.google.com/document/d/17UPszSqitMppUrHNq9yPM2U7d4GGATHX0NwBPCnWLM4/edit?usp=drivesdk)
 - [Dhinesh Periyasamy](https://docs.google.com/document/d/1ECfjfxJDG7c79piPRf3EqT4UYW6h6hlAiYQf3LHfnFw/edit?usp=drivesdk)
 
-### Steering {#steering}
+### Exercise 4: Steering files for Hello World {#steering}
+
+**Goal:** see how project instructions change the agent's plan and output.
+
+1. Start from your saved Exercise 1 baseline, before `--shout` was added. Make two identical project copies, one for each comparison run.
+2. In the first copy, create `AGENTS.md` at the project root with the contents below. The application uses the standard library; pytest is a separate test dependency in your virtual environment.
+3. Open a fresh Copilot chat in that folder, choose **Plan** mode and paste the prompt below. Read the plan and check whether it includes the greeting suffix, help text and tests.
+4. Approve the plan, switch to implementation when ready, and review the proposed actions. Run the program, `--help` and the tests yourself.
+5. Open the second baseline copy without `AGENTS.md` in a fresh chat, using the same model and prompt. Compare the two plans and results. Keep the two runs separate so earlier edits and chat history do not supply the missing instructions.
+
+```text
+# AGENTS.md
+- Python 3.11; use only the standard library in the application.
+- Every script has a docstring and --help.
+- Add a pytest test for every function; pytest is allowed as a test dependency.
+- Every greeting ends with " - CBW 2026"; preserve this suffix with --shout.
+- Never edit files outside this project folder.
+```
+
+```text
+/plan Add a --shout option to hello.py.
+```
+
+**Check:** in the steered run, `python hello.py --name Ana --shout` prints `HELLO, ANA! - CBW 2026`, `--help` describes the options, and tests pass. Explain which rules appeared in the plan and output. If a rule was ignored, revise it and retry; one successful run alone does not guarantee the agent will always follow it.
 
 [Download the coding-agent steering guide](guides/steering/coding-agent-steering.md).
 
@@ -57,5 +139,18 @@ Planning prompts:
 
 ### Adversarial coding and debate prompts {#adversarial-prompts}
 
-- [Download the adversarial coding review cycle prompts](guides/prompts/adversarial_coding_review_cycle.md)
-- [Download the adversarial debate prompts](guides/prompts/adversarial_debate.md)
+#### Exercise 5: Adversarial coding review (optional) {#adversarial-coding-exercise}
+
+Use your Hello World project as the task for a builder and a fresh critic, preferably using different models. Have the builder implement a small change and record how to test it in `BUILD.md`. Give the critic the task and diff, ask for findings in `REVIEW.md`, then have the builder address them and rerun the tests. Stop at approval or after three rounds and review the result yourself.
+
+[Download the adversarial coding review cycle prompts](guides/prompts/adversarial_coding_review_cycle.md).
+
+**Check:** retain the diff, test results, `BUILD.md` and the review findings or approval. The critic reviews the code without editing it; the human makes the final decision.
+
+#### Exercise 6: Adversarial debate (optional) {#adversarial-debate-exercise}
+
+Choose one question with competing options, such as whether a small command-line analysis tool should use only the standard library or add a third-party dependency. Replace the placeholders in the downloaded prompts. Run separate defender, critic and moderator sessions for three rounds, sharing the transcript between turns, then ask a fresh session for a synthesis.
+
+[Download the adversarial debate prompts](guides/prompts/adversarial_debate.md).
+
+**Check:** keep the transcript and a synthesis stating the best-supported answer, remaining disagreements, confidence and evidence that would change the answer. Verify the key factual claims yourself.
