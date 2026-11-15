@@ -44,3 +44,9 @@ keep your key private.
 ### Steering {#steering}
 
 [Download the coding-agent steering guide](guides/steering/coding-agent-steering.md).
+
+Planning prompts:
+
+- [Prompt for creating a plan](guides/steering/prompt_2_create_plan.md)
+- [Prompt for creating tickets](guides/steering/prompt_2_create_tickets.md)
+- [Prompt for creating a checklist](guides/steering/prompt_2_create_checklist.md)

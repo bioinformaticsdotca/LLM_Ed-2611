@@ -1,0 +1,1 @@
+Based on this plan, please create a list of detailed software development Jira-like tickets with unique IDs for an AI coding agent to complete. Please indicate whether each ticket can be completed independently or depends on other tickets, and if so, which ones. Also, include tickets for end-to-end testing, if possible. Do not use any Python scripts to generate tickets.
