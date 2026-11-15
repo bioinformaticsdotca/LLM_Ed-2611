@@ -54,3 +54,8 @@ Planning prompts:
 - [Prompt for creating a plan](guides/steering/prompt_2_create_plan.md)
 - [Prompt for creating tickets](guides/steering/prompt_2_create_tickets.md)
 - [Prompt for creating a checklist](guides/steering/prompt_2_create_checklist.md)
+
+### Adversarial coding and debate prompts {#adversarial-prompts}
+
+- [Download the adversarial coding review cycle prompts](guides/prompts/adversarial_coding_review_cycle.md)
+- [Download the adversarial debate prompts](guides/prompts/adversarial_debate.md)
