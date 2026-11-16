@@ -41,8 +41,8 @@
     },
     {
       "name": "Google Tasks",
-      "scope": "Not searched",
-      "result": "Google authorization was required and unavailable during this review"
+      "scope": "CBW_LLM_in_Bioinformatics_2026 task list, including completed and hidden tasks",
+      "result": "Reviewed after retrying authorization with the correct account"
     }
   ],
   "removal_candidates": [
@@ -101,6 +101,18 @@
           "title": "CBH LLM workshop: send pre-work to participants",
           "status": "Incomplete",
           "url": "https://app.asana.com/1/15584153295751/project/1219137783807473/task/1220086966504810"
+        },
+        {
+          "tracker": "Google Tasks",
+          "title": "Send pre-work and logistics reminder to participants",
+          "status": "Needs action; due 2026-11-11",
+          "task_list": "CBW_LLM_in_Bioinformatics_2026"
+        },
+        {
+          "tracker": "Google Tasks",
+          "title": "Order catering",
+          "status": "Needs action; due 2026-10-31",
+          "task_list": "CBW_LLM_in_Bioinformatics_2026"
         },
         {
           "tracker": "Linear",
@@ -196,10 +208,33 @@
     "Pay TAs and instructors / submit invoices for payment",
     "Submit reimbursement claims and supporting documents",
     "Analyze participant feedback and discuss it with instructors",
+    "LLM_Ed-2611: Create participant survey",
     "Close the post-workshop survey and send participant/faculty follow-up"
   ],
+  "preserve_google_tasks": [
+    {
+      "title": "CBH LLM workshop: submit invoices for payment",
+      "status": "Needs action",
+      "due": "2026-11-15",
+      "task_list": "CBW_LLM_in_Bioinformatics_2026",
+      "reason": "Payment work is still outstanding."
+    },
+    {
+      "title": "LLM_Ed-2611: Create participant survey",
+      "status": "Needs action",
+      "due": "2026-11-05",
+      "task_list": "CBW_LLM_in_Bioinformatics_2026",
+      "reason": "Keep the survey task available for the user's requested feedback analysis and discussion."
+    },
+    {
+      "title": "CBH LLM workshop: post-workshop follow-up (close survey, faculty thank-you, participant emails)",
+      "status": "Needs action",
+      "due": "2026-11-22",
+      "task_list": "CBW_LLM_in_Bioinformatics_2026",
+      "reason": "This includes active post-workshop feedback and follow-up work."
+    }
+  ],
   "limitations": [
-    "Google Tasks could not be searched because Google authorization was requested.",
     "ClickUp's connected workspaces were not all fully searched because the tool required explicit workspace selection.",
     "monday.com search returned a maximum of 20 matches, so the item search may omit additional records.",
     "Some cross-tracker records have conflicting statuses; recommendations to close or archive require checking actual completion and any unique notes."
