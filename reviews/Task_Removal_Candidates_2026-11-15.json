@@ -211,7 +211,10 @@
     "LLM_Ed-2611: Create participant survey",
     "Close the post-workshop survey and send participant/faculty follow-up",
     "Upload the LLM in Bioinformatics workshop video recording",
-    "Upload the LLM in Bioinformatics workshop recording to YouTube"
+    "Upload the LLM in Bioinformatics workshop recording to YouTube",
+    "Ask Hosna for the workshop lectures",
+    "Add Hosna's lectures to the workshop site",
+    "Upload the workshop class photo"
   ],
   "user_identified_pending_tasks": [
     {
@@ -223,8 +226,28 @@
       "task": "Upload the workshop recording to YouTube",
       "status": "User identified as outstanding",
       "tracker_task_created_or_updated": false
+    },
+    {
+      "task": "Ask Hosna for the workshop lectures",
+      "status": "User identified as outstanding",
+      "tracker_task_created_or_updated": false
+    },
+    {
+      "task": "Add Hosna's lectures to the workshop site",
+      "status": "User identified as outstanding",
+      "tracker_task_created_or_updated": false
+    },
+    {
+      "task": "Upload the workshop class photo",
+      "status": "User identified as outstanding",
+      "tracker_task_created_or_updated": false
     }
   ],
+  "related_lecture_tracker_record_needs_scope_check": {
+    "trackers": ["Dart", "Linear", "Notion", "Todoist"],
+    "title": "LLM workshop: Create vibe coding practical exercises; finish lectures",
+    "disposition": "Do not treat this older preparation task as covering the user's new request to obtain Hosna's lecture files and add them to the workshop site. Keep the two user-identified post-workshop steps protected separately."
+  },
   "related_tracker_record_needs_scope_check": {
     "tracker": "Notion",
     "title": "Upload / verify YouTube recordings for all MLE sessions",
