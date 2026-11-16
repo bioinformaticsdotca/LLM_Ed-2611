@@ -248,6 +248,84 @@
     "title": "LLM workshop: Create vibe coding practical exercises; finish lectures",
     "disposition": "Do not treat this older preparation task as covering the user's new request to obtain Hosna's lecture files and add them to the workshop site. Keep the two user-identified post-workshop steps protected separately."
   },
+  "other_urgent_work_outside_workshop_scope": [
+    {
+      "task": "Organize the Horizon Foodome AI meeting",
+      "urgency": "ASAP",
+      "related_open_tracker_items": [
+        {
+          "tracker": "Linear",
+          "title": "Talk to David Wishart about Matej Oresic's Horizon Foodome AI grant request",
+          "status": "Backlog",
+          "url": "https://linear.app/wishartgroup/issue/WUOFA-58/talk-to-david-wishart-about-matej-oresics-horizon-foodome-ai-grant"
+        },
+        {
+          "tracker": "Todoist",
+          "title": "Talk to David Wishart about Matej Oresic's Horizon Foodome AI grant request",
+          "status": "Open"
+        }
+      ],
+      "note": "These are related existing items, but they do not clearly say that the meeting has been organized or scheduled."
+    },
+    {
+      "task": "Organize the AI-Foodome meeting",
+      "urgency": "ASAP",
+      "related_open_tracker_items": [
+        {
+          "tracker": "Linear",
+          "title": "Attend AIFoodome meeting and cover for Dr. Wishart after initial participation",
+          "status": "Backlog",
+          "url": "https://linear.app/wishartgroup/issue/WUOFA-143/attend-aifoodome-meeting-and-cover-for-dr-wishart-after-initial"
+        },
+        {
+          "tracker": "Todoist",
+          "title": "Attend AIFoodome meeting and cover for Dr. Wishart after initial participation",
+          "status": "Open"
+        }
+      ],
+      "note": "The existing item is about attending/covering a meeting, not organizing it."
+    },
+    {
+      "task": "Start advertising the Nov 26 yegBUG event",
+      "urgency": "ASAP",
+      "related_open_tracker_items": [
+        {
+          "tracker": "Notion",
+          "title": "Review and approve Nov 26 event poster, QR code, and registration form materials",
+          "status": "Open",
+          "url": "https://app.notion.com/p/41246336dc0581fc9dc7cddc13fb4eff?pvs=204"
+        }
+      ],
+      "note": "The Oct 30 planning sheet says the room and talk topic/title were promotion blockers and calls for poster, QR, social, and class outreach. A current explicit advertising task was not found."
+    },
+    {
+      "task": "Correct the seminar room on the yegBUG website",
+      "urgency": "ASAP",
+      "related_evidence": [
+        {
+          "tracker": "Google Calendar",
+          "event": "yegBUG",
+          "date": "2026-11-26",
+          "location": null,
+          "note": "The calendar entry does not specify a room."
+        },
+        {
+          "tracker": "Google Drive planning sheet",
+          "event": "November yegBUG event",
+          "room": "ECHA/Echo was selected provisionally; exact room booking was not confirmed in the sheet",
+          "time": "17:00–19:00",
+          "capacity": 80
+        },
+        {
+          "tracker": "Notion",
+          "title": "Update yegBUG website with seminar details",
+          "url": "https://app.notion.com/p/34746336dc0581afa22ac52dc56941f3?pvs=204",
+          "note": "This older task concerns the Oct 29 seminar and its CAB 243 correction; do not apply that room to the Nov 26 event."
+        }
+      ],
+      "note": "No website change was made because the confirmed Nov 26 room is not established by the records reviewed."
+    }
+  ],
   "related_tracker_record_needs_scope_check": {
     "tracker": "Notion",
     "title": "Upload / verify YouTube recordings for all MLE sessions",
