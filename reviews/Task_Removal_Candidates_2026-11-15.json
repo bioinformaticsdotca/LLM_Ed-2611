@@ -1,0 +1,207 @@
+{
+  "workshop": "LLM in Bioinformatics 2026 (LLM_Ed-2611)",
+  "reviewed_on": "2026-11-15",
+  "purpose": "Propose task records that may be removed from active task views after the workshop. This is a review list only; no tracker records were changed.",
+  "decision_rule": "Prefer close or archive for obsolete one-off tasks so the work history remains available. Delete only records explicitly labeled as duplicates after confirming the retained counterpart.",
+  "trackers_reviewed": [
+    {
+      "name": "Asana",
+      "scope": "Dedicated LLM in bioinformatics 2026 project and matching task search",
+      "result": "Reviewed"
+    },
+    {
+      "name": "Dart",
+      "scope": "LLM in Bioinformatics 2026 project and matching tasks",
+      "result": "Reviewed"
+    },
+    {
+      "name": "Linear",
+      "scope": "CBW_LLM_in_Bioinformatics_2026 project issues",
+      "result": "Reviewed"
+    },
+    {
+      "name": "monday.com",
+      "scope": "Wishart Lab — Lab Operations board; LLM workshop item search",
+      "result": "Reviewed; item search caps results at 20"
+    },
+    {
+      "name": "Todoist",
+      "scope": "Tasks with the CBW_LLM_in_Bioinformatics_2026 label and workshop keyword searches",
+      "result": "Reviewed"
+    },
+    {
+      "name": "Notion",
+      "scope": "Workshop task and project page search; local task export also consulted",
+      "result": "Reviewed"
+    },
+    {
+      "name": "ClickUp",
+      "scope": "Connected account search and local task export",
+      "result": "Partially reviewed; multiple linked workspaces require workspace selection for complete account-wide results"
+    },
+    {
+      "name": "Google Tasks",
+      "scope": "Not searched",
+      "result": "Google authorization was required and unavailable during this review"
+    }
+  ],
+  "removal_candidates": [
+    {
+      "candidate_id": "duplicate-invoice-submission-asana",
+      "title": "DUPLICATE — Submit CBH LLM workshop invoices for payment",
+      "candidate_action": "Delete or archive the explicitly marked duplicate record after verifying it has no unique notes or attachments.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "tracker": "Asana",
+          "status": "Completed",
+          "url": "https://app.asana.com/1/15584153295751/project/1219137783807473/task/1219612602781535"
+        },
+        {
+          "tracker": "Asana",
+          "retained_counterpart": "CBH LLM workshop: submit invoices for payment",
+          "status": "Incomplete; due 2026-11-15",
+          "url": "https://app.asana.com/1/15584153295751/project/1219137783807473/task/1220099543109089"
+        },
+        {
+          "tracker": "monday.com",
+          "retained_counterpart": "CBH LLM workshop: submit invoices for payment",
+          "url": "https://ualberta880251.monday.com/boards/18430090948/pulses/13321609460"
+        },
+        {
+          "tracker": "monday.com",
+          "title": "Submit CBH LLM workshop invoices for payment",
+          "candidate_status": "Potential duplicate; inspect task details before removal",
+          "url": "https://ualberta880251.monday.com/boards/18430090948/pulses/13461421123"
+        }
+      ],
+      "safeguard": "Keep the live invoice/payment task. The user still needs to handle instructor and TA payment and reimbursement."
+    },
+    {
+      "candidate_id": "expired-prework-and-logistics-tasks",
+      "title": "One-time preparation and participant logistics for Nov 14–15",
+      "candidate_action": "Close or archive the remaining open copies; retain task history and any links or notes. Do not delete without confirming completion.",
+      "confidence": "high",
+      "reason": "The workshop has ended, while multiple trackers still show pre-work, participant reminders, application closure, venue Wi-Fi/access, AV testing, supplies, badges, room slides, catering, GitHub setup/upload, and pre-workshop meeting tasks as open or in backlog.",
+      "examples": [
+        {
+          "tracker": "Asana",
+          "title": "CBH LLM workshop: test AV and Wi-Fi in ICE 8-207",
+          "status": "Incomplete",
+          "url": "https://app.asana.com/1/15584153295751/project/1219137783807473/task/1220443193410343"
+        },
+        {
+          "tracker": "Asana",
+          "title": "CBH LLM workshop: arrange weekend building access, security timing and lockout contact",
+          "status": "Incomplete",
+          "url": "https://app.asana.com/1/15584153295751/project/1219137783807473/task/1220443431925869"
+        },
+        {
+          "tracker": "Asana",
+          "title": "CBH LLM workshop: send pre-work to participants",
+          "status": "Incomplete",
+          "url": "https://app.asana.com/1/15584153295751/project/1219137783807473/task/1220086966504810"
+        },
+        {
+          "tracker": "Linear",
+          "title": "CBH LLM workshop: send pre-work to participants",
+          "status": "Backlog",
+          "url": "https://linear.app/wishartgroup/issue/WUOFA-212/cbh-llm-workshop-send-pre-work-to-participants"
+        },
+        {
+          "tracker": "monday.com",
+          "title": "CBH LLM workshop: order catering",
+          "url": "https://ualberta880251.monday.com/boards/18430090948/pulses/13232736494"
+        },
+        {
+          "tracker": "monday.com",
+          "title": "CBH LLM workshop: set up GitHub repo for attendees",
+          "url": "https://ualberta880251.monday.com/boards/18430090948/pulses/13232406476"
+        }
+      ],
+      "safeguard": "Do not include invoice submission, payment, reimbursement, survey closure/analysis, participant feedback discussion, or post-workshop follow-up tasks in this cleanup group."
+    },
+    {
+      "candidate_id": "expired-contingent-workshop-prep",
+      "title": "Conditional tasks that only applied before or during the workshop",
+      "candidate_action": "Mark complete, canceled, or archive according to what happened; remove from active views after that check.",
+      "confidence": "medium",
+      "reason": "The event date has passed, making pre-event contingencies stale, though the tracker state alone does not establish whether each activity occurred.",
+      "examples": [
+        {
+          "tracker": "Asana",
+          "title": "CBH LLM workshop: hold UNIX/command-line primer session (if needed)",
+          "status": "Incomplete",
+          "url": "https://app.asana.com/1/15584153295751/project/1219137783807473/task/1220447055155854"
+        },
+        {
+          "tracker": "Linear",
+          "title": "CBH LLM workshop: hold UNIX/command-line primer session (if needed)",
+          "status": "Canceled",
+          "url": "https://linear.app/wishartgroup/issue/WUOFA-217/cbh-llm-workshop-hold-unixcommand-line-primer-session-if-needed"
+        },
+        {
+          "tracker": "monday.com / Notion / Todoist",
+          "title": "CBH LLM workshop: send Zoom link night before (only if hybrid)",
+          "disposition": "Review whether hybrid delivery occurred, then close/archive the obsolete contingency copies."
+        }
+      ]
+    },
+    {
+      "candidate_id": "resolved-instructor-and-venue-search",
+      "title": "Find replacement instructor and confirm venue, or cancel/refund",
+      "candidate_action": "Archive the closed planning task from active views; retain its record.",
+      "confidence": "medium",
+      "reason": "The workshop proceeded and the replacement-instructor/venue task is marked Done in Asana, Dart, Linear, and monday.com.",
+      "examples": [
+        {
+          "tracker": "Asana",
+          "status": "Completed",
+          "url": "https://app.asana.com/1/15584153295751/project/1219137783807473/task/1219211253102396"
+        },
+        {
+          "tracker": "Dart",
+          "status": "Done",
+          "url": "https://app.dartai.com/t/J5u0r1xasXBH-Find-replacement-instructor"
+        },
+        {
+          "tracker": "Linear",
+          "status": "Done",
+          "url": "https://linear.app/wishartgroup/issue/WUOFA-185/find-replacement-instructor-and-confirm-venue-for-cbh-llm-in"
+        },
+        {
+          "tracker": "monday.com",
+          "status": "Closed in counterpart trackers; board search found the same task",
+          "url": "https://ualberta880251.monday.com/boards/18430090948/pulses/13216556266"
+        }
+      ]
+    },
+    {
+      "candidate_id": "duplicate-mirrors-across-task-trackers",
+      "title": "Repeated copies of the same workshop task in separate trackers",
+      "candidate_action": "Consolidate only after selecting one system of record; archive redundant copies in other trackers while preserving comments, attachments, and links.",
+      "confidence": "medium",
+      "reason": "Local task-tracker exports and live searches show matching tasks copied among Notion, Todoist, monday.com, Asana, Linear, Dart, and ClickUp, with inconsistent completion states. No single canonical task tracker is established by the evidence reviewed.",
+      "examples": [
+        "Follow up with Hosna about running workshop",
+        "Prepare NLP/information-extraction slide content for the LLM Bioinformatics workshop (Nov 2026)",
+        "LLM workshop: Test workshop practical exercises (Colab labs)",
+        "CBH LLM workshop: set up GitHub repo for attendees",
+        "CBH LLM workshop: prepare name badges, tent cards and certificates"
+      ],
+      "safeguard": "Do not bulk-delete cross-tracker copies until the owner confirms which system is authoritative and checks for unique task notes."
+    }
+  ],
+  "explicitly_excluded_from_removal": [
+    "Pay TAs and instructors / submit invoices for payment",
+    "Submit reimbursement claims and supporting documents",
+    "Analyze participant feedback and discuss it with instructors",
+    "Close the post-workshop survey and send participant/faculty follow-up"
+  ],
+  "limitations": [
+    "Google Tasks could not be searched because Google authorization was requested.",
+    "ClickUp's connected workspaces were not all fully searched because the tool required explicit workspace selection.",
+    "monday.com search returned a maximum of 20 matches, so the item search may omit additional records.",
+    "Some cross-tracker records have conflicting statuses; recommendations to close or archive require checking actual completion and any unique notes."
+  ]
+}
