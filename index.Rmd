@@ -66,7 +66,7 @@ Step-by-step guides (PDF):
 
 ## Class Photo
 
-Coming soon!
+![Participants and instructors at the Large Language Models for Bioinformatics workshop in Edmonton, November 14–15, 2026.](img/LLM_in_Bioinformatics_Edmonton_2026.jpeg){width=100%}
 
 ## Schedule
 
