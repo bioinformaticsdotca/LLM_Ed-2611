@@ -209,8 +209,29 @@
     "Submit reimbursement claims and supporting documents",
     "Analyze participant feedback and discuss it with instructors",
     "LLM_Ed-2611: Create participant survey",
-    "Close the post-workshop survey and send participant/faculty follow-up"
+    "Close the post-workshop survey and send participant/faculty follow-up",
+    "Upload the LLM in Bioinformatics workshop video recording",
+    "Upload the LLM in Bioinformatics workshop recording to YouTube"
   ],
+  "user_identified_pending_tasks": [
+    {
+      "task": "Upload the workshop video recording",
+      "status": "User identified as outstanding",
+      "tracker_task_created_or_updated": false
+    },
+    {
+      "task": "Upload the workshop recording to YouTube",
+      "status": "User identified as outstanding",
+      "tracker_task_created_or_updated": false
+    }
+  ],
+  "related_tracker_record_needs_scope_check": {
+    "tracker": "Notion",
+    "title": "Upload / verify YouTube recordings for all MLE sessions",
+    "status": "Open",
+    "url": "https://app.notion.com/p/35b46336dc05813eb201fe7542e93679?pvs=204",
+    "evidence": "The page says Day 2 recordings were uploaded Apr 28 and asks to verify all sessions are publicly accessible. It is in the MLE Tasks database and does not clearly identify the Nov 14–15 LLM in Bioinformatics workshop, so it should not be treated as this workshop's upload task without confirmation."
+  },
   "preserve_google_tasks": [
     {
       "title": "CBH LLM workshop: submit invoices for payment",
